@@ -1,0 +1,50 @@
+.graphic-container {
+    width: 100%;
+    margin-top: 100px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 897px;
+}
+.graphic-container .graphic-title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 48px;
+    color: var(--color-green);
+    text-align: center;
+}
+.chart-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.chart-card {
+    width: 100%;
+    height: 450px;
+    box-shadow: inset 0 0 68px #FFFFFF0D;
+    background: #E6E6E608;
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+    padding: 20px 20px 20px 0px;
+    gap: 29px;
+}
+.chart-card img {
+    width: 100%;
+}
+.chart-description {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+    color: #fff;
+}
+.chart-description .group {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--color-green);
+}
+@media screen and (max-width: 768px) {
+    .chart-card {
+        padding-right: 0px;
+    }
+}

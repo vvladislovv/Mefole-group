@@ -1,0 +1,122 @@
+.fade-section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: opacity, transform;
+}
+
+.fade-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Варианты анимаций */
+.fade-section.fade-up {
+  transform: translateY(60px);
+}
+
+.fade-section.fade-up.visible {
+  transform: translateY(0);
+}
+
+.fade-section.fade-down {
+  transform: translateY(-60px);
+}
+
+.fade-section.fade-down.visible {
+  transform: translateY(0);
+}
+
+.fade-section.fade-left {
+  transform: translateX(-60px);
+}
+
+.fade-section.fade-left.visible {
+  transform: translateX(0);
+}
+
+.fade-section.fade-right {
+  transform: translateX(60px);
+}
+
+.fade-section.fade-right.visible {
+  transform: translateX(0);
+}
+
+.fade-section.fade-scale {
+  transform: scale(0.8);
+}
+
+.fade-section.fade-scale.visible {
+  transform: scale(1);
+}
+
+.fade-section.fade-rotate {
+  transform: rotate(5deg) scale(0.9);
+}
+
+.fade-section.fade-rotate.visible {
+  transform: rotate(0deg) scale(1);
+}
+
+/* Комбинированные эффекты */
+.fade-section.fade-up-scale {
+  transform: translateY(60px) scale(0.9);
+}
+
+.fade-section.fade-up-scale.visible {
+  transform: translateY(0) scale(1);
+}
+
+/* Задержки для последовательного появления */
+.fade-section.delay-100 {
+  transition-delay: 0.1s;
+}
+
+.fade-section.delay-150 {
+  transition-delay: 0.15s;
+}
+
+.fade-section.delay-200 {
+  transition-delay: 0.2s;
+}
+
+.fade-section.delay-300 {
+  transition-delay: 0.3s;
+}
+
+.fade-section.delay-400 {
+  transition-delay: 0.4s;
+}
+
+.fade-section.delay-500 {
+  transition-delay: 0.5s;
+}
+
+/* Медиа-запросы для уменьшения анимаций на мобильных устройствах */
+@media (max-width: 768px) {
+  .fade-section {
+    transform: translateY(30px);
+    transition-duration: 0.6s;
+  }
+  
+  .fade-section.fade-up,
+  .fade-section.fade-down {
+    transform: translateY(30px);
+  }
+  
+  .fade-section.fade-left,
+  .fade-section.fade-right {
+    transform: translateX(30px);
+  }
+}
+
+/* Уважение к настройкам пользователя */
+@media (prefers-reduced-motion: reduce) {
+  .fade-section {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}

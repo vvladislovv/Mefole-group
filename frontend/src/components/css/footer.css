@@ -1,0 +1,117 @@
+.footer-container {
+    width: 100%;
+    margin: 80px auto 0px auto;
+    max-width: 897px;
+}
+.footer-container .footer-title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 21px;
+    font-size: 28px;
+    color: var(--color-green);
+    text-align: center;
+}
+.footbar-wrapper {
+    margin-top: 36px;
+    display: flex;
+    justify-content: center;
+}
+.footbar {
+    color: #F6F6F6;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 24px;
+}
+.footbar-item:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+}
+.socials {
+    margin-top: 36px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.socials .socials-flex {
+    width: 50px;
+    margin: 0 auto;
+}
+.socials .socials-flex {
+    display: flex;
+    justify-content: center;
+}
+.socials .socials-flex a {
+    width: 30px;
+    height: 36px;
+}
+.socials .socials-flex a:hover {
+  transform: scale(1.03);
+}
+.socials .socials-flex a img {
+    width: 100%;
+    height: 100%;
+}
+.copyright {
+    margin-top: 36px;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 15px;
+}
+
+@media screen and (max-width: 768px) {
+    .footer-container {
+        margin: 60px 0 0 0;
+        max-width: 100vw;
+        width: 100vw;
+        padding: 0 16px;
+        box-sizing: border-box;
+    }
+    .footer-container .footer-title {
+        font-size: clamp(20px, 6vw, 28px);
+    }
+    .footbar-wrapper {
+        margin-top: 24px;
+    }
+    .footbar {
+        font-size: clamp(16px, 4vw, 20px);
+        gap: clamp(12px, 3vw, 20px);
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .footbar-item {
+        white-space: nowrap;
+    }
+    .socials {
+        margin-top: 24px;
+    }
+    .copyright {
+        margin-top: 24px;
+        font-size: clamp(13px, 3.5vw, 15px);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .footer-container {
+        margin: 40px 0 0 0;
+        padding: 0 12px;
+    }
+    .footbar-wrapper {
+        margin-top: 20px;
+    }
+    .footbar {
+        font-size: clamp(14px, 3.5vw, 18px);
+        gap: clamp(8px, 2.5vw, 16px);
+    }
+    .socials {
+        margin-top: 20px;
+    }
+    .copyright {
+        margin-top: 20px;
+    }
+}

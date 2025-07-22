@@ -1,0 +1,269 @@
+{
+  "graphic": "graphic",
+  "services": "services",
+  "reviews": "reviews",
+  "portfolio": "portfolio",
+  "team": "team",
+  "contacts": "contacts",
+
+  "ru": "Russian",
+  "en": "English",
+
+  "hero-description": "*Digital agency for online product development",
+
+  "graphic-title": "GRAPHIC",
+  "graphic-description": "*Sales growth rate of <br></br><0>{{group}}</0> for 2025",
+  "month": {
+    "Янв": "Jan",
+    "Фев": "Feb",
+    "Март": "Mar",
+    "Апр": "Apr",
+    "Май": "May",
+    "Июнь": "Jun",
+    "Июль": "Jul",
+    "Авг": "Aug",
+    "Сент": "Sep",
+    "Окт": "Oct",
+    "Ноя": "Nov",
+    "Дек": "Dec"
+  },
+
+
+  "services-title": "Services",
+  "service": {
+    "title1": "Full-cycle website development",
+    "description1": "Design and layout of websites: landing pages, e-commerce, small business sites, promo sites.",
+    
+    "title2": "Telegram bots and mini apps",
+    "description2": "Telegram bot development in Python using python-telegram-bot, aiogram libraries.",
+    
+    "title3": "Web scraping with Python",
+    "description3": "Scraping of almost any data: product names, SKUs, prices, descriptions, photos, and categories.",
+    
+    "title4": "Mobile applications (iOS/Android)",
+    "description4": "Native and cross-platform mobile app development for iOS and Android platforms.",
+    
+    "title5": "E-commerce solutions",
+    "description5": "Online stores, payment systems integration, inventory management, and shopping cart functionality.",
+    
+    "title6": "UX/UI design",
+    "description6": "User interface and user experience design for websites and mobile applications.",
+    
+    "title7": "Landing pages",
+    "description7": "High-converting landing pages for marketing campaigns and product launches.",
+    
+    "title8": "CRM systems",
+    "description8": "Customer relationship management systems for business process automation.",
+    
+    "title9": "API development",
+    "description9": "RESTful APIs, GraphQL, microservices architecture, and third-party integrations.",
+    
+    "title10": "React/Vue web applications",
+    "description10": "Modern single-page applications using React, Vue.js, and other frontend frameworks.",
+    
+    "title11": "WordPress development",
+    "description11": "Custom WordPress themes, plugins, and website development on WordPress platform.",
+    
+    "title12": "Complex IT solutions",
+    "description12": "Enterprise-level software development, system architecture, and technical consulting."
+  },
+  "service-price": "From {{price}} Rubles",
+  "send-form": "Submit Request",
+  "service-details": "Service Details",
+  "order-service": "Order Service",
+  "service-more-details": "Learn More",
+  "service-description-title": "Service Description",
+  "service-includes-title": "What's included:",
+  "service-stages-title": "Work stages:",
+  "service-include-consultation": "Consultation and requirements analysis",
+  "service-include-specification": "Technical specification development",
+  "service-include-design": "Design mockups creation",
+  "service-include-programming": "Programming and testing",
+  "service-include-launch": "Launch and configuration",
+  "service-include-support": "Technical support",
+  "service-stage-analysis": "Analysis and planning",
+  "service-stage-analysis-desc": "Requirements study and project plan creation",
+  "service-stage-design": "Design and prototyping",
+  "service-stage-design-desc": "Mockups and user interface creation",
+  "service-stage-development": "Development",
+  "service-stage-development-desc": "Programming and functionality implementation",
+  "service-stage-testing": "Testing and launch",
+  "service-stage-testing-desc": "Quality check and project deployment",
+  "portfolio-project-description": "Project Description",
+  "portfolio-client": "Client:",
+  "portfolio-duration": "Duration:",
+  "portfolio-technologies": "Technologies:",
+  "portfolio-view-project": "View Project",
+
+  "form-title": "Application Form",
+  "your-name": "Your Name",
+  "your-email": "Your Email",
+  "phone": "Phone",
+  "brief": "Technical Brief (optional)",
+  "loading": "Loading...",
+
+  "reviews-title": "REVIEWS",
+  "review-cards": {
+    "1": {
+      "name": "Alexey Ivanov",
+      "position": "Marketer, DigitalPro",
+      "text": "Very satisfied with the result! The team quickly understood the task, offered a stylish solution, and met the deadline."
+    },
+    "2": {
+      "name": "Svetlana Petrova",
+      "position": "Founder, BeautyLine",
+      "text": "The website turned out modern and user-friendly. I especially appreciated the attention to detail and quick feedback."
+    },
+    "3": {
+      "name": "Igor Smirnov",
+      "position": "CTO, LogiTech",
+      "text": "The team showed high professionalism. The collaboration went smoothly and the result exceeded expectations."
+    },
+    "4": {
+      "name": "Anna Kim",
+      "position": "Project Manager, EventCity",
+      "text": "The project was complex, but the team handled it perfectly. Excellent UX design and responsive layout!"
+    },
+    "5": {
+      "name": "Michael Johnson",
+      "position": "CEO, TechStart",
+      "text": "Outstanding work! The mobile app exceeded all our expectations. Great communication throughout the project."
+    },
+    "6": {
+      "name": "Elena Rodriguez",
+      "position": "Marketing Director, FashionHub",
+      "text": "Good work overall, but there were some delays. The final result was satisfactory."
+    },
+    "7": {
+      "name": "David Chen",
+      "position": "Founder, EcoSolutions",
+      "text": "Incredible attention to detail and innovative approach. The team delivered exactly what we envisioned."
+    },
+    "8": {
+      "name": "Sarah Wilson",
+      "position": "Product Manager, FinanceApp",
+      "text": "The project had some issues initially, but the team worked hard to resolve them. Could be better."
+    },
+    "9": {
+      "name": "Robert Taylor",
+      "position": "CTO, DataFlow",
+      "text": "Professional team with great technical skills. The API integration was flawless."
+    },
+    "10": {
+      "name": "Maria Garcia",
+      "position": "Owner, LocalBiz",
+      "text": "Amazing experience! The website boosted our online presence significantly. Highly recommend!"
+    },
+    "11": {
+      "name": "James Brown",
+      "position": "Manager, OldTech",
+      "text": "Unfortunately, the project didn't meet our expectations. Communication was poor and deadlines were missed."
+    },
+    "12": {
+      "name": "Lisa Anderson",
+      "position": "Director, CreativeStudio",
+      "text": "Exceptional creativity and technical execution. The design perfectly captured our brand identity."
+    }
+  },
+
+
+  "portfolio-title": "PORTFOLIO",
+  "categories": ["All", "Website Design", "Mobile Applications", "Full Website Development", "Parsing"],
+  "category": {
+    "all": "All",
+    "website-design": "Website Design",
+    "mobile-apps": "Mobile Applications",
+    "full-website": "Full Website Development",
+    "parsing": "Parsing"
+  },
+  "works": {
+    "1": {
+      "name": "Beauty Salon",
+      "category": "Full Website Development",
+      "title": "Beauty Salon Website",
+      "description": "Complete website development for a beauty salon with online booking system, service catalog, and customer reviews. The site features modern design, mobile responsiveness, and integrated payment processing.",
+      "duration": "6 weeks",
+      "client": "Beauty & Wellness Center"
+    },
+    "2": {
+      "name": "Studio Website",
+      "category": "Website Design",
+      "title": "Creative Studio Portfolio",
+      "description": "Modern portfolio website design for a creative studio. Features include interactive galleries, smooth animations, and responsive layout optimized for showcasing creative work.",
+      "duration": "4 weeks",
+      "client": "Creative Design Studio"
+    },
+    "3": {
+      "name": "Online Store",
+      "category": "Website Design",
+      "title": "E-commerce Platform",
+      "description": "Full-featured online store with product catalog, shopping cart, payment integration, and admin panel. Built with modern technologies for optimal performance and user experience.",
+      "duration": "8 weeks",
+      "client": "Fashion Retailer"
+    },
+    "4": {
+      "name": "Mobile App",
+      "category": "Mobile Applications",
+      "title": "Fitness Tracking App",
+      "description": "Cross-platform mobile application for fitness tracking with workout plans, progress monitoring, and social features. Built using React Native with Firebase backend.",
+      "duration": "10 weeks",
+      "client": "FitLife Company"
+    },
+    "5": {
+      "name": "Data Parser",
+      "category": "Parsing",
+      "title": "E-commerce Data Scraper",
+      "description": "Automated data collection system for e-commerce platforms. Extracts product information, prices, and reviews with high accuracy and efficiency.",
+      "duration": "3 weeks",
+      "client": "Market Research Firm"
+    }
+  },
+  "team-title": "TEAM",
+  "team-cards": {
+    "1": {
+      "name": "Maxim",
+      "description": [
+        "-UX/UI website design",
+        "-UX/UI mobile app design",
+        "-turnkey websites on Tilda"
+      ]
+    },
+    "2": {
+      "name": "Vladislav",
+      "description": [
+        "-UX/UI website design",
+        "-UX/UI mobile app design",
+        "-turnkey websites on Tilda"
+      ]
+    },
+    "3": {
+      "name": "Alexander",
+      "description": [
+        "Website design and layout:",
+        "-landing pages",
+        "-online stores",
+        "-websites for small businesses",
+        "-promo websites"
+      ]
+    },
+    "4": {
+      "name": "Vladislav",
+      "description": [
+        "-UX/UI website design",
+        "-UX/UI mobile app design",
+        "-turnkey websites on Tilda"
+      ]
+    }
+  },
+  "contacts-title": "CONTACTS",
+  "order-project": "Order project",
+  "fill-brief": "Fill out the brief",
+  "fill-brief-description": "* if you don't have a brief",
+  "brief-form-url": "https://docs.google.com/forms/d/e/1FAIpQLSc1Mj3GG89bIIjn9f-X-2b9wvHrKgkV8eFB246ETKjCLZFQZQ/viewform?usp=dialog",
+
+  "mail": "Email",
+  "mail-address": "freelancergroup001@gmail.com",
+  "telegram": "Telegram",
+  "telegram-handle": "@mefole_freelance"
+
+}
