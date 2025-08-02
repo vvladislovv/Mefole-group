@@ -27,14 +27,11 @@ export default function ServiceModal({ service, onClose }) {
         </button>
         
         <div className="service-modal-header">
-          <div className="service-modal-image">
-            <img src={service.image} alt={t(service.title)} />
+          <div className="service-modal-icon">
+            {service.icon}
           </div>
           <div className="service-modal-info">
             <h2 className="service-modal-title">{t(service.title)}</h2>
-            <div className="service-modal-price">
-              {t('service-price', { price: service.price })}
-            </div>
           </div>
         </div>
 
@@ -47,46 +44,24 @@ export default function ServiceModal({ service, onClose }) {
           <div className="service-modal-features">
             <h3>{t('service-includes-title')}</h3>
             <ul>
-              <li>{t('service-include-consultation')}</li>
-              <li>{t('service-include-specification')}</li>
-              <li>{t('service-include-design')}</li>
-              <li>{t('service-include-programming')}</li>
-              <li>{t('service-include-launch')}</li>
-              <li>{t('service-include-support')}</li>
+              {service.includes.map((include, index) => (
+                <li key={index}>{t(include)}</li>
+              ))}
             </ul>
           </div>
 
           <div className="service-modal-timeline">
             <h3>{t('service-stages-title')}</h3>
             <div className="timeline-steps">
-              <div className="timeline-step">
-                <div className="step-number">1</div>
-                <div className="step-content">
-                  <h4>{t('service-stage-analysis')}</h4>
-                  <p>{t('service-stage-analysis-desc')}</p>
+              {service.stages.map((stage, index) => (
+                <div key={index} className="timeline-step">
+                  <div className="step-number">{index + 1}</div>
+                  <div className="step-content">
+                    <h4>{t(stage.title)}</h4>
+                    <p>{t(stage.description)}</p>
+                  </div>
                 </div>
-              </div>
-              <div className="timeline-step">
-                <div className="step-number">2</div>
-                <div className="step-content">
-                  <h4>{t('service-stage-design')}</h4>
-                  <p>{t('service-stage-design-desc')}</p>
-                </div>
-              </div>
-              <div className="timeline-step">
-                <div className="step-number">3</div>
-                <div className="step-content">
-                  <h4>{t('service-stage-development')}</h4>
-                  <p>{t('service-stage-development-desc')}</p>
-                </div>
-              </div>
-              <div className="timeline-step">
-                <div className="step-number">4</div>
-                <div className="step-content">
-                  <h4>{t('service-stage-testing')}</h4>
-                  <p>{t('service-stage-testing-desc')}</p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>

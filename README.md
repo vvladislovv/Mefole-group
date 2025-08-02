@@ -1,298 +1,225 @@
-# MEFOLE GROUP - Digital Agency Website
+# 🚀 Mefole Group Website
 
-Современный веб-сайт цифрового агентства с полным функционалом для демонстрации услуг, портфолио и взаимодействия с клиентами.
+<div align="center">
 
-## 🚀 Основные возможности
+![Mefole Group](https://img.shields.io/badge/Mefole-Group-blue?style=for-the-badge)
+![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.116-009688?style=for-the-badge&logo=fastapi)
+![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-### 📱 Адаптивный дизайн
-- Полностью адаптивный интерфейс для всех устройств
-- Оптимизация для мобильных устройств (320px - 1920px+)
-- Плавные анимации и переходы
+**Современный веб-сайт для digital агентства с Telegram интеграцией**
 
-### 🌍 Мультиязычность
-- Поддержка русского и английского языков
-- Автоматическое переключение контента
-- Локализация всех элементов интерфейса
+[🌐 Live Demo](https://mefole.com) • [📚 Документация](PRODUCTION_DEPLOYMENT_GUIDE.md) • [🚀 Быстрый старт](QUICK_START.md)
 
-### ✨ Интерактивные элементы
-- Плавные анимации при прокрутке
-- Модальные окна для услуг и портфолио
-- Интерактивные карточки с эффектами наведения
-
-## 🏗️ Архитектура проекта
-
-### Frontend (React)
-```
-frontend/
-├── public/
-│   ├── locales/           # Файлы переводов
-│   │   ├── en/           # Английские переводы
-│   │   └── ru/           # Русские переводы
-│   └── ...
-├── src/
-│   ├── components/       # React компоненты
-│   │   ├── css/         # Стили компонентов
-│   │   ├── Contacts.jsx # Контакты
-│   │   ├── Services.jsx # Услуги
-│   │   ├── Portfolio.jsx# Портфолио
-│   │   ├── Team.jsx     # Команда
-│   │   ├── Reviews.jsx  # Отзывы
-│   │   └── ... 
-│   ├── data/            # Данные приложения
-│   │   ├── services.js  # Данные услуг
-│   │   ├── portfolio.js # Данные портфолио
-│   │   ├── team.js      # Данные команды
-│   │   └── reviews.js   # Данные отзывов
-│   ├── hook/            # Пользовательские хуки
-│   └── ...
-```
-
-### Backend (FastAPI + PostgreSQL)
-```
-backend/
-├── src/
-│   ├── app/
-│   │   ├── models/      # Модели базы данных
-│   │   ├── routers/     # API маршруты
-│   │   ├── schemas/     # Pydantic схемы
-│   │   └── ...
-│   └── ...
-├── venv/                # Виртуальное окружение Python
-└── requirements.txt     # Зависимости Python
-```
-
-## 🎨 Компоненты и функциональность
-
-### 1. Hero Section
-**Файлы:** `Hero.jsx`, `hero.css`
-- Главный экран с названием компании
-- Анимированное появление элементов
-- Адаптивная типографика
-
-### 2. Навигация (Navbar)
-**Файлы:** `Navbar.jsx`, `navbar.css`
-- Фиксированная навигация
-- Переключатель языков
-- Плавная прокрутка к секциям
-
-### 3. Услуги (Services)
-**Файлы:** `Services.jsx`, `ServiceModal.jsx`, `services.css`, `serviceModal.css`
-
-**Функциональность:**
-- 12 различных типов услуг
-- Карусель с навигацией стрелками
-- Модальные окна с подробной информацией
-- Блокировка вертикальной прокрутки внутри карточек
-- Форма заказа услуги
-
-**Особенности:**
-- Эффект наведения с кнопкой "Подробнее"
-- Этапы работы и что входит в услугу
-- Интеграция с формой заказа
-
-### 4. Портфолио (Portfolio)
-**Файлы:** `Portfolio.jsx`, `PortfolioModal.jsx`, `portfolio.css`, `portfolioModal.css`
-
-**Функциональность:**
-- Фильтрация по категориям
-- Модальные окна с галереей изображений
-- Видеоплеер для демонстрации
-- Подробная информация о проектах
-
-**Категории:**
-- Все проекты
-- Дизайн сайтов
-- Мобильные приложения
-- Сайт под ключ
-- Парсинг
-
-### 5. Команда (Team)
-**Файлы:** `Team.jsx`, `team.css`
-
-**Функциональность:**
-- Карусель участников команды
-- Блокировка вертикальной прокрутки
-- Навигация стрелками и точками
-- Информация о каждом участнике
-
-### 6. Отзывы (Reviews)
-**Файлы:** `Reviews.jsx`, `reviews.css`
-
-**Функциональность:**
-- 12 отзывов с разными рейтингами (1-5 звезд)
-- Пагинация (по 4 отзыва на страницу)
-- Анимированное появление карточек
-
-### 7. Контакты (Contacts)
-**Файлы:** `Contacts.jsx`, `contacts.css`
-
-**Функциональность:**
-- Форма заказа проекта (модальное окно)
-- Ссылка на Google Forms (зависит от языка)
-- Email и Telegram контакты
-- Анимированные блоки
-
-## 🔧 Технические особенности
-
-### Анимации
-**Файлы:** `FadeInSections.jsx`, `fadesection.css`
-
-**Типы анимаций:**
-- `fade-up` - появление снизу
-- `fade-down` - появление сверху
-- `fade-left` - появление слева
-- `fade-right` - появление справа
-- `fade-scale` - появление с масштабированием
-- `fade-rotate` - появление с поворотом
-
-**Задержки:**
-- `delay-100` до `delay-500` для последовательного появления
-
-### Блокировка прокрутки
-Реализована в Services и Team компонентах:
-- CSS: `overflow: hidden`, `overscroll-behavior: none`
-- JavaScript: обработчики `wheel` и `touchmove` событий
-- Сохранение функциональности навигации
-
-### Интернационализация
-**Библиотека:** react-i18next
-
-**Структура переводов:**
-```json
-{
-  "services-title": "Services",
-  "category": {
-    "all": "All",
-    "website-design": "Website Design"
-  },
-  "service": {
-    "title1": "Full-cycle website development"
-  }
-}
-```
-
-## 📱 Мобильная оптимизация
-
-### Брейкпоинты
-- **1200px+** - Десктоп
-- **768px-1199px** - Планшет
-- **480px-767px** - Мобильный
-- **320px-479px** - Маленький мобильный
-
-### Адаптивные элементы
-- Типографика с `clamp()` функциями
-- Гибкие сетки и флексбокс
-- Адаптивные изображения
-- Оптимизированная навигация
-
-## 🗄️ База данных
-
-### Модели
-**Файлы:** `backend/src/app/models/`
-
-1. **Clients** - информация о клиентах
-2. **Tasks** - технические задания
-3. **Services** - услуги компании
-
-### API Endpoints
-- `POST /client/create-task` - создание заявки
-- `GET /client/get-tasks` - получение заявок
-
-## 🚀 Запуск проекта
-
-### Frontend
-```bash
-cd frontend
-npm install
-npm start
-```
-
-### Backend
-```bash
-cd backend
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
-# или venv\Scripts\activate  # Windows
-pip install -r requirements.txt
-uvicorn main:app --reload
-```
-
-### Docker
-```bash
-docker-compose up --build
-```
-
-## 🎯 Основные фичи по секциям
-
-### Hero
-- ✅ Адаптивный заголовок
-- ✅ Анимация появления
-- ✅ Мультиязычность
-
-### Services
-- ✅ 12 типов услуг
-- ✅ Модальные окна
-- ✅ Блокировка прокрутки
-- ✅ Форма заказа
-- ✅ Эффекты наведения
-
-### Portfolio
-- ✅ Фильтрация по категориям
-- ✅ Галерея изображений
-- ✅ Видеоплеер
-- ✅ Подробная информация
-
-### Team
-- ✅ Карусель участников
-- ✅ Блокировка прокрутки
-- ✅ Навигация
-
-### Reviews
-- ✅ Пагинация отзывов
-- ✅ Рейтинговая система
-- ✅ Анимации
-
-### Contacts
-- ✅ Форма заказа
-- ✅ Google Forms интеграция
-- ✅ Контактная информация
-
-## 🔒 Безопасность
-
-- Валидация форм на клиенте и сервере
-- Защита от XSS атак
-- Санитизация пользовательского ввода
-- CORS настройки
-
-## 📊 Производительность
-
-- Ленивая загрузка изображений
-- Оптимизированные анимации
-- Минификация CSS/JS
-- Сжатие изображений
-
-## 🛠️ Технологический стек
-
-**Frontend:**
-- React 18
-- React i18next (интернационализация)
-- CSS3 с современными функциями
-- Intersection Observer API
-
-**Backend:**
-- FastAPI (Python)
-- PostgreSQL
-- SQLAlchemy ORM
-- Pydantic для валидации
-
-**DevOps:**
-- Docker & Docker Compose
-- Nginx (в продакшене)
-
-## 📝 Лицензия
-
-Проект разработан для MEFOLE GROUP. Все права защищены.
+</div>
 
 ---
 
-**Разработано с ❤️ для MEFOLE GROUP**
+## ✨ Особенности
+
+- 🎨 **Современный дизайн** с адаптивной версткой
+- 🌍 **Мультиязычность** (русский/английский)
+- 📱 **Полная адаптивность** под все устройства
+- 🤖 **Telegram бот** для автоматического приема заявок
+- 📊 **9 проектов в портфолио** (веб, мобильные, боты)
+- ⚡ **Высокая производительность** и SEO оптимизация
+- 🐳 **Docker** контейнеризация для легкого развертывания
+- 🔒 **Production-ready** с SSL и безопасностью
+
+## 🛠 Технологический стек
+
+### Frontend
+- **React 18** - современный UI фреймворк
+- **React Router** - клиентская маршрутизация
+- **i18next** - интернационализация
+- **CSS3** - адаптивный дизайн с анимациями
+
+### Backend
+- **FastAPI** - высокопроизводительный Python API
+- **PostgreSQL** - надежная реляционная БД
+- **SQLAlchemy** - современная ORM
+- **Alembic** - миграции базы данных
+- **Aiogram** - асинхронный Telegram бот
+
+### DevOps
+- **Docker & Docker Compose** - контейнеризация
+- **Nginx** - reverse proxy с SSL
+- **Let's Encrypt** - автоматические SSL сертификаты
+- **Gunicorn** - WSGI сервер для продакшена
+
+## 🚀 Быстрый старт
+
+### Локальная разработка
+
+```bash
+# Клонируем репозиторий
+git clone https://github.com/yourusername/mefole-group-website.git
+cd mefole-group-website
+
+# Запускаем через Docker Compose
+docker-compose up -d
+
+# Открываем в браузере
+open http://localhost
+```
+
+### Production развертывание
+
+```bash
+# Настраиваем домен
+cp .env.prod.example .env.prod
+nano .env.prod  # Указываем ваш домен
+
+# Развертываем одной командой
+./scripts/deploy.sh
+
+# Настраиваем SSL
+./scripts/setup-ssl.sh
+```
+
+**Подробная инструкция:** [QUICK_START.md](QUICK_START.md)
+
+## 📁 Структура проекта
+
+```
+mefole-group-website/
+├── 🎨 frontend/              # React приложение
+│   ├── src/
+│   │   ├── components/       # React компоненты
+│   │   ├── data/            # Данные портфолио и сервисов
+│   │   └── public/locales/  # Переводы
+│   └── Dockerfile.prod      # Production образ
+├── 🔧 backend/               # FastAPI сервер
+│   ├── src/app/
+│   │   ├── models/          # SQLAlchemy модели
+│   │   ├── routers/         # API endpoints
+│   │   └── services/        # Telegram бот сервис
+│   └── Dockerfile.prod      # Production образ
+├── 🌐 nginx/                 # Reverse proxy конфигурация
+├── 📜 scripts/               # Скрипты автоматизации
+└── 📚 docs/                  # Документация
+```
+
+## 🌐 API Endpoints
+
+| Endpoint | Метод | Описание |
+|----------|-------|----------|
+| `/api/client/create-task` | POST | Создание заявки |
+| `/api/client/services` | GET | Список сервисов |
+| `/api/admin/admins` | GET | Управление админами |
+| `/api/docs` | GET | Swagger документация |
+| `/health` | GET | Health check |
+
+## 🤖 Telegram Bot
+
+Бот автоматически отправляет уведомления администраторам о новых заявках:
+
+- **Бот:** [@MefoleOrdersBot](https://t.me/MefoleOrdersBot)
+- **Команды:** `/start`, `/register`, `/help`
+- **Функции:** Прием заявок, уведомления админов
+
+## 📊 Портфолио проектов
+
+### Веб-разработка (6 проектов)
+- 🏢 Корпоративные сайты
+- 🛒 E-commerce платформы
+- 📱 Landing pages
+- 🎨 Веб-приложения
+
+### Мобильная разработка (1 проект)
+- 📱 iOS/Android приложения
+
+### Telegram боты (2 проекта)
+- 🤖 Бизнес автоматизация
+- 💬 Клиентские сервисы
+
+## 🔧 Управление проектом
+
+### Основные команды
+
+```bash
+# Мониторинг системы
+./scripts/monitor.sh
+
+# Просмотр логов
+./scripts/logs.sh [service]
+
+# Обновление приложения
+./scripts/update-app.sh
+
+# Резервное копирование
+./scripts/backup-database.sh
+
+# Проверка домена
+./scripts/check-domain.sh
+```
+
+### Docker команды
+
+```bash
+# Статус сервисов
+docker-compose -f docker-compose.prod.yml ps
+
+# Перезапуск сервиса
+docker-compose -f docker-compose.prod.yml restart [service]
+
+# Просмотр логов
+docker-compose -f docker-compose.prod.yml logs -f [service]
+```
+
+## 📚 Документация
+
+| Документ | Описание |
+|----------|----------|
+| [🚀 QUICK_START.md](QUICK_START.md) | Быстрое развертывание за 5 минут |
+| [📖 PRODUCTION_DEPLOYMENT_GUIDE.md](PRODUCTION_DEPLOYMENT_GUIDE.md) | Полная инструкция для продакшена |
+| [🌐 DOMAIN_CONFIGURATION_GUIDE.md](DOMAIN_CONFIGURATION_GUIDE.md) | Настройка домена и SSL |
+| [🤖 TELEGRAM_BOT_SETUP_COMPLETE.md](TELEGRAM_BOT_SETUP_COMPLETE.md) | Настройка Telegram бота |
+| [🔧 SERVICES_SYNC_FIXED.md](SERVICES_SYNC_FIXED.md) | Синхронизация сервисов |
+
+## 🔒 Безопасность
+
+- ✅ SSL/TLS шифрование (Let's Encrypt)
+- ✅ Security headers (HSTS, XSS Protection)
+- ✅ Rate limiting для API
+- ✅ CORS настройки
+- ✅ Environment variables для секретов
+- ✅ Non-root Docker контейнеры
+
+## 📈 Производительность
+
+- ⚡ Gzip сжатие
+- 🗄️ Кэширование статических файлов
+- 🔄 HTTP/2 поддержка
+- 📊 Connection pooling
+- 🎯 Optimized Docker images
+
+## 🤝 Вклад в проект
+
+1. Fork репозитория
+2. Создайте feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit изменения (`git commit -m 'Add amazing feature'`)
+4. Push в branch (`git push origin feature/amazing-feature`)
+5. Откройте Pull Request
+
+## 📞 Поддержка
+
+- 💬 **Telegram:** [@MefoleGroup](https://t.me/MefoleGroup)
+- 📧 **Email:** info@mefole.com
+- 🌐 **Website:** [mefole.com](https://mefole.com)
+- 📋 **Issues:** [GitHub Issues](https://github.com/yourusername/mefole-group-website/issues)
+
+## 📄 Лицензия
+
+Этот проект лицензирован под MIT License - см. файл [LICENSE](LICENSE) для деталей.
+
+---
+
+<div align="center">
+
+**Сделано с ❤️ командой [Mefole Group](https://mefole.com)**
+
+⭐ Поставьте звезду если проект был полезен!
+
+</div>

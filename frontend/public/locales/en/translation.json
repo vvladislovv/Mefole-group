@@ -1,18 +1,14 @@
 {
-  "graphic": "graphic",
-  "services": "services",
-  "reviews": "reviews",
-  "portfolio": "portfolio",
-  "team": "team",
-  "contacts": "contacts",
-
-  "ru": "Russian",
-  "en": "English",
-
-  "hero-description": "*Digital agency for online product development",
-
-  "graphic-title": "GRAPHIC",
-  "graphic-description": "*Sales growth rate of <br></br><0>{{group}}</0> for 2025",
+  "graphic": "Graphic",
+  "services": "Services",
+  "reviews": "Reviews",
+  "portfolio": "Portfolio",
+  "team": "Team",
+  "contacts": "Contacts",
+  "ru": "RU",
+  "en": "EN",
+  "hero-description": "Digital agency for online product development",
+  "graphic-title": "Sales Chart",
   "month": {
     "Янв": "Jan",
     "Фев": "Feb",
@@ -27,43 +23,30 @@
     "Ноя": "Nov",
     "Дек": "Dec"
   },
-
-
   "services-title": "Services",
   "service": {
     "title1": "Full-cycle website development",
     "description1": "Design and layout of websites: landing pages, e-commerce, small business sites, promo sites.",
-    
     "title2": "Telegram bots and mini apps",
     "description2": "Telegram bot development in Python using python-telegram-bot, aiogram libraries.",
-    
     "title3": "Web scraping with Python",
     "description3": "Scraping of almost any data: product names, SKUs, prices, descriptions, photos, and categories.",
-    
     "title4": "Mobile applications (iOS/Android)",
     "description4": "Native and cross-platform mobile app development for iOS and Android platforms.",
-    
     "title5": "E-commerce solutions",
     "description5": "Online stores, payment systems integration, inventory management, and shopping cart functionality.",
-    
     "title6": "UX/UI design",
     "description6": "User interface and user experience design for websites and mobile applications.",
-    
     "title7": "Landing pages",
     "description7": "High-converting landing pages for marketing campaigns and product launches.",
-    
     "title8": "CRM systems",
     "description8": "Customer relationship management systems for business process automation.",
-    
     "title9": "API development",
     "description9": "RESTful APIs, GraphQL, microservices architecture, and third-party integrations.",
-    
     "title10": "React/Vue web applications",
     "description10": "Modern single-page applications using React, Vue.js, and other frontend frameworks.",
-    
     "title11": "WordPress development",
     "description11": "Custom WordPress themes, plugins, and website development on WordPress platform.",
-    
     "title12": "Complex IT solutions",
     "description12": "Enterprise-level software development, system architecture, and technical consulting."
   },
@@ -94,176 +77,394 @@
   "portfolio-duration": "Duration:",
   "portfolio-technologies": "Technologies:",
   "portfolio-view-project": "View Project",
-
+  "Разработка дизайна для мобилки": "Mobile App Design Development",
+  "Создаем современные и интуитивные дизайны для мобильных приложений. Учитываем особенности iOS и Android платформ, создавая уникальный пользовательский опыт.": "We create modern and intuitive designs for mobile applications. We consider the features of iOS and Android platforms, creating a unique user experience.",
+  "Разработка дизайна в Figma": "Figma Design Development",
+  "Профессиональная разработка UI/UX дизайна в Figma. Создаем макеты, прототипы и дизайн-системы для веб-сайтов и приложений с современным подходом.": "Professional UI/UX design development in Figma. We create mockups, prototypes and design systems for websites and applications with a modern approach.",
+  "Верстка сайта": "Website Layout",
+  "Качественная адаптивная верстка сайтов с использованием современных технологий. Гарантируем кроссбраузерность и отзывчивость на всех устройствах.": "High-quality adaptive website layout using modern technologies. We guarantee cross-browser compatibility and responsiveness on all devices.",
+  "Разработка Telegram Mini App": "Telegram Mini App Development",
+  "Создаем функциональные мини-приложения для Telegram с интеграцией платежей, геолокации и других возможностей платформы. Быстрый запуск и высокая производительность.": "We create functional mini-applications for Telegram with integration of payments, geolocation and other platform capabilities. Fast launch and high performance.",
+  "Разработка Telegram Bot": "Telegram Bot Development",
+  "Разрабатываем умных Telegram ботов для автоматизации бизнес-процессов. Интеграция с базами данных, платежными системами и внешними API.": "We develop smart Telegram bots for business process automation. Integration with databases, payment systems and external APIs.",
+  "Разработка парсера": "Parser Development",
+  "Создаем эффективные парсеры для сбора и обработки данных с веб-сайтов. Автоматизируем процессы мониторинга цен, контента и аналитики.": "We create efficient parsers for collecting and processing data from websites. We automate price monitoring, content and analytics processes.",
+  "Разработка API": "API Development",
+  "Проектируем и разрабатываем RESTful API и GraphQL для интеграции различных систем. Обеспечиваем высокую производительность и безопасность.": "We design and develop RESTful APIs and GraphQL for integrating various systems. We ensure high performance and security.",
+  "Деплой на сервер": "Server Deployment",
+  "Профессиональный деплой приложений на серверы с настройкой CI/CD, мониторинга и резервного копирования. Поддержка AWS, DigitalOcean, VPS.": "Professional deployment of applications to servers with CI/CD setup, monitoring and backup. Support for AWS, DigitalOcean, VPS.",
+  "Создание бота через SaleBot": "SaleBot Bot Creation",
+  "Настраиваем продающих чат-ботов через платформу SaleBot для автоматизации продаж и клиентского сервиса. Интеграция с CRM и аналитикой.": "We set up sales chatbots through the SaleBot platform for sales automation and customer service. Integration with CRM and analytics.",
+  "Разработка скрипта на Python/TypeScript": "Python/TypeScript Script Development",
+  "Создаем автоматизированные скрипты для решения бизнес-задач. Обработка данных, интеграции, автоматизация рутинных процессов.": "We create automated scripts for solving business tasks. Data processing, integrations, automation of routine processes.",
+  "Разработка Backend/Frontend": "Backend/Frontend Development",
+  "Комплексная разработка веб-приложений с современным стеком технологий. React, Vue, Node.js, Python, TypeScript - создаем масштабируемые решения.": "Comprehensive web application development with modern technology stack. React, Vue, Node.js, Python, TypeScript - we create scalable solutions.",
+  "Разработка сайта на Tilda": "Tilda Website Development",
+  "Создаем стильные и функциональные сайты на платформе Tilda с кастомными интеграциями. Быстрый запуск, SEO-оптимизация и адаптивность.": "We create stylish and functional websites on the Tilda platform with custom integrations. Fast launch, SEO optimization and adaptability.",
+  "Разработка CMS (WordPress)": "CMS Development (WordPress)",
+  "Разрабатываем сайты на WordPress с кастомными темами и плагинами. Создаем удобные панели управления контентом и интеграции с внешними сервисами.": "We develop WordPress websites with custom themes and plugins. We create convenient content management panels and integrations with external services.",
+  "Современный дизайн для iOS и Android": "Modern design for iOS and Android",
+  "UI/UX дизайн и прототипирование": "UI/UX design and prototyping",
+  "Адаптивная верстка под все устройства": "Adaptive layout for all devices",
+  "Мини-приложения для Telegram": "Mini-applications for Telegram",
+  "Умные боты для автоматизации": "Smart bots for automation",
+  "Сбор данных с веб-сайтов": "Data collection from websites",
+  "RESTful API и GraphQL": "RESTful API and GraphQL",
+  "Настройка серверов и CI/CD": "Server setup and CI/CD",
+  "Продающие чат-боты": "Sales chatbots",
+  "Автоматизация бизнес-процессов": "Business process automation",
+  "Полноценные веб-приложения": "Full-featured web applications",
+  "Стильные сайты на Tilda": "Stylish Tilda websites",
+  "Сайты на WordPress": "WordPress websites",
   "form-title": "Application Form",
   "your-name": "Your Name",
   "your-email": "Your Email",
   "phone": "Phone",
   "brief": "Technical Brief (optional)",
   "loading": "Loading...",
-
   "reviews-title": "REVIEWS",
   "review-cards": {
     "1": {
       "name": "Alexey Ivanov",
       "position": "Marketer, DigitalPro",
-      "text": "Very satisfied with the result! The team quickly understood the task, offered a stylish solution, and met the deadline."
+      "text": "Excellent work! The team quickly understood the task, offered a modern solution and met all deadlines. The result exceeded expectations."
     },
     "2": {
       "name": "Svetlana Petrova",
       "position": "Founder, BeautyLine",
-      "text": "The website turned out modern and user-friendly. I especially appreciated the attention to detail and quick feedback."
+      "text": "The website turned out modern and user-friendly. I especially appreciated the attention to detail and prompt feedback at all stages."
     },
     "3": {
       "name": "Igor Smirnov",
       "position": "CTO, LogiTech",
-      "text": "The team showed high professionalism. The collaboration went smoothly and the result exceeded expectations."
+      "text": "Professional team with deep technical knowledge. The collaboration went smoothly, and the quality of work is top-notch."
     },
     "4": {
       "name": "Anna Kim",
       "position": "Project Manager, EventCity",
-      "text": "The project was complex, but the team handled it perfectly. Excellent UX design and responsive layout!"
+      "text": "Complex project executed with quality. Excellent UX design, responsive layout and well-thought architecture."
     },
     "5": {
-      "name": "Michael Johnson",
+      "name": "Michael Volkov",
       "position": "CEO, TechStart",
-      "text": "Outstanding work! The mobile app exceeded all our expectations. Great communication throughout the project."
+      "text": "The mobile app turned out exactly as we planned. Good communication and adherence to deadlines throughout the project."
     },
     "6": {
-      "name": "Elena Rodriguez",
+      "name": "Elena Morozova",
       "position": "Marketing Director, FashionHub",
-      "text": "Good work overall, but there were some delays. The final result was satisfactory."
+      "text": "Quality work within budget and timeline. The team considered all our requirements and made useful suggestions."
     },
     "7": {
       "name": "David Chen",
       "position": "Founder, EcoSolutions",
-      "text": "Incredible attention to detail and innovative approach. The team delivered exactly what we envisioned."
+      "text": "Attentive approach to details and innovative solutions. The team delivered exactly what we wanted to achieve."
     },
     "8": {
-      "name": "Sarah Wilson",
-      "position": "Product Manager, FinanceApp",
-      "text": "The project had some issues initially, but the team worked hard to resolve them. Could be better."
-    },
-    "9": {
       "name": "Robert Taylor",
       "position": "CTO, DataFlow",
-      "text": "Professional team with great technical skills. The API integration was flawless."
+      "text": "Professional team with excellent technical skills. API integration and infrastructure setup went smoothly."
     },
-    "10": {
+    "9": {
       "name": "Maria Garcia",
       "position": "Owner, LocalBiz",
-      "text": "Amazing experience! The website boosted our online presence significantly. Highly recommend!"
+      "text": "Great result! The website significantly improved our online presence. Recommend for serious projects."
     },
-    "11": {
-      "name": "James Brown",
-      "position": "Manager, OldTech",
-      "text": "Unfortunately, the project didn't meet our expectations. Communication was poor and deadlines were missed."
-    },
-    "12": {
+    "10": {
       "name": "Lisa Anderson",
       "position": "Director, CreativeStudio",
-      "text": "Exceptional creativity and technical execution. The design perfectly captured our brand identity."
+      "text": "Creative approach and quality technical execution. The design perfectly conveyed our brand concept."
     }
   },
-
-
   "portfolio-title": "PORTFOLIO",
-  "categories": ["All", "Website Design", "Mobile Applications", "Full Website Development", "Parsing"],
+  "categories": [
+    "All",
+    "Website Design",
+    "Mobile Applications",
+    "Full Website Development",
+    "Parsing"
+  ],
   "category": {
     "all": "All",
-    "website-design": "Website Design",
+    "web-development": "Web Development",
     "mobile-apps": "Mobile Applications",
-    "full-website": "Full Website Development",
-    "parsing": "Parsing"
+    "telegram-bots": "Telegram Bots"
   },
   "works": {
     "1": {
-      "name": "Beauty Salon",
-      "category": "Full Website Development",
-      "title": "Beauty Salon Website",
-      "description": "Complete website development for a beauty salon with online booking system, service catalog, and customer reviews. The site features modern design, mobile responsiveness, and integrated payment processing.",
-      "duration": "6 weeks",
-      "client": "Beauty & Wellness Center"
+      "name": "ArtRuso",
+      "category": "Web Development",
+      "title": "Outdoor Furniture E-commerce Store",
+      "description": "Specialized e-commerce platform for outdoor furniture: park benches, airport seating, school furniture, and public space solutions. Features 3D product viewer, custom configuration system, YouKassa integration, and dedicated B2B module for corporate clients.",
+      "duration": "9 weeks",
+      "client": "ArtRuso"
     },
     "2": {
-      "name": "Studio Website",
-      "category": "Website Design",
-      "title": "Creative Studio Portfolio",
-      "description": "Modern portfolio website design for a creative studio. Features include interactive galleries, smooth animations, and responsive layout optimized for showcasing creative work.",
-      "duration": "4 weeks",
-      "client": "Creative Design Studio"
+      "name": "Ergant",
+      "category": "Web Development",
+      "title": "Furniture Online Store",
+      "description": "Modern furniture e-commerce platform with extensive product catalog, advanced filtering by styles and materials, 3D interior visualization, installment payment system, and delivery tracking. Personal account with purchase history and customer review system.",
+      "duration": "11 weeks",
+      "client": "Ergant"
     },
     "3": {
-      "name": "Online Store",
-      "category": "Website Design",
-      "title": "E-commerce Platform",
-      "description": "Full-featured online store with product catalog, shopping cart, payment integration, and admin panel. Built with modern technologies for optimal performance and user experience.",
+      "name": "Glincom",
+      "category": "Web Development",
+      "title": "Real Estate Platform",
+      "description": "Comprehensive platform for rental and purchase of various real estate types: residential, commercial, warehouse properties. Interactive property map, virtual tours, online booking system, YouKassa integration, realtor CRM, and market analytics module.",
       "duration": "8 weeks",
-      "client": "Fashion Retailer"
+      "client": "Glincom"
     },
     "4": {
-      "name": "Mobile App",
-      "category": "Mobile Applications",
-      "title": "Fitness Tracking App",
-      "description": "Cross-platform mobile application for fitness tracking with workout plans, progress monitoring, and social features. Built using React Native with Firebase backend.",
-      "duration": "10 weeks",
-      "client": "FitLife Company"
+      "name": "Go-Tver",
+      "category": "Web Development",
+      "title": "Digital Tver City Guide",
+      "description": "Interactive tourist guide with detailed attractions map, audio guides, walking routes, events and activities information. Mobile version with GPS navigation, location rating system, and personalized route creation feature.",
+      "duration": "7 weeks",
+      "client": "Tver City Administration"
     },
     "5": {
-      "name": "Data Parser",
-      "category": "Parsing",
-      "title": "E-commerce Data Scraper",
-      "description": "Automated data collection system for e-commerce platforms. Extracts product information, prices, and reviews with high accuracy and efficiency.",
+      "name": "Russam",
+      "category": "Web Development",
+      "title": "Jewelry E-commerce Store",
+      "description": "Premium jewelry and accessories online store with exclusive collections catalog, jewelry personalization system, virtual try-on feature, trade-in program, YouKassa integration, and authenticity certificates. Personal account with purchase history and wishlist functionality.",
+      "duration": "10 weeks",
+      "client": "Russam Jewelry"
+    },
+    "6": {
+      "name": "Window Continent",
+      "category": "Web Development",
+      "title": "Full-Service Window Company Website",
+      "description": "Corporate website for windows, doors manufacturing and balcony finishing company. Features 3D window configurator, cost calculator including installation, completed projects gallery, online ordering system, client personal account with order tracking from production to installation.",
+      "duration": "6 weeks",
+      "client": "Window Continent"
+    },
+    "7": {
+      "name": "Zodiac",
+      "category": "Mobile Applications",
+      "title": "Astrology & Esoteric Mobile App",
+      "description": "Comprehensive mobile application for astrology and esoteric enthusiasts featuring personalized horoscopes, zodiac compatibility, lunar calendar, Tarot cards, and meditation guides. Push notification system for important astrological events and personalized recommendations.",
       "duration": "3 weeks",
-      "client": "Market Research Firm"
+      "client": "Zodiac Mystic"
+    },
+    "8": {
+      "name": "Starlotute",
+      "category": "Telegram Bots",
+      "title": "Telegram Star Roulette Game",
+      "description": "Interactive gaming roulette in Telegram with star system, daily bonuses, tournaments, and player rankings. Colorful animations, sound effects, and achievement system. Secure gaming mechanics with anti-cheat protection.",
+      "duration": "4 weeks",
+      "client": "Starlotute Gaming"
+    },
+    "9": {
+      "name": "Football Ivanovo",
+      "category": "Telegram Bots",
+      "title": "Telegram Mini App for Football Field Booking",
+      "description": "Convenient Telegram Mini App for booking football fields in Ivanovo with interactive venue map, available time slots schedule, online payment system, and booking notifications. Calendar integration and team creation functionality.",
+      "duration": "2 weeks",
+      "client": "Ivanovo Sports Venues"
     }
   },
   "team-title": "TEAM",
   "team-cards": {
     "1": {
-      "name": "Maxim",
+      "name": "Nik",
+      "role": "Fullstack Developer",
+      "experience": "Python/TypeScript • 5+ years experience",
       "description": [
-        "-UX/UI website design",
-        "-UX/UI mobile app design",
-        "-turnkey websites on Tilda"
+        "Fullstack Developer",
+        "Python/TypeScript • 5+ years experience"
       ]
     },
     "2": {
       "name": "Vladislav",
+      "role": "Fullstack Developer",
+      "experience": "Python/TypeScript • 5+ years experience",
       "description": [
-        "-UX/UI website design",
-        "-UX/UI mobile app design",
-        "-turnkey websites on Tilda"
+        "Fullstack Developer",
+        "Python/TypeScript • 5+ years experience"
       ]
     },
     "3": {
       "name": "Alexander",
+      "role": "Frontend Developer",
+      "experience": "React/Vue/JavaScript • 5+ years experience",
       "description": [
-        "Website design and layout:",
-        "-landing pages",
-        "-online stores",
-        "-websites for small businesses",
-        "-promo websites"
+        "Frontend Developer",
+        "React/Vue/JavaScript • 5+ years experience"
       ]
     },
     "4": {
-      "name": "Vladislav",
+      "name": "Maxim",
+      "role": "UX/UI Designer",
+      "experience": "Figma/Adobe • 3+ years experience",
       "description": [
-        "-UX/UI website design",
-        "-UX/UI mobile app design",
-        "-turnkey websites on Tilda"
+        "UX/UI Designer",
+        "Figma/Adobe • 3+ years experience"
+      ]
+    },
+    "5": {
+      "name": "Pavel",
+      "role": "Fullstack Developer",
+      "experience": "Python/TypeScript • 2+ years experience",
+      "description": [
+        "Fullstack Developer",
+        "Python/TypeScript • 2+ years experience"
+      ]
+    },
+    "6": {
+      "name": "Sarvar",
+      "role": "Fullstack Developer",
+      "experience": "Python/TypeScript • 5+ years experience",
+      "description": [
+        "Fullstack Developer",
+        "Python/TypeScript • 5+ years experience"
+      ]
+    },
+    "7": {
+      "name": "Ivan",
+      "role": "Backend Developer",
+      "experience": "Python/TypeScript • 2+ years experience",
+      "description": [
+        "Backend Developer",
+        "Python/TypeScript • 2+ years experience"
+      ]
+    },
+    "8": {
+      "name": "Ruslan",
+      "role": "Fullstack Developer",
+      "experience": "C#/.NET • 4+ years experience",
+      "description": [
+        "Fullstack Developer",
+        "C#/.NET • 4+ years experience"
+      ]
+    },
+    "9": {
+      "name": "Oleg",
+      "role": "Senior Backend Developer",
+      "experience": "Python/TypeScript • 35+ years experience",
+      "description": [
+        "Senior Backend Developer",
+        "Python/TypeScript • 35+ years experience"
       ]
     }
   },
   "contacts-title": "CONTACTS",
-  "order-project": "Order project",
-  "fill-brief": "Fill out the brief",
-  "fill-brief-description": "* if you don't have a brief",
+  "order-project": "Order with Brief",
+  "order-project-tooltip": "You already have a technical brief",
+  "fill-brief": "Help with Brief",
+  "fill-brief-tooltip": "We'll guide you through creating one",
   "brief-form-url": "https://docs.google.com/forms/d/e/1FAIpQLSc1Mj3GG89bIIjn9f-X-2b9wvHrKgkV8eFB246ETKjCLZFQZQ/viewform?usp=dialog",
-
   "mail": "Email",
-  "mail-address": "freelancergroup001@gmail.com",
   "telegram": "Telegram",
-  "telegram-handle": "@mefole_freelance"
+  "contact-us-banner": "Contact Us Now",
+  "contact-us-subtitle": "Get a free consultation and project estimate",
+  
+  "web-development": "Web Development",
+  "web-development-short": "Adaptive websites of any complexity: landing pages, corporate sites, e-commerce. Modern technologies, UX/UI design, SEO optimization.",
+  "web-development-description": "We develop adaptive websites of any complexity level: from landing pages and corporate sites to e-commerce and platforms with personal accounts. We use modern technologies and focus on UX/UI and SEO.",
+  "web-development-detailed": "Full-cycle web development includes technical planning, modern design creation, adaptive layout and functionality programming. We use current technologies, ensure SEO optimization and integrate with external services.",
+  "web-development-include-1": "Technical analysis and requirements gathering",
+  "web-development-include-2": "UI/UX design and prototyping",
+  "web-development-include-3": "Frontend and backend development",
+  "web-development-include-4": "Integration with external services and CMS",
+  "web-development-include-5": "SEO optimization",
+  "web-development-include-6": "Support and maintenance",
+  "web-development-stage-1-title": "Analysis and planning",
+  "web-development-stage-1-desc": "task setting and technical specification creation",
+  "web-development-stage-2-title": "Design and prototyping",
+  "web-development-stage-2-desc": "from prototypes to Figma mockups",
+  "web-development-stage-3-title": "Development",
+  "web-development-stage-3-desc": "adaptive layout, logic, admin panel",
+  "web-development-stage-4-title": "Testing and launch",
+  "web-development-stage-4-desc": "testing, deployment, support",
 
+  "telegram-bots-automation": "Telegram Bots & Automation",
+  "telegram-bots-automation-short": "Telegram bots of any complexity and Python scripts for business process automation. Integration with CRM, APIs, databases.",
+  "telegram-bots-automation-description": "We create Telegram bots for any scenarios — from consultative and sales to integration and automation solutions. We also write Python scripts for process automation.",
+  "telegram-bots-automation-detailed": "Development of smart Telegram bots and automation scripts for solving business tasks. We create bots with database integration, APIs, CRM systems, as well as scripts for automating routine processes.",
+  "telegram-bots-automation-include-1": "Individual bot with required logic",
+  "telegram-bots-automation-include-2": "Integrations: databases, API, CRM",
+  "telegram-bots-automation-include-3": "Mailings, buttons, payments, AI functions",
+  "telegram-bots-automation-include-4": "Parsers and auto-launch scripts",
+  "telegram-bots-automation-include-5": "Documentation and support",
+  "telegram-bots-automation-stage-1-title": "Concept and logic",
+  "telegram-bots-automation-stage-1-desc": "case discussion, logic creation",
+  "telegram-bots-automation-stage-2-title": "Architecture & prototyping",
+  "telegram-bots-automation-stage-2-desc": "diagrams, schemes, MVP",
+  "telegram-bots-automation-stage-3-title": "Bot/script development",
+  "telegram-bots-automation-stage-3-desc": "Python development (aiogram / pyrogram)",
+  "telegram-bots-automation-stage-4-title": "Testing and launch",
+  "telegram-bots-automation-stage-4-desc": "bug fixes, VPS/cloud deployment",
+
+  "ui-ux-graphic-design": "UI/UX & Graphic Design",
+  "ui-ux-graphic-design-short": "Modern design in Figma: design systems, branding, interactive mockups, social media visuals. UX research and prototyping.",
+  "ui-ux-graphic-design-description": "We develop modern and user-friendly design in Figma. We create complete design systems, branding, interactive mockups and visuals for social networks.",
+  "ui-ux-graphic-design-detailed": "Comprehensive design development includes user research, wireframe creation, interface design and branding. We work in Figma, create design systems and prepare materials for developers.",
+  "ui-ux-graphic-design-include-1": "Competitor analysis and user scenarios",
+  "ui-ux-graphic-design-include-2": "Prototypes and design mockups in Figma",
+  "ui-ux-graphic-design-include-3": "Landing, platform, admin panel design",
+  "ui-ux-graphic-design-include-4": "Guidelines and design systems",
+  "ui-ux-graphic-design-include-5": "Social media and banner design",
+  "ui-ux-graphic-design-stage-1-title": "Research and planning",
+  "ui-ux-graphic-design-stage-1-desc": "target audience and task analysis",
+  "ui-ux-graphic-design-stage-2-title": "Wireframes and prototyping",
+  "ui-ux-graphic-design-stage-2-desc": "interface logic and structure",
+  "ui-ux-graphic-design-stage-3-title": "UI design",
+  "ui-ux-graphic-design-stage-3-desc": "color, style, animations",
+  "ui-ux-graphic-design-stage-4-title": "Delivery and support",
+  "ui-ux-graphic-design-stage-4-desc": "mockup export and support",
+
+  "hosting-maintenance": "Hosting & Maintenance",
+  "hosting-maintenance-short": "Stable website operation: hosting, domains, SSL certificates, monitoring, security, regular updates and technical support.",
+  "hosting-maintenance-description": "We ensure stable website operation: server hosting, domain setup, SSL, monitoring, security and regular updates.",
+  "hosting-maintenance-detailed": "Complete technical support for web projects includes hosting, server setup, uptime monitoring, backup and regular updates to ensure stable operation.",
+  "hosting-maintenance-include-1": "Hosting and domain connection",
+  "hosting-maintenance-include-2": "SSL certificate installation",
+  "hosting-maintenance-include-3": "Uptime monitoring",
+  "hosting-maintenance-include-4": "Technical support and backup",
+  "hosting-maintenance-include-5": "CMS and plugin updates",
+  "hosting-maintenance-stage-1-title": "Initial setup",
+  "hosting-maintenance-stage-1-desc": "domain, hosting, SSL",
+  "hosting-maintenance-stage-2-title": "Security & monitoring",
+  "hosting-maintenance-stage-2-desc": "protection, uptime control",
+  "hosting-maintenance-stage-3-title": "Maintenance",
+  "hosting-maintenance-stage-3-desc": "regular updates",
+  "hosting-maintenance-stage-4-title": "Support",
+  "hosting-maintenance-stage-4-desc": "technical problem solving",
+
+  "marketing-ads": "Marketing & Ads",
+  "marketing-ads-short": "Digital marketing: targeted and contextual advertising, email campaigns, analytics. We generate traffic, leads and sales.",
+  "marketing-ads-description": "Full spectrum of digital marketing: targeting, context, email, UTM analytics and creative funnels. We generate traffic, leads and growth.",
+  "marketing-ads-detailed": "Comprehensive digital marketing includes advertising campaign setup, analytics, A/B testing and conversion optimization. We work with targeted and contextual advertising for maximum ROI.",
+  "marketing-ads-include-1": "Analysis and audit of advertising channels",
+  "marketing-ads-include-2": "Targeted and contextual advertising launch",
+  "marketing-ads-include-3": "A/B tests, optimization and retargeting",
+  "marketing-ads-include-4": "Analytics setup and reporting",
+  "marketing-ads-include-5": "Landing page development",
+  "marketing-ads-stage-1-title": "Audit and strategy",
+  "marketing-ads-stage-1-desc": "data collection, target audience, competitors",
+  "marketing-ads-stage-2-title": "Campaign creation",
+  "marketing-ads-stage-2-desc": "creatives, texts, UTM",
+  "marketing-ads-stage-3-title": "Launch and optimize",
+  "marketing-ads-stage-3-desc": "launch and adjustment",
+  "marketing-ads-stage-4-title": "Reporting",
+  "marketing-ads-stage-4-desc": "analytics and scaling",
+
+  "mobile-app-development": "Mobile App Development",
+  "mobile-app-development-short": "Native and cross-platform mobile applications for iOS and Android. Modern design, high performance, store publishing.",
+  "mobile-app-development-description": "We create mobile applications of any complexity: from simple utilities to complex corporate solutions. Using modern technologies for maximum performance.",
+  "mobile-app-development-detailed": "Full cycle mobile app development includes technical planning, UX/UI design, programming, testing and publishing to App Store and Google Play. We support both native and cross-platform development.",
+  "mobile-app-development-include-1": "Technical planning and architecture",
+  "mobile-app-development-include-2": "UX/UI design for mobile devices",
+  "mobile-app-development-include-3": "Native and cross-platform development",
+  "mobile-app-development-include-4": "API and external services integration",
+  "mobile-app-development-include-5": "Testing and performance optimization",
+  "mobile-app-development-include-6": "App Store and Google Play publishing",
+  "mobile-app-development-stage-1-title": "Analysis and planning",
+  "mobile-app-development-stage-1-desc": "technical requirements and architecture",
+  "mobile-app-development-stage-2-title": "Design and prototyping",
+  "mobile-app-development-stage-2-desc": "UX/UI design and interactive prototypes",
+  "mobile-app-development-stage-3-title": "Development and testing",
+  "mobile-app-development-stage-3-desc": "programming and functionality debugging",
+  "mobile-app-development-stage-4-title": "Publishing and support",
+  "mobile-app-development-stage-4-desc": "store release and technical support"
 }

@@ -37,7 +37,9 @@ export const Reviews = forwardRef((props, ref) => {
                             </div>
                             <p className='reviews-text'>{t(`review-cards.${id}.text`)}</p>
                             <div className='user-card'>
-                                <img src={photo} alt={t(`review-cards.${id}.name`)} />
+                                <div className="user-avatar">
+                                    {t(`review-cards.${id}.name`).charAt(0)}
+                                </div>
                                 <div className='user_info'>
                                     <span className='user_name'>{t(`review-cards.${String(id)}.name`)}</span>
                                     <span className="user_role">{t(`review-cards.${id}.position`)}</span>

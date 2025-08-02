@@ -1,10 +1,10 @@
-import './css/graphic.css';
 import { forwardRef } from 'react';
-import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer, Dot } from 'recharts';
-import { graphic as data } from '../data/graphic'; // твои данные
 import { Trans, useTranslation } from 'react-i18next';
+import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { graphic as data } from '../data/graphic'; // твои данные
+import './css/graphic.css';
 export const Graphic = forwardRef((props, ref) => {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     return (
         <div ref={ref} className="graphic-container">
             <img src="/vectors/5.png" alt="вектор3" className='vectors' style={{position: 'absolute', left: 100, top: 60}}/>
@@ -43,13 +43,7 @@ export const Graphic = forwardRef((props, ref) => {
                     </LineChart>
                 </ResponsiveContainer>
             </div>
-            <p className="chart-description">
-                <Trans
-                    i18nKey="graphic-description"
-                    values={{ group: 'Mefole Group' }}
-                    components={[<span className="group" />]}
-                />
-            </p>
+
         </div>
     );
 });

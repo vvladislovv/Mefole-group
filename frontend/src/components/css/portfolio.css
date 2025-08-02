@@ -121,17 +121,48 @@
     font-size: clamp(14px, 2.5rem, 10px);
 }
 @media screen and (max-width: 1200px) {
+    .portfolio-container {
+        max-width: 95%;
+        padding: 0 20px;
+    }
     .works-grid {
         grid-template-columns: 1fr 1fr;
+        gap: 20px;
     }
     .portfolio-title {
-        font-size: 36px !important;
+        font-size: 42px !important;
+    }
+    .category-bar {
+        width: 100%;
+        gap: 10px;
+    }
+    .category-bar .category-item {
+        font-size: 15px;
+        padding: 12px 24px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .portfolio-container {
+        max-width: 90%;
+        padding: 0 16px;
+    }
+    .works-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+    }
+    .portfolio-title {
+        font-size: 38px !important;
     }
     .category-bar {
         width: 100%;
         overflow-x: auto;
         gap: 8px;
         justify-content: flex-start;
+    }
+    .category-bar .category-item {
+        font-size: 14px;
+        padding: 10px 20px;
     }
 }
 

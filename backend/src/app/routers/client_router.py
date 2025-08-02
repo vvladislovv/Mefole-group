@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, BackgroundTasks
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, or_
 from common_libs.db_utils.session import get_db
@@ -6,6 +6,7 @@ from common_libs.db_utils.session import get_db
 from src.app.models.clients import Clients, Tasks
 from src.app.models.services import Services
 from src.app.schemas.client_schema import TaskCreate
+from src.app.services.telegram_service import telegram_service
 
 from uuid import uuid4
 router = APIRouter()
@@ -15,8 +16,15 @@ async def get_tasks(db : AsyncSession = Depends(get_db)):
     result = await db.execute(select(Tasks))
     tasks = result.scalars().all()
     return {"Задания": tasks}
+@router.get("/services", summary="Получить все сервисы", tags=['Клиенты'])
+async def get_services(db: AsyncSession = Depends(get_db)):
+    """Получить список всех доступных сервисов"""
+    result = await db.execute(select(Services))
+    services = result.scalars().all()
+    return {"services": [{"id": str(service.id), "name": service.name} for service in services]}
+
 @router.post("/create-task", summary="Создать задание", tags=['Клиенты'])
-async def create_task(data: TaskCreate, db: AsyncSession = Depends(get_db)):
+async def create_task(data: TaskCreate, background_tasks: BackgroundTasks, db: AsyncSession = Depends(get_db)):
     # 1. Создание клиента
     client_search_result = await db.execute(
         select(Clients).where(
@@ -50,5 +58,15 @@ async def create_task(data: TaskCreate, db: AsyncSession = Depends(get_db)):
         db.add(task)
         await db.commit()
         await db.refresh(task)
+
+    # 5. Отправляем уведомление в Telegram
+    background_tasks.add_task(
+        telegram_service.send_new_task_notification,
+        client_name=data.client_name,
+        client_email=data.client_email,
+        client_phone=data.client_phone,
+        service_name=data.service_name,
+        technical_task=data.technical_task
+    )
 
     return {"message": "success"}

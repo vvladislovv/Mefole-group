@@ -1,0 +1,18 @@
+FROM nginx:alpine
+
+# Устанавливаем curl для healthcheck
+RUN apk add --no-cache curl
+
+# Копируем конфигурацию
+COPY conf.d/ /etc/nginx/conf.d/
+
+# Создаем директории для логов и SSL
+RUN mkdir -p /var/log/nginx /etc/nginx/ssl
+
+# Healthcheck
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:80/health || exit 1
+
+EXPOSE 80 443
+
+CMD ["nginx", "-g", "daemon off;"]

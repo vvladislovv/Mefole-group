@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
-import { services } from '../data/services';
-import './css/modalForm.css';
-import { BASE_URL } from '../settings';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { services } from '../data/services';
+import { getServiceNameForAPI } from '../data/serviceMapping';
+import { BASE_URL } from '../settings';
+import './css/modalForm.css';
 export default function Modal({ onClose, selectedServiceId }) {
   const {t} = useTranslation();
 
@@ -47,7 +48,7 @@ export default function Modal({ onClose, selectedServiceId }) {
     }
 
     // Валидация телефона (базовая)
-    const phoneRegex = /^[\+]?[0-9\s\-\(\)]{7,}$/;
+    const phoneRegex = /^[+]?[0-9\s\-()]{7,}$/;
     if (!phoneRegex.test(client_phone)) {
       setErrorMessage('Пожалуйста, введите корректный номер телефона');
       return;
@@ -73,7 +74,7 @@ export default function Modal({ onClose, selectedServiceId }) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          service_name: selectedService["Название"],
+          service_name: getServiceNameForAPI(selectedService.title),
           client_name,
           client_email,
           client_phone,
@@ -112,7 +113,7 @@ export default function Modal({ onClose, selectedServiceId }) {
           >
             {services.map((service) => (
               <option key={service.id} value={service.id}>
-                {service["Название"]}
+                {t(service.title)}
               </option>
             ))}
           </select>

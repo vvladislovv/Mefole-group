@@ -5,9 +5,10 @@ import { useTranslation } from 'react-i18next';
 import PortfolioModal from './PortfolioModal';
 import ReactDOM from 'react-dom';
 
-export const Portfolio = forwardRef(({ currentCategory, setCurrentCategory }, ref) => {
+export const Portfolio = forwardRef((props, ref) => {
   const { t } = useTranslation();
   const [selectedWork, setSelectedWork] = useState(null);
+  const [currentCategory, setCurrentCategory] = useState(categoryKeys[0]);
 
   return (
     <div ref={ref} className="portfolio-container">

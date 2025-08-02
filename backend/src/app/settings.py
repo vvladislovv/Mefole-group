@@ -14,6 +14,9 @@ class Settings(BaseSettings):
     # CORS
     ALLOWED_ORIGINS: str = "http://localhost:3000,http://localhost"
 
+    # Telegram Bot
+    TELEGRAM_BOT_TOKEN: str = ""
+
     class Config:
         env_file = str(Path(__file__).parent.parent / ".env")
         env_file_encoding = "utf-8"

@@ -22,41 +22,57 @@ export const Contacts = forwardRef((props, ref) => {
           onClick={() => setIsModalOpen(true)}
           className="contacts-item order"
         >
-          {t("order-project")}
-          <img src="/greenarrow.png" alt="Стрелка вправо" />
+          <div className="contact-text">
+            {t("order-project")}
+          </div>
+          <div className="contact-tooltip">
+            {t("order-project-tooltip")}
+          </div>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
         </div>
         <a
           href={t("brief-form-url")}
           target="_blank"
           rel="noreferrer"
-          className="contacts-item filled"
+          className="contacts-item"
         >
-          {t("fill-brief")}
-          <br></br>
-          <span style={{ fontSize: 14 }}>{t("fill-brief-description")}</span>
-          <img src="/arrow-top.png" alt="Стрелка вправо" />
+          <div className="contact-text">
+            {t("fill-brief")}
+          </div>
+          <div className="contact-tooltip">
+            {t("fill-brief-tooltip")}
+          </div>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
         </a>
         <a
-          href={`mailto:${t("mail-address")}`}
+          href="mailto:info@mefole.com"
           rel="noreferrer"
           target="_blank"
-          className="contacts-item filled"
+          className="contacts-item"
         >
-          {t("mail")}
-          <br></br>
-          <span style={{ fontSize: 14 }}>{t("mail-address")}</span>
-          <img src="/arrow-top.png" alt="Стрелка вправо" />
+          <div className="contact-text">
+            {t("mail")}
+          </div>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
         </a>
         <a
-          href={`https://t.me/${t("telegram-handle").replace("@", "")}`}
+          href="https://t.me/mefole_freelance"
           target="_blank"
           rel="noreferrer"
-          className="contacts-item filled"
+          className="contacts-item"
         >
-          {t("telegram")}
-          <br></br>
-          <span style={{ fontSize: 14 }}>{t("telegram-handle")}</span>
-          <img src="/arrow-top.png" alt="Стрелка вправо" />
+          <div className="contact-text">
+            {t("telegram")}
+          </div>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
         </a>
       </div>
       {isModalOpen &&

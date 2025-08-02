@@ -1,11 +1,18 @@
 from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy import text
 from common_libs.db_utils.session import get_db, init_db
 # подключаем роутеры
 from src.app.routers.client_router import router as client_router
+from src.app.routers.admin_router import router as admin_router
+from src.app.services.telegram_service import telegram_service
 
 from .settings import settings
+import asyncio
+import logging
+
+logger = logging.getLogger(__name__)
 def create_app() -> FastAPI:
     app = FastAPI(
         title="Vizitka",
@@ -25,6 +32,22 @@ def create_app() -> FastAPI:
         allow_headers=["*"],
     )
     app.include_router(client_router, prefix="/client")
+    app.include_router(admin_router, prefix="/admin")
+    
+    # Запускаем бота сразу при создании приложения
+    if settings.TELEGRAM_BOT_TOKEN:
+        logger.info("🚀 Инициализация Telegram бота...")
+        print("🚀 Инициализация Telegram бота...")
+        # Создаем задачу для запуска бота
+        import threading
+        def run_bot():
+            import asyncio
+            asyncio.run(telegram_service.start_polling())
+        
+        bot_thread = threading.Thread(target=run_bot, daemon=True)
+        bot_thread.start()
+        logger.info("✅ Telegram бот запущен в отдельном потоке")
+        print("✅ Telegram бот запущен в отдельном потоке")
     # healthcheck endpoint
     @app.get("/healthz", tags=["system"])
     async def healthz(db: AsyncSession = Depends(get_db)):
@@ -37,8 +60,29 @@ def create_app() -> FastAPI:
 
     # Хук на запуск приложения — инициализация базы
     @app.on_event("startup")
-    async def on_startup():             # после alembic испрвить!
+    async def on_startup():
+        logger.info("🚀 Запуск приложения...")
+        print("🚀 Запуск приложения...")
         await init_db()
+        logger.info("✅ База данных инициализирована")
+        print("✅ База данных инициализирована")
+        
+        # Запускаем Telegram бота
+        if settings.TELEGRAM_BOT_TOKEN:
+            logger.info("🚀 Создание задачи для Telegram бота...")
+            print("🚀 Создание задачи для Telegram бота...")
+            asyncio.create_task(telegram_service.start_polling())
+            logger.info("✅ Задача Telegram бота создана")
+            print("✅ Задача Telegram бота создана")
+    
+    # Хук на завершение приложения
+    @app.on_event("shutdown")
+    async def on_shutdown():
+        logger.info("🛑 Завершение приложения...")
+        print("🛑 Завершение приложения...")
+        await telegram_service.close()
+        logger.info("✅ Telegram бот закрыт")
+        print("✅ Telegram бот закрыт")
 
     return app
 app = create_app()

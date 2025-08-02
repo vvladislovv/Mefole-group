@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function useInView(options = {}) {
   const ref = useRef(null);
@@ -25,7 +25,7 @@ export default function useInView(options = {}) {
     observer.observe(ref.current);
 
     return () => observer.disconnect();
-  }, [options.threshold, options.rootMargin]);
+  }, [options]);
 
   return [ref, inView];
 }

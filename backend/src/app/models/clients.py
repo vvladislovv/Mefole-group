@@ -8,7 +8,7 @@ from datetime import datetime, timezone
 class Clients(Base):
     __tablename__ = "clients"
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4())
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     name = Column(String, nullable=False)
     email = Column(String, unique=True, index=True)
     phone = Column(String, unique=True, nullable=True)
@@ -20,7 +20,7 @@ class Clients(Base):
 class Tasks(Base):
     __tablename__ = "tasks"
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4())
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     technical_task = Column(Text, nullable=True)
 
     client_id = Column(UUID(as_uuid=True), ForeignKey("clients.id"), nullable=False)

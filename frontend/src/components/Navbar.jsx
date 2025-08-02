@@ -1,7 +1,7 @@
-import './css/navbar.css';
-import { languages } from '../data/languages';
 import { useState } from 'react';
 import { useTranslation } from "react-i18next";
+import { languages } from '../data/languages';
+import './css/navbar.css';
 export const Navbar = ({ sectionRefs }) => {
     const handleScroll = (key) => {
         sectionRefs[key]?.current?.scrollIntoView({ behavior: "smooth" });
@@ -40,7 +40,7 @@ export const Navbar = ({ sectionRefs }) => {
                 </div>
                 <div className={`nav-translator ${showLanguages ? 'open' : ''}`} onClick={() => setShowLanguages(!showLanguages)}>
                     <div className='translator-icon'>
-                        <img src="/icons/Translator.png"></img>
+                        <img src="/icons/Translator.png" alt="Language selector"></img>
                         {showLanguages ? 
                         (
                             <svg className="dropdown-icon" width="24" height="24" viewBox="0 0 24 24" fill="none"

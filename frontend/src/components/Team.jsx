@@ -94,13 +94,15 @@ export const Team = forwardRef((props, ref) => {
                                 <div
                                     className={`team-card ${id === selected_member_id ? "selected" : ""}`}
                                 >
-                                    <p className="team_title clamp-3">{member.name}</p>
+                                    <div className="team-member-info">
+                                        <h2 className="team-member-name">{member.name}</h2>
+                                        <p className="team-member-role">{member.role}</p>
+                                        <p className="team-member-experience">{member.experience}</p>
+                                    </div>
+                                    {/* 
                                     <div className="team-info">
-                                        <img src={image} alt={member.name} className="team-img" />
-                                        <div className="team-price-wrapper">
-                                            <div className="team-price">
-                                                <DividerLine />
-                                            </div>
+                                        <div className="team-avatar">
+                                            {member.name.charAt(0)}
                                         </div>
                                         <div className="team-description">
                                             {member.description?.map((characteristic, index) => (
@@ -108,6 +110,7 @@ export const Team = forwardRef((props, ref) => {
                                             ))}
                                         </div>
                                     </div>
+                                    */}
                                 </div>
                             </FadeInSection>
                         )

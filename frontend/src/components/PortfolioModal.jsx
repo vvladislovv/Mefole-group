@@ -38,7 +38,38 @@ export default function PortfolioModal({ work, onClose }) {
         </div>
 
         <div className="portfolio-modal-media">
-          {work.photos && work.photos.length > 0 && (
+          {/* Для веб-проектов: только заставка и видео */}
+          {work.categoryKey === "category.web-development" && (
+            <>
+              {/* Заставка проекта */}
+              {work.photo && (
+                <div className="portfolio-modal-cover">
+                  <img 
+                    src={work.photo} 
+                    alt={t(work.title)}
+                    className="portfolio-modal-cover-image"
+                  />
+                </div>
+              )}
+
+              {/* Видео проекта */}
+              {work.video && (
+                <div className="portfolio-modal-video">
+                  <video 
+                    controls 
+                    className="portfolio-modal-video-player"
+                    preload="metadata"
+                  >
+                    <source src={work.video} type="video/mp4" />
+                    <p>Ваш браузер не поддерживает видео. <a href={work.video}>Скачать видео</a></p>
+                  </video>
+                </div>
+              )}
+            </>
+          )}
+
+          {/* Для мобильных приложений и телеграм ботов: галерея скриншотов */}
+          {(work.categoryKey === "category.mobile-apps" || work.categoryKey === "category.telegram-bots") && work.photos && work.photos.length > 0 && (
             <div className="portfolio-modal-gallery">
               <div className="portfolio-modal-image-container">
                 <img 
@@ -70,15 +101,6 @@ export default function PortfolioModal({ work, onClose }) {
                   ))}
                 </div>
               )}
-            </div>
-          )}
-
-          {work.video && (
-            <div className="portfolio-modal-video">
-              <video controls className="portfolio-modal-video-player">
-                <source src={work.video} type="video/mp4" />
-                Ваш браузер не поддерживает видео.
-              </video>
             </div>
           )}
         </div>
