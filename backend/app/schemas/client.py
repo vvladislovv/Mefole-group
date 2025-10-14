@@ -8,6 +8,7 @@ class ClientBase(BaseModel):
     name: str
     email: EmailStr
     phone: Optional[str] = None
+    telegram: Optional[str] = None
 
 
 class ClientCreate(ClientBase):
@@ -18,6 +19,7 @@ class ClientUpdate(BaseModel):
     name: Optional[str] = None
     email: Optional[EmailStr] = None
     phone: Optional[str] = None
+    telegram: Optional[str] = None
     active: Optional[bool] = None
 
 

@@ -35,7 +35,8 @@ export default function ClientForm({ onClose }) {
     name: '',
     email: '',
     phone: '',
-    company: ''
+    company: '',
+    telegram: ''
   });
 
   // Ошибки валидации
@@ -203,6 +204,14 @@ export default function ClientForm({ onClose }) {
       if (formData.phone && !phoneRegex.test(formData.phone)) {
         newErrors.phone = 'Неправильный формат телефона';
       }
+      
+      // Валидация Telegram username
+      if (formData.telegram && formData.telegram.trim()) {
+        const telegramRegex = /^@?[a-zA-Z0-9_]{5,32}$/;
+        if (!telegramRegex.test(formData.telegram.trim())) {
+          newErrors.telegram = 'Неправильный формат Telegram username (например: @username или username)';
+        }
+      }
     }
 
     setErrors(newErrors);
@@ -262,7 +271,7 @@ ${formData.priorityFeatures.join(', ')}${formData.priorityFeaturesOther ? ` (${f
         client_name: formData.name,
         client_email: formData.email,
         client_phone: formData.phone,
-        client_telegram: '',
+        client_telegram: formData.telegram || '',
         technical_task: technicalTask
       });
 
@@ -286,7 +295,8 @@ ${formData.priorityFeatures.join(', ')}${formData.priorityFeaturesOther ? ` (${f
         name: '',
         email: '',
         phone: '',
-        company: ''
+        company: '',
+        telegram: ''
       });
       
     } catch (error) {
@@ -548,6 +558,18 @@ ${formData.priorityFeatures.join(', ')}${formData.priorityFeaturesOther ? ` (${f
           placeholder="Название компании (необязательно)"
           className="form-input"
         />
+      </div>
+
+      <div className="form-group">
+        <label className="form-label">Telegram username</label>
+        <input
+          type="text"
+          value={formData.telegram}
+          onChange={(e) => handleInputChange('telegram', e.target.value)}
+          placeholder="@username или username (необязательно)"
+          className={`form-input ${errors.telegram ? 'error' : ''}`}
+        />
+        {errors.telegram && <span className="error-message">{errors.telegram}</span>}
       </div>
     </div>
   );
