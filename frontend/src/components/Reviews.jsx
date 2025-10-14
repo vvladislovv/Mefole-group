@@ -2,13 +2,11 @@ import { forwardRef, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { reviews } from '../data/reviews';
 import './css/reviews.css';
-import FadeInSection from './FadeInSections';
+
 export const Reviews = forwardRef((props, ref) => {
     const {t} = useTranslation();
     const scrollRef = useRef(null);
     const [isMobile, setIsMobile] = useState(false);
-    
-    // КОПИРУЕМ ЛОГИКУ ОТ КОМАНДЫ
     const [selected_review_id, select_review_id] = useState(reviews[0]?.id ?? null);
     const [currentPage, setCurrentPage] = useState(0);
     const cardsPerPage = 1;
@@ -26,34 +24,17 @@ export const Reviews = forwardRef((props, ref) => {
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
-    // Центрирование первого элемента
-    useEffect(() => {
-        if (isMobile && scrollRef.current) {
-            const firstCard = scrollRef.current.querySelector('.reviews-card');
-            if (firstCard) {
-                firstCard.style.display = 'flex';
-                firstCard.style.visibility = 'visible';
-                firstCard.style.opacity = '1';
-            }
-            
-            // Плавный скролл без задержки
-            requestAnimationFrame(() => {
-                scrollToCard(0);
-            });
-        }
-    }, [isMobile]);
-
-    // Функция скролла с улучшенной плавностью
+    // Простая функция скролла
     const scrollToCard = (cardIndex) => {
         const container = scrollRef.current;
-        const cards = container.querySelectorAll(".reviews-card");
-        const card = cards[cardIndex];
+        const cards = container?.querySelectorAll(".reviews-card");
+        const card = cards?.[cardIndex];
+        
         if (card && container) {
             const containerRect = container.getBoundingClientRect();
             const cardRect = card.getBoundingClientRect();
             const offset = cardRect.left - containerRect.left - (container.offsetWidth / 2) + (card.offsetWidth / 2);
             
-            // Плавный скролл с requestAnimationFrame для лучшей производительности
             container.scrollTo({
                 left: container.scrollLeft + offset,
                 behavior: "smooth"
@@ -64,28 +45,16 @@ export const Reviews = forwardRef((props, ref) => {
     const scrollToPage = (pageIndex) => {
         const targetIndex = pageIndex * cardsPerPage;
         setCurrentPage(pageIndex);
-        // Небольшая задержка для обновления состояния перед скроллом
-        requestAnimationFrame(() => {
-            scrollToCard(targetIndex);
-        });
+        scrollToCard(targetIndex);
     };
 
-    // Улучшенные кнопки навигации
+    // Простые кнопки навигации
     const handlePrev = () => {
         if (isMobile) {
-            select_review_id((prevId) => {
-                const currentIndex = reviews.findIndex(r => r.id === prevId);
-                const newIndex = Math.max(currentIndex - 1, 0);
-                const newPage = Math.floor(newIndex / cardsPerPage);
-                setCurrentPage(newPage);
-                
-                // Плавный скролл после обновления состояния
-                requestAnimationFrame(() => {
-                    scrollToCard(newIndex);
-                });
-                
-                return reviews[newIndex].id;
-            });
+            const currentIndex = reviews.findIndex(r => r.id === selected_review_id);
+            const newIndex = Math.max(currentIndex - 1, 0);
+            select_review_id(reviews[newIndex].id);
+            scrollToCard(newIndex);
         } else {
             setCurrentPage(prev => Math.max(0, prev - 1));
         }
@@ -93,19 +62,10 @@ export const Reviews = forwardRef((props, ref) => {
 
     const handleNext = () => {
         if (isMobile) {
-            select_review_id((prevId) => {
-                const currentIndex = reviews.findIndex(r => r.id === prevId);
-                const newIndex = Math.min(currentIndex + 1, reviews.length - 1);
-                const newPage = Math.floor(newIndex / cardsPerPage);
-                setCurrentPage(newPage);
-                
-                // Плавный скролл после обновления состояния
-                requestAnimationFrame(() => {
-                    scrollToCard(newIndex);
-                });
-                
-                return reviews[newIndex].id;
-            });
+            const currentIndex = reviews.findIndex(r => r.id === selected_review_id);
+            const newIndex = Math.min(currentIndex + 1, reviews.length - 1);
+            select_review_id(reviews[newIndex].id);
+            scrollToCard(newIndex);
         } else {
             const reviewsPerPage = 4;
             const totalDesktopPages = Math.ceil(reviews.length / reviewsPerPage);
@@ -156,28 +116,28 @@ export const Reviews = forwardRef((props, ref) => {
                                     key={id}
                                     className={`reviews-card ${id === selected_review_id ? "selected" : ""}`}
                                 >
-                                    <div className="stars">
-                                        {[...Array(5)].map((_, i) => (
-                                            <img
-                                                key={i}
-                                                src={i < rating ? "/icons/StarFilled.png" : "/icons/StarOutlined.png"}
-                                                alt="Звезда"
-                                                className="star-icon"
-                                            />
-                                        ))}
-                                    </div>
-                                    <div>
+                                    <div className="review-content">
+                                        <div className="stars">
+                                            {[...Array(5)].map((_, i) => (
+                                                <img
+                                                    key={i}
+                                                    src={i < rating ? "/icons/StarFilled.png" : "/icons/StarOutlined.png"}
+                                                    alt="Звезда"
+                                                    className="star-icon"
+                                                />
+                                            ))}
+                                        </div>
                                         <p className="reviews-text">
                                             {t(`review-cards.${id}.text`)}
                                         </p>
-                                    </div>
-                                    <div className='user-card'>
-                                        <div className="user-avatar">
-                                            {t(`review-cards.${id}.name`).charAt(0)}
-                                        </div>
-                                        <div className='user_info'>
-                                            <span className='user_name'>{t(`review-cards.${String(id)}.name`)}</span>
-                                            <span className="user_role">{t(`review-cards.${id}.position`)}</span>
+                                        <div className='user-card'>
+                                            <div className="user-avatar">
+                                                {t(`review-cards.${id}.name`).charAt(0)}
+                                            </div>
+                                            <div className='user_info'>
+                                                <span className='user_name'>{t(`review-cards.${String(id)}.name`)}</span>
+                                                <span className="user_role">{t(`review-cards.${id}.position`)}</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -212,17 +172,12 @@ export const Reviews = forwardRef((props, ref) => {
                     </div>
                 </>
             ) : (
-                // ДЕСКТОПНАЯ ВЕРСИЯ
+                // ДЕСКТОПНАЯ ВЕРСИЯ - НОВЫЙ ФОРМАТ
                 <>
                     <div className="reviews-grid">
                         {getCurrentReviews().map(({id, photo, rating}, index) => (
-                            <FadeInSection 
-                                key={`${currentPage}-${id}`}
-                                animation={index % 2 === 0 ? "fade-left" : "fade-right"} 
-                                delay={`delay-${(index + 1) * 100}`}
-                                threshold={0.2}
-                            >
-                                <div className="reviews-card">
+                            <div key={`${currentPage}-${id}`} className="reviews-card">
+                                <div className="review-content">
                                     <div className="stars">
                                         {[...Array(5)].map((_, i) => (
                                             <img
@@ -233,11 +188,9 @@ export const Reviews = forwardRef((props, ref) => {
                                             />
                                         ))}
                                     </div>
-                                    <div>
-                                        <p className="reviews-text">
-                                            {t(`review-cards.${id}.text`)}
-                                        </p>
-                                    </div>
+                                    <p className="reviews-text">
+                                        {t(`review-cards.${id}.text`)}
+                                    </p>
                                     <div className='user-card'>
                                         <div className="user-avatar">
                                             {t(`review-cards.${id}.name`).charAt(0)}
@@ -248,7 +201,7 @@ export const Reviews = forwardRef((props, ref) => {
                                         </div>
                                     </div>
                                 </div>
-                            </FadeInSection>
+                            </div>
                         ))}
                     </div>
                     
