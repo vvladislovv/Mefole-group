@@ -1,0 +1,76 @@
+/* ОБЩИЕ МОБИЛЬНЫЕ СТИЛИ */
+
+/* Улучшение тач-интерфейса */
+@media (max-width: 768px) {
+  /* Увеличиваем область клика для кнопок */
+  button, .nav-item, .mobile-nav-item, .contacts-item {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Улучшаем читаемость текста */
+  body {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  
+  /* Убираем выделение при тапе */
+  * {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  
+  /* Разрешаем выделение для текстовых полей */
+  input, textarea, [contenteditable] {
+    -webkit-user-select: text;
+    user-select: text;
+  }
+  
+  /* Улучшаем скролл */
+  .modal-content, .service-modal-content, .portfolio-modal-content {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+  
+  /* Адаптация для очень маленьких экранов */
+  @media (max-width: 360px) {
+    .app-container {
+      padding: 0 8px;
+    }
+    
+    /* Уменьшаем отступы */
+    .contacts-container,
+    .portfolio-container,
+    .reviews-container,
+    .services-container,
+    .team-container,
+    .graphic-container {
+      padding: 0 8px;
+    }
+  }
+}
+
+/* Ландшафтная ориентация на мобильных */
+@media (max-width: 768px) and (orientation: landscape) {
+  .heroContainer {
+    top: 60px;
+  }
+  
+  .heroContainer .heroTitle {
+    font-size: 36px;
+  }
+  
+  .mobile-burger,
+  .mobile-translator {
+    top: 10px;
+  }
+}
+
+/* Высокие экраны (например, iPhone X и новее) */
+@media (max-width: 768px) and (min-height: 800px) {
+  .heroContainer {
+    top: 120px;
+  }
+}

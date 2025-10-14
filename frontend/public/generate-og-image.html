@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>OG Image Generator</title>
+    <style>
+        body { margin: 0; font-family: 'Montserrat', sans-serif; }
+        .og-image {
+            width: 1200px;
+            height: 630px;
+            background: linear-gradient(135deg, #0b0b0b 0%, #1a1a1a 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .logo {
+            font-size: 72px;
+            font-weight: 700;
+            color: #88ff00;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(136, 255, 0, 0.3);
+        }
+        .subtitle {
+            font-size: 32px;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 10px;
+            max-width: 900px;
+        }
+        .description {
+            font-size: 24px;
+            font-weight: 400;
+            text-align: center;
+            opacity: 0.8;
+            max-width: 800px;
+        }
+        .accent {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(136, 255, 0, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .accent-1 { top: -100px; left: -100px; }
+        .accent-2 { bottom: -100px; right: -100px; }
+    </style>
+</head>
+<body>
+    <div class="og-image">
+        <div class="accent accent-1"></div>
+        <div class="accent accent-2"></div>
+        <div class="logo">MEFOLE GROUP</div>
+        <div class="subtitle">Разработка сайтов и мобильных приложений</div>
+        <div class="description">Создаем современные цифровые продукты для вашего бизнеса</div>
+    </div>
+    
+    <script>
+        // Инструкция: откройте эту страницу в браузере и сделайте скриншот области .og-image
+        // Сохраните как og-image.jpg размером 1200x630px
+        console.log('Сделайте скриншот области .og-image и сохраните как og-image.jpg');
+    </script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+
+# Sitemap
+Sitemap: https://mefole.com/sitemap.xml
+
+# Crawl-delay for better server performance
+Crawl-delay: 1

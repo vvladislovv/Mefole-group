@@ -1,0 +1,33 @@
+{
+  "name": "hacktaika-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ХакТайка website with React frontend and FastAPI backend",
+  "scripts": {
+    "dev": "docker-compose up --build",
+    "dev:db": "docker-compose up db -d",
+    "dev:backend": "docker-compose up backend -d",
+    "dev:frontend": "docker-compose up frontend -d",
+    "dev:local:frontend": "cd frontend && npm start",
+    "dev:local:backend": "cd backend && uvicorn app.main:app --reload --host 0.0.0.0 --port 8000",
+    "build": "cd frontend && npm run build",
+    "build:docker": "docker-compose build",
+    "test": "cd frontend && npm test",
+    "test:backend": "cd backend && pytest",
+    "logs": "docker-compose logs -f",
+    "logs:backend": "docker-compose logs -f backend",
+    "logs:frontend": "docker-compose logs -f frontend",
+    "stop": "docker-compose down",
+    "clean": "docker-compose down -v && docker system prune -f",
+    "restart": "docker-compose restart"
+  },
+  "keywords": [
+    "react",
+    "fastapi",
+    "website",
+    "hacktaika",
+    "digital-agency"
+  ],
+  "author": "ХакТайка",
+  "license": "MIT"
+}
