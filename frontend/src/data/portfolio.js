@@ -17,6 +17,7 @@ export const works = [
     technologies: ["React", "Node.js", "MongoDB", "YouKassa"],
     duration: "works.1.duration",
     client: "works.1.client",
+    websiteUrl: "https://artruso.ru",
   },
   {
     id: 2,
@@ -29,6 +30,7 @@ export const works = [
     technologies: ["Vue.js", "Python", "PostgreSQL", "Redis"],
     duration: "works.2.duration",
     client: "works.2.client",
+    websiteUrl: "https://ergant.ru",
   },
   {
     id: 3,
@@ -41,6 +43,7 @@ export const works = [
     technologies: ["Next.js", "TypeScript", "MySQL", "YouKassa"],
     duration: "works.3.duration",
     client: "works.3.client",
+    websiteUrl: "https://glincom.ru",
   },
   {
     id: 4,
@@ -53,6 +56,7 @@ export const works = [
     technologies: ["React", "Node.js", "PostgreSQL", "CSS"],
     duration: "works.4.duration",
     client: "works.4.client",
+    websiteUrl: "https://go-tver.ru",
   },
   {
     id: 5,
@@ -65,6 +69,7 @@ export const works = [
     technologies: ["Python", "JavaScript", "MySQL", "YouKassa"],
     duration: "works.5.duration",
     client: "works.5.client",
+    websiteUrl: "https://russam.ru",
   },
   {
     id: 6,
@@ -77,6 +82,7 @@ export const works = [
     technologies: ["NestJS", "TypeScript", "MongoDB", "Celery"],
     duration: "works.6.duration",
     client: "works.6.client",
+    websiteUrl: "https://okonny-kontinent.ru",
   },
   {
     id: 7,
@@ -97,6 +103,7 @@ export const works = [
     technologies: ["React Native", "JavaScript", "Firebase", "Redux"],
     duration: "works.7.duration",
     client: "works.7.client",
+    websiteUrl: "https://zodiac-app.com",
   },
   {
     id: 8,
@@ -113,6 +120,7 @@ export const works = [
     technologies: ["Python", "Telegram Bot API", "SQLite", "aiogram"],
     duration: "works.8.duration",
     client: "works.8.client",
+    websiteUrl: "https://t.me/starlotute_bot",
   },
   {
     id: 9,
@@ -130,5 +138,6 @@ export const works = [
     technologies: ["Python", "Telegram Bot API", "PostgreSQL", "Redis"],
     duration: "works.9.duration",
     client: "works.9.client",
+    websiteUrl: "https://t.me/football_ivanovo_bot",
   },
 ];

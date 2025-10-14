@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useState } from 'react';
+import { forwardRef, useEffect, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { useTranslation } from 'react-i18next';
 import { categoryKeys, works } from '../data/portfolio';
@@ -11,6 +11,10 @@ export const Portfolio = forwardRef((props, ref) => {
   const [currentCategory, setCurrentCategory] = useState(categoryKeys[0]);
   const [currentPage, setCurrentPage] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [hoveredCard, setHoveredCard] = useState(null);
+  
+  const containerRef = useRef(null);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -21,6 +25,30 @@ export const Portfolio = forwardRef((props, ref) => {
     window.addEventListener('resize', checkMobile);
     
     return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Intersection Observer для анимации появления
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
   }, []);
 
   // Фильтруем работы по категории
@@ -43,20 +71,6 @@ export const Portfolio = forwardRef((props, ref) => {
   useEffect(() => {
     setCurrentPage(0);
   }, [currentCategory]);
-  
-  // Плавное обновление при изменении страницы
-  useEffect(() => {
-    // Принудительное обновление для предотвращения моргания
-    if (isMobile) {
-      const worksGrid = document.querySelector('.works-grid');
-      if (worksGrid) {
-        worksGrid.style.opacity = '0.8';
-        setTimeout(() => {
-          worksGrid.style.opacity = '1';
-        }, 50);
-      }
-    }
-  }, [currentPage, currentCategory, isMobile]);
 
   // Функция для отображения точек (максимум 3)
   const getVisibleDots = () => {
@@ -73,91 +87,171 @@ export const Portfolio = forwardRef((props, ref) => {
     }
   };
 
+  const handleCategoryChange = (categoryKey) => {
+    setCurrentCategory(categoryKey);
+  };
+
+  const handleCardHover = (cardId) => {
+    setHoveredCard(cardId);
+  };
+
+  const handleCardLeave = () => {
+    setHoveredCard(null);
+  };
+
   return (
-    <div ref={ref} className="portfolio-container">
-      <span className="portfolio-title">{t('portfolio-title')}</span>
+    <div ref={ref} className="portfolio-container" id="portfolio">
+      <div ref={containerRef} className={`portfolio-content ${isVisible ? 'visible' : ''}`}>
+        <div className="portfolio-header">
+          <span className="portfolio-title">
+            <span className="title-text">{t('portfolio-title')}</span>
+          </span>
+          <p className="portfolio-subtitle">
+            Наши разработчики создают впечатляющие проекты, которые решают реальные бизнес-задачи
+          </p>
+        </div>
 
-      <div className="category-bar">
-        {categoryKeys.map((categoryKey, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentCategory(categoryKey)}
-            className={`category-item ${currentCategory === categoryKey ? 'selected' : ''}`}
-          >
-            {t(categoryKey)}
-          </button>
-        ))}
-      </div>
-
-      <div className="works-grid">
-        {getCurrentWorks().map((work) => {
-          const translated = t(`works.${work.id}`, { returnObjects: true });
-          return (
-            <div 
-              key={work.id} 
-              className="works-card"
-              onClick={() => setSelectedWork(work)}
+        <div className="category-bar">
+          {categoryKeys.map((categoryKey, index) => (
+            <button
+              key={index}
+              onClick={() => handleCategoryChange(categoryKey)}
+              className={`category-item ${currentCategory === categoryKey ? 'selected' : ''}`}
             >
-              <img src={work.photo} alt="Проект в портфолио" />
-              <div className="works-description">
-                <span className="works-name">{translated.name}</span>
-                <span className="works-category">{t(work.categoryKey)}</span>
-                {isMobile && (
+              <span className="category-text">{t(categoryKey)}</span>
+              <div className="category-indicator"></div>
+            </button>
+          ))}
+        </div>
+
+        <div className="works-grid">
+          {getCurrentWorks().map((work, index) => {
+            const translated = t(`works.${work.id}`, { returnObjects: true });
+            const isHovered = hoveredCard === work.id;
+            
+            return (
+              <div 
+                key={work.id} 
+                className={`works-card ${isHovered ? 'hovered' : ''}`}
+                onClick={() => setSelectedWork(work)}
+                onMouseEnter={() => handleCardHover(work.id)}
+                onMouseLeave={handleCardLeave}
+              >
+                <div className="card-image-container">
+                  <img src={work.photo} alt="Проект в портфолио" />
+                  <div className="card-badge">
+                    <span className="badge-text">{t(work.categoryKey)}</span>
+                  </div>
+                </div>
+                
+                <div className="works-description">
+                  <div className="description-header">
+                    <span className="works-name">{translated.name}</span>
+                    <div className="works-stats">
+                      <span className="stat-item">
+                        <span className="stat-icon">⏱️</span>
+                        {translated.duration}
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <p className="works-title">{translated.title}</p>
+                  
+                  <div className="technologies-preview">
+                    {work.technologies.slice(0, 3).map((tech, techIndex) => (
+                      <span key={techIndex} className="tech-tag">
+                        {tech}
+                      </span>
+                    ))}
+                    {work.technologies.length > 3 && (
+                      <span className="tech-tag more">
+                        +{work.technologies.length - 3}
+                      </span>
+                    )}
+                  </div>
+                  
                   <button 
-                    className="works-details-btn"
+                    className="visit-website-btn"
                     onClick={(e) => {
                       e.stopPropagation();
-                      setSelectedWork(work);
+                      if (work.websiteUrl) {
+                        window.open(work.websiteUrl, '_blank', 'noopener,noreferrer');
+                      } else {
+                        // Для проектов без URL открываем модальное окно
+                        setSelectedWork(work);
+                      }
                     }}
                   >
-                    {t('portfolio-view-project')}
+                    <span className="btn-text">
+                      {work.categoryKey === 'category.telegram-bots' ? 'Открыть бота' : 
+                       work.categoryKey === 'category.mobile-apps' ? 'Скачать приложение' : 
+                       'Посетить сайт'}
+                    </span>
+                    <div className="btn-icon">
+                      {work.categoryKey === 'category.telegram-bots' ? '🤖' : 
+                       work.categoryKey === 'category.mobile-apps' ? '📱' : 
+                       '→'}
+                    </div>
                   </button>
-                )}
+                  
+                  {isMobile && (
+                    <button 
+                      className="works-details-btn"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedWork(work);
+                      }}
+                    >
+                      <span>{t('portfolio-view-project')}</span>
+                      <div className="btn-arrow">→</div>
+                    </button>
+                  )}
+                </div>
+                
+                
+                <div className="card-glow"></div>
               </div>
-              <div className="works-overlay">
-                <span className="works-view-text">{t('portfolio-view-project')}</span>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Пагинация для мобильных */}
-      {isMobile && totalPages > 1 && (
-        <div className="portfolio-pagination">
-          <button 
-            className="portfolio-nav-btn"
-            onClick={() => {
-              const newPage = Math.max(0, currentPage - 1);
-              setCurrentPage(newPage);
-            }}
-            disabled={currentPage === 0}
-          >
-            <img src="/arrow-left.png" alt="Предыдущая страница" />
-          </button>
-          
-          <div className="portfolio-page-indicators">
-            {getVisibleDots().map((pageIndex) => (
-              <button
-                key={pageIndex}
-                className={`portfolio-page-dot ${pageIndex === currentPage ? 'active' : ''}`}
-                onClick={() => setCurrentPage(pageIndex)}
-              />
-            ))}
-          </div>
-          
-          <button 
-            className="portfolio-nav-btn"
-            onClick={() => {
-              const newPage = Math.min(totalPages - 1, currentPage + 1);
-              setCurrentPage(newPage);
-            }}
-            disabled={currentPage === totalPages - 1}
-          >
-            <img src="/arrow-right.png" alt="Следующая страница" />
-          </button>
+            );
+          })}
         </div>
-      )}
+
+        {/* Пагинация для мобильных */}
+        {isMobile && totalPages > 1 && (
+          <div className="portfolio-pagination">
+            <button 
+              className="portfolio-nav-btn"
+              onClick={() => {
+                const newPage = Math.max(0, currentPage - 1);
+                setCurrentPage(newPage);
+              }}
+              disabled={currentPage === 0}
+            >
+              <img src="/arrow-left.png" alt="Предыдущая страница" />
+            </button>
+            
+            <div className="portfolio-page-indicators">
+              {getVisibleDots().map((pageIndex) => (
+                <button
+                  key={pageIndex}
+                  className={`portfolio-page-dot ${pageIndex === currentPage ? 'active' : ''}`}
+                  onClick={() => setCurrentPage(pageIndex)}
+                />
+              ))}
+            </div>
+            
+            <button 
+              className="portfolio-nav-btn"
+              onClick={() => {
+                const newPage = Math.min(totalPages - 1, currentPage + 1);
+                setCurrentPage(newPage);
+              }}
+              disabled={currentPage === totalPages - 1}
+            >
+              <img src="/arrow-right.png" alt="Следующая страница" />
+            </button>
+          </div>
+        )}
+      </div>
       
       {selectedWork && ReactDOM.createPortal(
         <PortfolioModal 
