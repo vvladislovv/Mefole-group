@@ -149,7 +149,7 @@ export const Portfolio = forwardRef((props, ref) => {
                     <span className="works-name">{translated.name}</span>
                     <div className="works-stats">
                       <span className="stat-item">
-                        <span className="stat-icon">⏱️</span>
+                        <span className="stat-icon">⏰</span>
                         {translated.duration}
                       </span>
                     </div>

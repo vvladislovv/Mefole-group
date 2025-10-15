@@ -239,19 +239,19 @@ print("✅ Проект создан:", result)`;
           
           <div className="form-section-features">
             <div className="feature-item">
-              <div className="feature-icon">📋</div>
+              <div className="feature-icon">📄</div>
               <h3 className="feature-title">Детальное ТЗ</h3>
               <p className="feature-description">Поможем составить техническое задание с учетом всех нюансов вашего проекта</p>
             </div>
             
             <div className="feature-item">
-              <div className="feature-icon">💰</div>
+              <div className="feature-icon">💵</div>
               <h3 className="feature-title">Точная оценка</h3>
               <p className="feature-description">Рассчитаем стоимость и сроки реализации на основе ваших требований</p>
             </div>
             
             <div className="feature-item">
-              <div className="feature-icon">🚀</div>
+              <div className="feature-icon">⚡</div>
               <h3 className="feature-title">Быстрый старт</h3>
               <p className="feature-description">Получите консультацию и приступите к разработке в кратчайшие сроки</p>
             </div>

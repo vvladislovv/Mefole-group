@@ -142,7 +142,7 @@ export default function PortfolioModal({ work, onClose }) {
         {/* Статистика проекта */}
         <div className="project-stats">
           <div className="stat-item">
-            <div className="stat-icon">👥</div>
+            <div className="stat-icon">👤</div>
             <div className="stat-content">
               <span className="stat-number">{projectStats.users}</span>
               <span className="stat-label">Пользователей</span>
@@ -156,7 +156,7 @@ export default function PortfolioModal({ work, onClose }) {
             </div>
           </div>
           <div className="stat-item">
-            <div className="stat-icon">✅</div>
+            <div className="stat-icon">✓</div>
             <div className="stat-content">
               <span className="stat-number">{projectStats.completion}</span>
               <span className="stat-label">Готовность</span>
