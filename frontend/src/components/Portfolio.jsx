@@ -106,7 +106,7 @@ export const Portfolio = forwardRef((props, ref) => {
             <span className="title-text">{t('portfolio-title')}</span>
           </span>
           <p className="portfolio-subtitle">
-            Наши разработчики создают впечатляющие проекты, которые решают реальные бизнес-задачи
+            {t('portfolio-subtitle')}
           </p>
         </div>
 
@@ -141,7 +141,7 @@ export const Portfolio = forwardRef((props, ref) => {
                 onMouseLeave={handleCardLeave}
               >
                 <div className="card-image-container">
-                  <img src={work.photo} alt="Проект в портфолио" />
+                  <img src={work.photo} alt={t('portfolio-card-alt', { defaultValue: 'Portfolio project' })} />
                   <div className="card-badge">
                     <span className="badge-text">{t(work.categoryKey)}</span>
                   </div>
@@ -181,7 +181,7 @@ export const Portfolio = forwardRef((props, ref) => {
                       className="visit-website-btn"
                       onClick={(e) => e.stopPropagation()}
                     >
-                      <span className="btn-text">Посетить сайт</span>
+                      <span className="btn-text">{t('portfolio-visit-site')}</span>
                     </a>
                   ) : (
                     <button 
@@ -191,7 +191,7 @@ export const Portfolio = forwardRef((props, ref) => {
                         setSelectedWork(work);
                       }}
                     >
-                      <span className="btn-text">Посетить сайт</span>
+                      <span className="btn-text">{t('portfolio-visit-site')}</span>
                     </button>
                   )}
                   
@@ -227,7 +227,7 @@ export const Portfolio = forwardRef((props, ref) => {
               }}
               disabled={currentPage === 0}
             >
-              <img src="/arrow-left.png" alt="Предыдущая страница" />
+              <img src="/arrow-left.png" alt={t('portfolio-prev-page')} />
             </button>
             
             <div className="portfolio-page-indicators">
@@ -248,7 +248,7 @@ export const Portfolio = forwardRef((props, ref) => {
               }}
               disabled={currentPage === totalPages - 1}
             >
-              <img src="/arrow-right.png" alt="Следующая страница" />
+              <img src="/arrow-right.png" alt={t('portfolio-next-page')} />
             </button>
           </div>
         )}

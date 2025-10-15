@@ -83,16 +83,16 @@ export default function PortfolioModal({ work, onClose }) {
       } else {
         // Fallback для браузеров без поддержки Web Share API
         await navigator.clipboard.writeText(shareData.url);
-        alert('Ссылка скопирована в буфер обмена!');
+        alert(t('portfolio-share-copied'));
       }
     } catch (error) {
-      console.error('Ошибка при попытке поделиться:', error);
+      console.error('Share failed:', error);
       // Fallback - копируем URL в буфер обмена
       try {
         await navigator.clipboard.writeText(shareData.url);
-        alert('Ссылка скопирована в буфер обмена!');
+        alert(t('portfolio-share-copied'));
       } catch (clipboardError) {
-        console.error('Ошибка копирования в буфер обмена:', clipboardError);
+        console.error('Clipboard copy failed:', clipboardError);
       }
     }
   };
@@ -118,7 +118,7 @@ export default function PortfolioModal({ work, onClose }) {
             onClose();
           }}
           type="button"
-          aria-label="Закрыть модальное окно"
+          aria-label={t('close')}
         >
           <span className="close-icon">×</span>
         </button>
@@ -139,27 +139,27 @@ export default function PortfolioModal({ work, onClose }) {
         </div>
 
 
-        {/* Статистика проекта */}
+        {/* Project stats */}
         <div className="project-stats">
           <div className="stat-item">
             <div className="stat-icon">👤</div>
             <div className="stat-content">
               <span className="stat-number">{projectStats.users}</span>
-              <span className="stat-label">Пользователей</span>
+              <span className="stat-label">{t('portfolio-users')}</span>
             </div>
           </div>
           <div className="stat-item">
             <div className="stat-icon">⭐</div>
             <div className="stat-content">
               <span className="stat-number">{projectStats.rating}</span>
-              <span className="stat-label">Рейтинг</span>
+              <span className="stat-label">{t('portfolio-rating')}</span>
             </div>
           </div>
           <div className="stat-item">
             <div className="stat-icon">✓</div>
             <div className="stat-content">
               <span className="stat-number">{projectStats.completion}</span>
-              <span className="stat-label">Готовность</span>
+              <span className="stat-label">{t('portfolio-completion')}</span>
             </div>
           </div>
         </div>
@@ -170,19 +170,19 @@ export default function PortfolioModal({ work, onClose }) {
             className={`tab-button ${activeTab === 'overview' ? 'active' : ''}`}
             onClick={() => setActiveTab('overview')}
           >
-            Обзор
+            {t('portfolio-tab-overview')}
           </button>
           <button 
             className={`tab-button ${activeTab === 'gallery' ? 'active' : ''}`}
             onClick={() => setActiveTab('gallery')}
           >
-            Галерея
+            {t('portfolio-tab-gallery')}
           </button>
           <button 
             className={`tab-button ${activeTab === 'details' ? 'active' : ''}`}
             onClick={() => setActiveTab('details')}
           >
-            Детали
+            {t('portfolio-tab-details')}
           </button>
         </div>
 
@@ -191,12 +191,12 @@ export default function PortfolioModal({ work, onClose }) {
           {activeTab === 'overview' && (
             <div className="tab-panel overview-panel">
               <div className="project-description">
-                <h3>Описание проекта</h3>
+                <h3>{t('portfolio-project-description')}</h3>
                 <p>{work.description || t(`works.${work.id}.description`, { defaultValue: '' })}</p>
               </div>
               
               <div className="project-features">
-                <h3>Ключевые особенности</h3>
+                <h3>{t('portfolio-key-features')}</h3>
                 <ul>
                   {(work.features || []).map((f, i) => (
                     <li key={i}>{typeof f === 'string' ? f : (f.text || '')}</li>
@@ -210,7 +210,7 @@ export default function PortfolioModal({ work, onClose }) {
                     className="action-btn primary"
                     onClick={handleVisitProject}
                   >
-                    <span>Посетить проект</span>
+                    <span>{t('portfolio-visit-project')}</span>
                     <span className="btn-icon">→</span>
                   </button>
                 )}
@@ -218,7 +218,7 @@ export default function PortfolioModal({ work, onClose }) {
                   className="action-btn secondary"
                   onClick={handleShare}
                 >
-                  <span>Поделиться</span>
+                  <span>{t('portfolio-share')}</span>
                   <span className="btn-icon">📤</span>
                 </button>
               </div>
@@ -267,29 +267,29 @@ export default function PortfolioModal({ work, onClose }) {
             <div className="tab-panel details-panel">
               <div className="project-details">
                 <div className="detail-section">
-                  <h3>Информация о проекте</h3>
+                  <h3>{t('portfolio-project-info')}</h3>
                   <div className="detail-grid">
                 <div className="detail-item">
-                  <span className="detail-label">Клиент</span>
+                  <span className="detail-label">{t('portfolio-client')}</span>
                   <span className="detail-value">{work.client || t(`works.${work.id}.client`, { defaultValue: '' })}</span>
                 </div>
                     <div className="detail-item">
-                      <span className="detail-label">Длительность</span>
+                      <span className="detail-label">{t('portfolio-duration')}</span>
                   <span className="detail-value">{work.duration || t(`works.${work.id}.duration`, { defaultValue: '' })}</span>
                     </div>
                     <div className="detail-item">
-                      <span className="detail-label">Команда</span>
+                      <span className="detail-label">{t('portfolio-team')}</span>
                       <span className="detail-value">{projectStats.team}</span>
                     </div>
                     <div className="detail-item">
-                      <span className="detail-label">Статус</span>
-                      <span className="detail-value status-completed">Завершен</span>
+                      <span className="detail-label">{t('portfolio-status')}</span>
+                      <span className="detail-value status-completed">{t('portfolio-status-completed')}</span>
                     </div>
                   </div>
                 </div>
 
                 <div className="detail-section">
-                  <h3>Технологии</h3>
+                  <h3>{t('portfolio-technologies')}</h3>
                   <div className="technologies-grid">
                     {work.technologies.map((tech, index) => (
                       <div key={index} className="tech-item">

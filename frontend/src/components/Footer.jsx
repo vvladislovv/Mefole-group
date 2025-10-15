@@ -7,7 +7,7 @@ export const Footer = ({ sectionRefs }) => {
   };
   return (
     <div className="footer-container">
-      <span className="footer-title">ХАКТАЙКА</span>
+      <span className="footer-title">{t('brand-name')}</span>
       <div className="footbar-wrapper">
         <div className="footbar">
           <div
@@ -44,7 +44,7 @@ export const Footer = ({ sectionRefs }) => {
           </a>
         </div>
       </div>
-      <p className="copyright">©ХакТайка 2025. All rights reserved.</p>
+      <p className="copyright">©{t('brand-name')} 2025. {t('all-rights-reserved')}</p>
     </div>
   );
 };

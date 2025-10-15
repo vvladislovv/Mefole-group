@@ -240,20 +240,20 @@ print("✅ Проект создан:", result)`;
           <div className="form-section-features">
             <div className="feature-item">
               <div className="feature-icon">📄</div>
-              <h3 className="feature-title">Детальное ТЗ</h3>
-              <p className="feature-description">Поможем составить техническое задание с учетом всех нюансов вашего проекта</p>
+              <h3 className="feature-title">{t('blog-feature-1-title')}</h3>
+              <p className="feature-description">{t('blog-feature-1-desc')}</p>
             </div>
             
             <div className="feature-item">
               <div className="feature-icon">💵</div>
-              <h3 className="feature-title">Точная оценка</h3>
-              <p className="feature-description">Рассчитаем стоимость и сроки реализации на основе ваших требований</p>
+              <h3 className="feature-title">{t('blog-feature-2-title')}</h3>
+              <p className="feature-description">{t('blog-feature-2-desc')}</p>
             </div>
             
             <div className="feature-item">
               <div className="feature-icon">⚡</div>
-              <h3 className="feature-title">Быстрый старт</h3>
-              <p className="feature-description">Получите консультацию и приступите к разработке в кратчайшие сроки</p>
+              <h3 className="feature-title">{t('blog-feature-3-title')}</h3>
+              <p className="feature-description">{t('blog-feature-3-desc')}</p>
             </div>
           </div>
           
@@ -261,7 +261,7 @@ print("✅ Проект создан:", result)`;
             className="form-section-button"
             onClick={() => setIsFormOpen(true)}
           >
-            <span className="button-text">Начать создание проекта</span>
+            <span className="button-text">{t('blog-start-project')}</span>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
