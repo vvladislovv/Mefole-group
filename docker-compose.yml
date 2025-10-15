@@ -52,7 +52,7 @@ services:
     volumes:
       - ./frontend:/app
       - /app/node_modules
-    command: sh -c "npm install --legacy-peer-deps && npm start"
+    command: sh -c "yarn install --frozen-lockfile && yarn start"
     depends_on:
       - backend
 
