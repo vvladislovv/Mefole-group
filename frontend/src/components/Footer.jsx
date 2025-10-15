@@ -28,7 +28,7 @@ export const Footer = ({ sectionRefs }) => {
           <div className="footbar-item" onClick={() => handleScroll("contacts")}>
             {t("contacts")}
           </div>
-          <div className="footbar-item" onClick={() => handleScroll("blog")}>
+          <div className="footbar-item" onClick={() => handleScroll("form")}>
             {t("blog")}
           </div>
         </div>
@@ -36,7 +36,7 @@ export const Footer = ({ sectionRefs }) => {
       <div className="socials">
         <div className="socials-flex">
           <a
-            href="https://t.me/+DZnLXy2QWk9lOWI0"
+            href="https://t.me/+2mzMGCda9xU4OWFi"
             target="_blank"
             rel="noreferrer"
           >

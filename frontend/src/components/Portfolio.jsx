@@ -125,7 +125,11 @@ export const Portfolio = forwardRef((props, ref) => {
 
         <div className="works-grid">
           {getCurrentWorks().map((work, index) => {
-            const translated = t(`works.${work.id}`, { returnObjects: true });
+            const i18nData = t(`works.${work.id}`, { returnObjects: true });
+            const hasI18nObj = typeof i18nData === 'object';
+            const name = hasI18nObj ? i18nData.name : (work.name || '');
+            const titleText = hasI18nObj ? i18nData.title : (work.title || '');
+            const durationText = hasI18nObj ? i18nData.duration : (work.duration || '');
             const isHovered = hoveredCard === work.id;
             
             return (
@@ -145,16 +149,16 @@ export const Portfolio = forwardRef((props, ref) => {
                 
                 <div className="works-description">
                   <div className="description-header">
-                    <span className="works-name">{translated.name}</span>
+                    <span className="works-name">{name}</span>
                     <div className="works-stats">
                       <span className="stat-item">
                         <span className="stat-icon">⏰</span>
-                        {translated.duration}
+                        {durationText}
                       </span>
                     </div>
                   </div>
                   
-                  <p className="works-title">{translated.title}</p>
+                  <p className="works-title">{titleText}</p>
                   
                   <div className="technologies-preview">
                     {work.technologies.slice(0, 3).map((tech, techIndex) => (
@@ -169,29 +173,27 @@ export const Portfolio = forwardRef((props, ref) => {
                     )}
                   </div>
                   
-                  <button 
-                    className="visit-website-btn"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      if (work.websiteUrl) {
-                        window.open(work.websiteUrl, '_blank', 'noopener,noreferrer');
-                      } else {
-                        // Для проектов без URL открываем модальное окно
+                  {work.websiteUrl ? (
+                    <a
+                      href={work.websiteUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="visit-website-btn"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <span className="btn-text">Посетить сайт</span>
+                    </a>
+                  ) : (
+                    <button 
+                      className="visit-website-btn"
+                      onClick={(e) => {
+                        e.stopPropagation();
                         setSelectedWork(work);
-                      }
-                    }}
-                  >
-                    <span className="btn-text">
-                      {work.categoryKey === 'category.telegram-bots' ? 'Открыть бота' : 
-                       work.categoryKey === 'category.mobile-apps' ? 'Скачать приложение' : 
-                       'Посетить сайт'}
-                    </span>
-                    <div className="btn-icon">
-                      {work.categoryKey === 'category.telegram-bots' ? '🤖' : 
-                       work.categoryKey === 'category.mobile-apps' ? '📱' : 
-                       '→'}
-                    </div>
-                  </button>
+                      }}
+                    >
+                      <span className="btn-text">Посетить сайт</span>
+                    </button>
+                  )}
                   
                   {isMobile && (
                     <button 

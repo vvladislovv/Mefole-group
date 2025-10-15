@@ -63,7 +63,7 @@ export const Contacts = forwardRef((props, ref) => {
           </svg>
         </a>
         <a
-          href="https://t.me/mefole_freelance"
+          href="https://t.me/dislov_freelance"
           target="_blank"
           rel="noreferrer"
           className="contacts-item"

@@ -61,7 +61,7 @@ export default function PortfolioModal({ work, onClose }) {
     return statsMap[workId] || { users: "5,000+", rating: 4.8, completion: "100%", team: "3 разработчика" };
   };
 
-  const projectStats = getProjectStats(work.id);
+  const projectStats = work.stats || getProjectStats(work.id) || { users: "5,000+", rating: 4.8, completion: "100%", team: "3 разработчика" };
 
   // Функции для кнопок
   const handleVisitProject = () => {
@@ -125,7 +125,7 @@ export default function PortfolioModal({ work, onClose }) {
         
         <div className="portfolio-modal-header">
           <div className="header-content">
-            <h2 className="portfolio-modal-title">{t(`works.${work.id}.title`)}</h2>
+            <h2 className="portfolio-modal-title">{t(`works.${work.id}.title`, { defaultValue: work.title || '' })}</h2>
             <span className="portfolio-modal-category">{t(work.categoryKey)}</span>
             <div className="project-rating">
               <div className="stars">
@@ -192,17 +192,15 @@ export default function PortfolioModal({ work, onClose }) {
             <div className="tab-panel overview-panel">
               <div className="project-description">
                 <h3>Описание проекта</h3>
-                <p>{t(`works.${work.id}.description`)}</p>
+                <p>{work.description || t(`works.${work.id}.description`, { defaultValue: '' })}</p>
               </div>
               
               <div className="project-features">
                 <h3>Ключевые особенности</h3>
                 <ul>
-                  <li>Современный дизайн и UX</li>
-                  <li>Адаптивная верстка</li>
-                  <li>Высокая производительность</li>
-                  <li>Безопасность данных</li>
-                  <li>SEO оптимизация</li>
+                  {(work.features || []).map((f, i) => (
+                    <li key={i}>{typeof f === 'string' ? f : (f.text || '')}</li>
+                  ))}
                 </ul>
               </div>
 
@@ -271,13 +269,13 @@ export default function PortfolioModal({ work, onClose }) {
                 <div className="detail-section">
                   <h3>Информация о проекте</h3>
                   <div className="detail-grid">
-                    <div className="detail-item">
-                      <span className="detail-label">Клиент</span>
-                      <span className="detail-value">{t(`works.${work.id}.client`)}</span>
-                    </div>
+                <div className="detail-item">
+                  <span className="detail-label">Клиент</span>
+                  <span className="detail-value">{work.client || t(`works.${work.id}.client`, { defaultValue: '' })}</span>
+                </div>
                     <div className="detail-item">
                       <span className="detail-label">Длительность</span>
-                      <span className="detail-value">{t(`works.${work.id}.duration`)}</span>
+                  <span className="detail-value">{work.duration || t(`works.${work.id}.duration`, { defaultValue: '' })}</span>
                     </div>
                     <div className="detail-item">
                       <span className="detail-label">Команда</span>

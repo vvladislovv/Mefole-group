@@ -146,7 +146,7 @@
 
 @media screen and (max-width: 768px) {
     .heroContainer {
-        top: 100px;
+        top: 140px;
         padding: 16px;
         width: 100vw;
         left: 0;
@@ -193,7 +193,7 @@
 
 @media screen and (max-width: 480px) {
     .heroContainer {
-        top: 60px;
+        top: 90px;
         padding: 12px;
     }
     .heroContainer .heroTitle {
@@ -224,7 +224,7 @@
 
 @media screen and (max-width: 360px) {
     .heroContainer {
-        top: 50px;
+        top: 80px;
         padding: 20px 8px 35px 8px;
         min-height: 80vh;
     }
