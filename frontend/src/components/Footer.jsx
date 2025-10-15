@@ -10,9 +10,6 @@ export const Footer = ({ sectionRefs }) => {
       <span className="footer-title">ХАКТАЙКА</span>
       <div className="footbar-wrapper">
         <div className="footbar">
-          <div className="footbar-item" onClick={() => handleScroll("graphic")}>
-            {t("graphic")}
-          </div>
           <div
             className="footbar-item"
             onClick={() => handleScroll("services")}

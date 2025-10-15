@@ -57,12 +57,11 @@ export const Portfolio = forwardRef((props, ref) => {
     return showAll || currentCategory === work.categoryKey;
   });
 
-  // Пагинация для мобильных
-  const worksPerPage = isMobile ? 1 : filteredWorks.length;
+  // Пагинация: на мобильных – 1 карточка, на остальных – 6 карточек на страницу
+  const worksPerPage = isMobile ? 1 : 6;
   const totalPages = Math.ceil(filteredWorks.length / worksPerPage);
   
   const getCurrentWorks = () => {
-    if (!isMobile) return filteredWorks;
     const startIndex = currentPage * worksPerPage;
     return filteredWorks.slice(startIndex, startIndex + worksPerPage);
   };
@@ -215,8 +214,8 @@ export const Portfolio = forwardRef((props, ref) => {
           })}
         </div>
 
-        {/* Пагинация для мобильных */}
-        {isMobile && totalPages > 1 && (
+        {/* Пагинация (мобильные и десктоп/планшет) */}
+        {totalPages > 1 && (
           <div className="portfolio-pagination">
             <button 
               className="portfolio-nav-btn"
