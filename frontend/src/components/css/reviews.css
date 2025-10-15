@@ -418,20 +418,22 @@
 /* Индикаторы страниц */
 .reviews-page-indicators {
     display: flex;
-    gap: 12px;
+    gap: 16px;
     align-items: center;
+    padding: 0 20px;
 }
 
 .reviews-page-dot {
-    width: 12px;
-    height: 12px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(166, 240, 12, 0.3);
+    background: linear-gradient(135deg, rgba(166, 240, 12, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
     position: relative;
     overflow: hidden;
+    backdrop-filter: blur(8px);
 }
 
 .reviews-page-dot::before {
@@ -440,28 +442,48 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 0;
-    height: 0;
-    background: var(--color-green);
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
+    background: linear-gradient(135deg, #A6F00C 0%, #8B5CF6 100%);
+    opacity: 0;
     transition: all 0.3s ease;
 }
 
-.reviews-page-dot.active {
-    border-color: var(--color-green);
+.reviews-page-dot:hover {
+    border-color: rgba(139, 92, 246, 0.6);
+    background: linear-gradient(135deg, rgba(166, 240, 12, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
     transform: scale(1.3);
-    box-shadow: 0 0 20px rgba(166, 240, 12, 0.6);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+.reviews-page-dot:hover::before {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+.reviews-page-dot.active {
+    border-color: rgba(139, 92, 246, 0.8);
+    background: linear-gradient(135deg, rgba(166, 240, 12, 0.3) 0%, rgba(139, 92, 246, 0.3) 100%);
+    transform: scale(1.4);
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4), 0 0 0 2px rgba(139, 92, 246, 0.2);
+    animation: reviewsDotPulse 2s ease-in-out infinite;
 }
 
 .reviews-page-dot.active::before {
-    width: 8px;
-    height: 8px;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.5);
+    background: linear-gradient(135deg, #A6F00C 0%, #8B5CF6 100%);
+    box-shadow: 0 0 8px rgba(139, 92, 246, 0.6);
 }
 
-.reviews-page-dot:hover:not(.active) {
-    background: rgba(166, 240, 12, 0.3);
-    border-color: rgba(166, 240, 12, 0.5);
-    transform: scale(1.2);
+@keyframes reviewsDotPulse {
+    0%, 100% { 
+        box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4), 0 0 0 2px rgba(139, 92, 246, 0.2);
+    }
+    50% { 
+        box-shadow: 0 8px 25px rgba(139, 92, 246, 0.6), 0 0 0 4px rgba(139, 92, 246, 0.3);
+    }
 }
 
 /* МОБИЛЬНАЯ ВЕРСИЯ */
@@ -522,8 +544,12 @@
     }
     
     .reviews-page-dot {
-        width: 10px;
-        height: 10px;
+        width: 14px;
+        height: 14px;
+    }
+    .reviews-page-dot::before {
+        width: 5px;
+        height: 5px;
     }
 
     /* Мобильная карусель */
@@ -615,25 +641,57 @@
     }
 
     .indicator-dot {
-        width: 10px;
-        height: 10px;
+        width: 14px;
+        height: 14px;
         border-radius: 50%;
         cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        background: linear-gradient(135deg, rgba(166, 240, 12, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+        border: 2px solid rgba(166, 240, 12, 0.3);
+        position: relative;
+        overflow: hidden;
+        backdrop-filter: blur(8px);
+    }
+
+    .indicator-dot::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #A6F00C 0%, #8B5CF6 100%);
+        opacity: 0;
         transition: all 0.3s ease;
-        background: rgba(255, 255, 255, 0.2);
-        border: 2px solid rgba(255, 255, 255, 0.3);
     }
 
     .indicator-dot:hover {
-        background: rgba(166, 240, 12, 0.3);
-        border-color: rgba(166, 240, 12, 0.5);
-        transform: scale(1.2);
+        border-color: rgba(139, 92, 246, 0.6);
+        background: linear-gradient(135deg, rgba(166, 240, 12, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
+        transform: scale(1.3);
+        box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+    }
+
+    .indicator-dot:hover::before {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1.2);
     }
 
     .indicator-dot.active {
-        background: var(--color-green);
-        border-color: var(--color-green);
-        transform: scale(1.3);
+        border-color: rgba(139, 92, 246, 0.8);
+        background: linear-gradient(135deg, rgba(166, 240, 12, 0.3) 0%, rgba(139, 92, 246, 0.3) 100%);
+        transform: scale(1.4);
+        box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4), 0 0 0 2px rgba(139, 92, 246, 0.2);
+        animation: reviewsDotPulse 2s ease-in-out infinite;
+    }
+
+    .indicator-dot.active::before {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.5);
+        background: linear-gradient(135deg, #A6F00C 0%, #8B5CF6 100%);
+        box-shadow: 0 0 8px rgba(139, 92, 246, 0.6);
     }
 
     /* Анимация звезд для мобильной версии */
