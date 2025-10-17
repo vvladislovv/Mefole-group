@@ -14,7 +14,6 @@
     font-family: var(--font-heading);
     font-weight: 700;
     text-align: center;
-    color: #A6F00C;
 }
 .heroContainer .heroSubline {
     color: rgba(255, 255, 255, 0.8);

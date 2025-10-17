@@ -68,6 +68,94 @@ code {
 }
 :root {
   --color-green: #A6F00C;
+  --color-purple: #8B5CF6;
   --font-heading: 'Druk Text Wide', sans-serif;
   --font-body: 'Montserrat Alternates', sans-serif;
+}
+
+/* Анимация переливания цветов для заголовков */
+@keyframes colorShift {
+  0% {
+    color: #A6F00C;
+    text-shadow: 0 0 20px rgba(166, 240, 12, 0.5);
+  }
+  25% {
+    color: #B8F02C;
+    text-shadow: 0 0 25px rgba(184, 240, 44, 0.6);
+  }
+  50% {
+    color: #8B5CF6;
+    text-shadow: 0 0 30px rgba(139, 92, 246, 0.7);
+  }
+  75% {
+    color: #A855F7;
+    text-shadow: 0 0 25px rgba(168, 85, 247, 0.6);
+  }
+  100% {
+    color: #A6F00C;
+    text-shadow: 0 0 20px rgba(166, 240, 12, 0.5);
+  }
+}
+
+/* Класс для применения анимации */
+.animated-title {
+  animation: colorShift 4s ease-in-out infinite;
+  transition: all 0.3s ease;
+  will-change: color, text-shadow; /* Оптимизация для GPU */
+  transform: translateZ(0); /* Принудительное использование GPU */
+}
+
+.animated-title:hover {
+  animation-duration: 2s;
+  text-shadow: 0 0 40px rgba(166, 240, 12, 0.8);
+}
+
+/* Оптимизация производительности */
+.modal-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+/* Оптимизация для GPU анимаций */
+.fade-section {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  .animated-title {
+    animation-duration: 3s; /* Более медленная анимация на мобильных */
+  }
+  
+  @keyframes colorShift {
+    0% {
+      color: #A6F00C;
+      text-shadow: 0 0 15px rgba(166, 240, 12, 0.4);
+    }
+    25% {
+      color: #B8F02C;
+      text-shadow: 0 0 18px rgba(184, 240, 44, 0.5);
+    }
+    50% {
+      color: #8B5CF6;
+      text-shadow: 0 0 20px rgba(139, 92, 246, 0.6);
+    }
+    75% {
+      color: #A855F7;
+      text-shadow: 0 0 18px rgba(168, 85, 247, 0.5);
+    }
+    100% {
+      color: #A6F00C;
+      text-shadow: 0 0 15px rgba(166, 240, 12, 0.4);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .animated-title {
+    animation-duration: 2.5s; /* Еще более медленная анимация на маленьких экранах */
+  }
 }

@@ -1,12 +1,21 @@
-import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import './css/portfolioModal.css';
+import React, { useCallback, useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import './css/portfolioModal.css'
 
-export default function PortfolioModal({ work, onClose }) {
+const PortfolioModal = React.memo(function PortfolioModal({ work, onClose }) {
   const { t } = useTranslation();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [activeTab, setActiveTab] = useState('overview');
   const [isVisible, setIsVisible] = useState(false);
+
+  const handleClose = useCallback((e) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    console.log('Closing modal...'); // Для отладки
+    onClose();
+  }, [onClose]);
 
   useEffect(() => {
     // Блокируем скролл для всех устройств
@@ -14,7 +23,7 @@ export default function PortfolioModal({ work, onClose }) {
     document.body.classList.add('modal-open');
     
     // Анимация появления
-    setTimeout(() => setIsVisible(true), 50);
+    const timeoutId = setTimeout(() => setIsVisible(true), 50);
 
     // Обработчик клавиши Escape
     const handleEscape = (e) => {
@@ -26,24 +35,26 @@ export default function PortfolioModal({ work, onClose }) {
     document.addEventListener('keydown', handleEscape);
     
     return () => {
+      // Очищаем таймер
+      clearTimeout(timeoutId);
       // Восстанавливаем скролл
       document.body.style.overflow = '';
       document.body.classList.remove('modal-open');
       document.removeEventListener('keydown', handleEscape);
     };
-  }, [onClose]);
+  }, [handleClose]); // Добавляем handleClose в зависимости
 
-  const nextImage = () => {
+  const nextImage = useCallback(() => {
     setCurrentImageIndex((prev) => 
       prev === work.photos.length - 1 ? 0 : prev + 1
     );
-  };
+  }, [work.photos.length]);
 
-  const prevImage = () => {
+  const prevImage = useCallback(() => {
     setCurrentImageIndex((prev) => 
       prev === 0 ? work.photos.length - 1 : prev - 1
     );
-  };
+  }, [work.photos.length]);
 
   // Уникальная статистика для каждого проекта
   const getProjectStats = (workId) => {
@@ -64,13 +75,13 @@ export default function PortfolioModal({ work, onClose }) {
   const projectStats = work.stats || getProjectStats(work.id) || { users: "5,000+", rating: 4.8, completion: "100%", team: "3 разработчика" };
 
   // Функции для кнопок
-  const handleVisitProject = () => {
+  const handleVisitProject = useCallback(() => {
     if (work.websiteUrl) {
       window.open(work.websiteUrl, '_blank', 'noopener,noreferrer');
     }
-  };
+  }, [work.websiteUrl]);
 
-  const handleShare = async () => {
+  const handleShare = useCallback(async () => {
     const shareData = {
       title: t(`works.${work.id}.title`),
       text: t(`works.${work.id}.description`),
@@ -95,16 +106,7 @@ export default function PortfolioModal({ work, onClose }) {
         console.error('Clipboard copy failed:', clipboardError);
       }
     }
-  };
-
-  const handleClose = (e) => {
-    if (e) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-    console.log('Closing modal...'); // Для отладки
-    onClose();
-  };
+  }, [work.id, work.websiteUrl, t]);
 
   return (
     <div className={`portfolio-modal-overlay ${isVisible ? 'visible' : ''}`} onClick={handleClose}>
@@ -192,14 +194,14 @@ export default function PortfolioModal({ work, onClose }) {
             <div className="tab-panel overview-panel">
               <div className="project-description">
                 <h3>{t('portfolio-project-description')}</h3>
-                <p>{work.description || t(`works.${work.id}.description`, { defaultValue: '' })}</p>
+                <p>{t(`works.${work.id}.description`, { defaultValue: work.description || '' })}</p>
               </div>
               
               <div className="project-features">
                 <h3>{t('portfolio-key-features')}</h3>
                 <ul>
                   {(work.features || []).map((f, i) => (
-                    <li key={i}>{typeof f === 'string' ? f : (f.text || '')}</li>
+                    <li key={i}>{t(`works.${work.id}.features.${i}`, { defaultValue: typeof f === 'string' ? f : (f.text || '') })}</li>
                   ))}
                 </ul>
               </div>
@@ -233,6 +235,8 @@ export default function PortfolioModal({ work, onClose }) {
                     src={work.photos ? work.photos[currentImageIndex] : work.photo} 
                     alt={t(`works.${work.id}.title`)}
                     className="portfolio-modal-image"
+                    loading="lazy"
+                    decoding="async"
                   />
                   {work.photos && work.photos.length > 1 && (
                     <>
@@ -254,6 +258,8 @@ export default function PortfolioModal({ work, onClose }) {
                         alt={`${t(`works.${work.id}.title`)} ${index + 1}`}
                         className={`portfolio-modal-thumbnail ${index === currentImageIndex ? 'active' : ''}`}
                         onClick={() => setCurrentImageIndex(index)}
+                        loading="lazy"
+                        decoding="async"
                       />
                     ))}
                   </div>
@@ -275,11 +281,11 @@ export default function PortfolioModal({ work, onClose }) {
                 </div>
                     <div className="detail-item">
                       <span className="detail-label">{t('portfolio-duration')}</span>
-                  <span className="detail-value">{work.duration || t(`works.${work.id}.duration`, { defaultValue: '' })}</span>
+                  <span className="detail-value">{t(`works.${work.id}.duration`, { defaultValue: work.duration || '' })}</span>
                     </div>
                     <div className="detail-item">
                       <span className="detail-label">{t('portfolio-team')}</span>
-                      <span className="detail-value">{projectStats.team}</span>
+                      <span className="detail-value">{projectStats.team ? `${projectStats.team.split(' ')[0]} ${t('developers')}` : ''}</span>
                     </div>
                     <div className="detail-item">
                       <span className="detail-label">{t('portfolio-status')}</span>
@@ -306,4 +312,6 @@ export default function PortfolioModal({ work, onClose }) {
       </div>
     </div>
   );
-}
+});
+
+export default PortfolioModal;

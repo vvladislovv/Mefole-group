@@ -13,7 +13,7 @@ export const Hero = ({ sectionRefs }) => {
     return (
         <div className='heroContainer'>
             <FadeInSection animation="fade-scale" duration={1.2}>
-                <span className='heroTitle'>ХАКТАЙКА</span>
+                <span className='heroTitle animated-title'>{t('brand-name')}</span>
                 <div className="contact-banner" onClick={() => setIsModalOpen(true)}>
                     <div className="contact-banner-content">
                         <span className="contact-banner-title">{t('contact-us-banner')}</span>

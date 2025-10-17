@@ -9,8 +9,8 @@ export const SEOHelmet = () => {
 
     // Update document title
     document.title = isEnglish
-      ? "ХакТайка - Website Development, Mobile Apps & Web Services"
-      : "ХакТайка - Разработка сайтов, мобильных приложений и веб-сервисов";
+      ? `${t('brand-name')} - Website Development, Mobile Apps & Web Services`
+      : `${t('brand-name')} - Разработка сайтов, мобильных приложений и веб-сервисов`;
 
     // Update meta description
     const metaDescription = document.querySelector('meta[name="description"]');
@@ -18,8 +18,8 @@ export const SEOHelmet = () => {
       metaDescription.setAttribute(
         "content",
         isEnglish
-          ? "ХакТайка - Professional website development, mobile applications, web services and IT solutions. We create modern digital products for your business."
-          : "ХакТайка - профессиональная разработка сайтов, мобильных приложений, веб-сервисов и IT-решений. Создаем современные цифровые продукты для вашего бизнеса."
+          ? `${t('brand-name')} - Professional website development, mobile applications, web services and IT solutions. We create modern digital products for your business.`
+          : `${t('brand-name')} - профессиональная разработка сайтов, мобильных приложений, веб-сервисов и IT-решений. Создаем современные цифровые продукты для вашего бизнеса.`
       );
     }
 
@@ -29,8 +29,8 @@ export const SEOHelmet = () => {
       metaKeywords.setAttribute(
         "content",
         isEnglish
-          ? "website development, web development, mobile apps, IT services, programming, web design, ХакТайка, custom development, technical specification"
-          : "разработка сайтов, создание сайтов, мобильные приложения, веб-разработка, IT-услуги, программирование, веб-дизайн, ХакТайка, разработка под ключ, техническое задание"
+          ? `website development, web development, mobile apps, IT services, programming, web design, ${t('brand-name')}, custom development, technical specification`
+          : `разработка сайтов, создание сайтов, мобильные приложения, веб-разработка, IT-услуги, программирование, веб-дизайн, ${t('brand-name')}, разработка под ключ, техническое задание`
       );
     }
 
@@ -40,8 +40,8 @@ export const SEOHelmet = () => {
       ogTitle.setAttribute(
         "content",
         isEnglish
-          ? "ХакТайка - Website Development & Mobile Apps"
-          : "ХакТайка - Разработка сайтов и мобильных приложений"
+          ? `${t('brand-name')} - Website Development & Mobile Apps`
+          : `${t('brand-name')} - Разработка сайтов и мобильных приложений`
       );
     }
 

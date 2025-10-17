@@ -1,9 +1,9 @@
-import { forwardRef, useEffect, useRef, useState } from 'react';
+import React, { forwardRef, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { reviews } from '../data/reviews';
 import './css/reviews.css';
 
-export const Reviews = forwardRef((props, ref) => {
+export const Reviews = React.memo(forwardRef((props, ref) => {
     const {t} = useTranslation();
     const scrollRef = useRef(null);
     const [isMobile, setIsMobile] = useState(false);
@@ -25,7 +25,7 @@ export const Reviews = forwardRef((props, ref) => {
     }, []);
 
     // Простая функция скролла
-    const scrollToCard = (cardIndex) => {
+    const scrollToCard = useCallback((cardIndex) => {
         const container = scrollRef.current;
         const cards = container?.querySelectorAll(".reviews-card");
         const card = cards?.[cardIndex];
@@ -40,16 +40,16 @@ export const Reviews = forwardRef((props, ref) => {
                 behavior: "smooth"
             });
         }
-    };
+    }, []);
 
-    const scrollToPage = (pageIndex) => {
+    const scrollToPage = useCallback((pageIndex) => {
         const targetIndex = pageIndex * cardsPerPage;
         setCurrentPage(pageIndex);
         scrollToCard(targetIndex);
-    };
+    }, [cardsPerPage, scrollToCard]);
 
     // Простые кнопки навигации
-    const handlePrev = () => {
+    const handlePrev = useCallback(() => {
         if (isMobile) {
             const currentIndex = reviews.findIndex(r => r.id === selected_review_id);
             const newIndex = Math.max(currentIndex - 1, 0);
@@ -58,9 +58,9 @@ export const Reviews = forwardRef((props, ref) => {
         } else {
             setCurrentPage(prev => Math.max(0, prev - 1));
         }
-    };
+    }, [isMobile, selected_review_id, scrollToCard]);
 
-    const handleNext = () => {
+    const handleNext = useCallback(() => {
         if (isMobile) {
             const currentIndex = reviews.findIndex(r => r.id === selected_review_id);
             const newIndex = Math.min(currentIndex + 1, reviews.length - 1);
@@ -71,10 +71,10 @@ export const Reviews = forwardRef((props, ref) => {
             const totalDesktopPages = Math.ceil(reviews.length / reviewsPerPage);
             setCurrentPage(prev => Math.min(totalDesktopPages - 1, prev + 1));
         }
-    };
+    }, [isMobile, selected_review_id, scrollToCard]);
 
     // Логика для десктопа
-    const getCurrentReviews = () => {
+    const getCurrentReviews = useMemo(() => {
         if (isMobile) {
             return reviews;
         } else {
@@ -82,9 +82,9 @@ export const Reviews = forwardRef((props, ref) => {
             const startIndex = currentPage * reviewsPerPage;
             return reviews.slice(startIndex, startIndex + reviewsPerPage);
         }
-    };
+    }, [isMobile, currentPage]);
 
-    const getVisibleDots = () => {
+    const getVisibleDots = useMemo(() => {
         const totalPagesToShow = isMobile ? totalPages : Math.ceil(reviews.length / 4);
         const maxDotsToShow = isMobile ? maxDots : totalPagesToShow;
         
@@ -101,7 +101,7 @@ export const Reviews = forwardRef((props, ref) => {
         }
         
         return [currentPage - 1, currentPage, currentPage + 1];
-    };
+    }, [isMobile, totalPages, maxDots, currentPage]);
     return (
         <div ref={ref} className="reviews-container">
             <h3 className="reviews-title">{t('reviews-title')}</h3>
@@ -122,8 +122,10 @@ export const Reviews = forwardRef((props, ref) => {
                                                 <img
                                                     key={i}
                                                     src={i < rating ? "/icons/StarFilled.png" : "/icons/StarOutlined.png"}
-                                                    alt="Звезда"
+                                                    alt={t('star')}
                                                     className="star-icon"
+                                                    loading="lazy"
+                                                    decoding="async"
                                                 />
                                             ))}
                                         </div>
@@ -150,7 +152,7 @@ export const Reviews = forwardRef((props, ref) => {
                         className="prev-button"
                         disabled={selected_review_id === reviews[0]?.id}
                     >
-                        <img src="/arrow-left.png" alt="Стрелка влево" />
+                        <img src="/arrow-left.png" alt={t('arrow-left')} loading="lazy" />
                     </button>
 
                     <button
@@ -158,11 +160,11 @@ export const Reviews = forwardRef((props, ref) => {
                         className="next-button"
                         disabled={selected_review_id === reviews[reviews.length - 1]?.id}
                     >
-                        <img src="/arrow-right.png" alt="Стрелка вправо" />
+                        <img src="/arrow-right.png" alt={t('arrow-right')} loading="lazy" />
                     </button>
 
                     <div className='scrolls'>
-                        {getVisibleDots().map((i) => (
+                        {getVisibleDots.map((i) => (
                             <div
                                 key={i}
                                 onClick={() => scrollToPage(i)}
@@ -175,17 +177,19 @@ export const Reviews = forwardRef((props, ref) => {
                 // ДЕСКТОПНАЯ ВЕРСИЯ - НОВЫЙ ФОРМАТ
                 <>
                     <div className="reviews-grid">
-                        {getCurrentReviews().map(({id, photo, rating}, index) => (
+                        {getCurrentReviews.map(({id, photo, rating}, index) => (
                             <div key={`${currentPage}-${id}`} className="reviews-card">
                                 <div className="review-content">
                                     <div className="stars">
                                         {[...Array(5)].map((_, i) => (
-                                            <img
-                                                key={i}
-                                                src={i < rating ? "/icons/StarFilled.png" : "/icons/StarOutlined.png"}
-                                                alt="Звезда"
-                                                className="star-icon"
-                                            />
+                                        <img
+                                            key={i}
+                                            src={i < rating ? "/icons/StarFilled.png" : "/icons/StarOutlined.png"}
+                                            alt={t('star')}
+                                            className="star-icon"
+                                            loading="lazy"
+                                            decoding="async"
+                                        />
                                         ))}
                                     </div>
                                     <p className="reviews-text">
@@ -212,11 +216,11 @@ export const Reviews = forwardRef((props, ref) => {
                                 onClick={handlePrev}
                                 disabled={currentPage === 0}
                             >
-                                <img src="/arrow-left.png" alt="Предыдущая страница" />
+                                <img src="/arrow-left.png" alt={t('previous-page')} loading="lazy" />
                             </button>
                             
                             <div className="reviews-page-indicators">
-                                {getVisibleDots().map((index) => (
+                                {getVisibleDots.map((index) => (
                                     <button
                                         key={index}
                                         className={`reviews-page-dot ${index === currentPage ? 'active' : ''}`}
@@ -230,7 +234,7 @@ export const Reviews = forwardRef((props, ref) => {
                                 onClick={handleNext}
                                 disabled={currentPage === Math.ceil(reviews.length / 4) - 1}
                             >
-                                <img src="/arrow-right.png" alt="Следующая страница" />
+                                <img src="/arrow-right.png" alt={t('next-page')} loading="lazy" />
                             </button>
                         </div>
                     )}
@@ -238,4 +242,4 @@ export const Reviews = forwardRef((props, ref) => {
             )}
         </div>
     )
-})
+}));

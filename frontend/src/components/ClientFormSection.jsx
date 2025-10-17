@@ -16,7 +16,7 @@ export const ClientFormSection = forwardRef((props, ref) => {
   // Полный код для анимации печатания
   const fullCode = `# Создание проекта с нашей командой
 project_config = {
-    "name": "ваш_проект",
+    "name": "your_project",
     "type": "e-commerce",
     "budget": 500000,
     "timeline": "3 месяца",
@@ -29,7 +29,7 @@ def create_project(config):
     
     # Валидация конфигурации
     if not config.get("name") or not config.get("budget"):
-        raise ValueError("Неполная конфигурация проекта")
+        raise ValueError("Incomplete project configuration")
     
     # Расчет стоимости
     base_price = config["budget"]
@@ -209,32 +209,34 @@ print("✅ Проект создан:", result)`;
 
   // Intersection Observer для отслеживания появления секции
   useEffect(() => {
-    observerRef.current = new IntersectionObserver(
+    const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !isVisible) {
           setIsVisible(true);
           startTyping();
+          // Отключаем observer после первого срабатывания
+          observer.disconnect();
         }
       },
       { threshold: 0.3 }
     );
 
+    observerRef.current = observer;
+
     if (ref?.current) {
-      observerRef.current.observe(ref.current);
+      observer.observe(ref.current);
     }
 
     return () => {
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-      }
+      observer.disconnect();
     };
-  }, [isVisible, ref, startTyping]);
+  }, [isVisible, ref, startTyping]); // Добавляем необходимые зависимости
 
   return (
     <div ref={ref} className="client-form-section">
       <div className="form-section-container">
         <div className="form-section-content">
-          <h2 className="form-section-title">{t('blog-title')}</h2>
+          <h2 className="form-section-title animated-title">{t('blog-title')}</h2>
           <p className="form-section-subtitle">{t('blog-subtitle')}</p>
           
           <div className="form-section-features">

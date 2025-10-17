@@ -18,7 +18,7 @@ export default function BlogModal({ post, onClose }) {
   return (
     <div className={`blogmodal-overlay ${isVisible ? 'visible' : ''}`} onClick={onClose}>
       <div className={`blogmodal-content ${isVisible ? 'visible' : ''}`} onClick={(e) => e.stopPropagation()}>
-        <button className="blogmodal-close" onClick={onClose} aria-label="Закрыть">×</button>
+        <button className="blogmodal-close" onClick={onClose} aria-label={t('close')}>×</button>
 
         <div className="blogmodal-cover">
           <img src={post.cover} alt={post.title} />
@@ -60,5 +60,8 @@ export default function BlogModal({ post, onClose }) {
     </div>
   );
 }
+
+
+
 
 

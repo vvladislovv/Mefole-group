@@ -10,11 +10,8 @@ export default function useInView(options = {}) {
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         setInView(true);
-        // Отключаем наблюдатель только после небольшой задержки
-        // чтобы анимация успела запуститься
-        setTimeout(() => {
-          observer.disconnect();
-        }, 100);
+        // Отключаем наблюдатель сразу после срабатывания
+        observer.disconnect();
       }
     }, {
       threshold: options.threshold || 0.1,
@@ -25,7 +22,7 @@ export default function useInView(options = {}) {
     observer.observe(ref.current);
 
     return () => observer.disconnect();
-  }, [options]);
+  }, [options]); // Используем весь объект options
 
   return [ref, inView];
 }

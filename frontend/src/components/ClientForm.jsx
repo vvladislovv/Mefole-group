@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { apiClient } from '../api/client';
 import './css/ClientForm.css';
 
-export default function ClientForm({ onClose }) {
+const ClientForm = React.memo(function ClientForm({ onClose }) {
   const { t } = useTranslation();
   const [currentStep, setCurrentStep] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -54,80 +54,103 @@ export default function ClientForm({ onClose }) {
     };
   }, []);
 
-  const projectTypes = [
-    'Веб-сайт',
-    'Мобильное приложение', 
-    'Telegram-бот',
-    'E-commerce платформа',
-    'Корпоративный портал',
-    'Лендинг страница',
-    'CRM система',
-    'API разработка',
-    'Парсер данных',
-    'Другое'
-  ];
+  const projectTypes = useMemo(() => [
+    t('blog-project-types.0'),
+    t('blog-project-types.1'), 
+    t('blog-project-types.2'),
+    t('blog-project-types.3'),
+    t('blog-project-types.4'),
+    t('blog-project-types.5'),
+    t('blog-project-types.6'),
+    t('blog-project-types.7'),
+    t('blog-project-types.8'),
+    t('blog-project-types.9')
+  ], [t]);
 
-  const platforms = [
-    'Веб (браузер)',
-    'iOS',
-    'Android', 
-    'Кроссплатформенное',
-    'Desktop приложение',
-    'Telegram Mini App',
-    'Не знаю'
-  ];
+  const platforms = useMemo(() => [
+    t('blog-platforms.0'),
+    t('blog-platforms.1'),
+    t('blog-platforms.2'), 
+    t('blog-platforms.3'),
+    t('blog-platforms.4'),
+    t('blog-platforms.5'),
+    t('blog-platforms.6')
+  ], [t]);
 
-  const integrationOptions = [
-    'Платежные системы',
-    'CRM системы',
-    'Email рассылки',
-    'Социальные сети',
-    'Аналитика (Google Analytics, Яндекс.Метрика)',
-    'Базы данных',
-    'API сторонних сервисов',
-    'SMS уведомления',
-    'Другое'
-  ];
+  const integrationOptions = useMemo(() => [
+    t('blog-integration-options.0'),
+    t('blog-integration-options.1'),
+    t('blog-integration-options.2'),
+    t('blog-integration-options.3'),
+    t('blog-integration-options.4'),
+    t('blog-integration-options.5'),
+    t('blog-integration-options.6'),
+    t('blog-integration-options.7'),
+    t('blog-integration-options.8')
+  ], [t]);
 
-  const designRequirementsOptions = [
-    'Современный минималистичный дизайн',
-    'Корпоративный стиль',
-    'Креативный/нестандартный дизайн',
-    'Адаптивный дизайн для всех устройств',
-    'Дизайн в стиле существующего бренда',
-    'Другое'
-  ];
+  const integrationKeys = useMemo(() => [
+    'blog-integration-options.0',
+    'blog-integration-options.1',
+    'blog-integration-options.2',
+    'blog-integration-options.3',
+    'blog-integration-options.4',
+    'blog-integration-options.5',
+    'blog-integration-options.6',
+    'blog-integration-options.7',
+    'blog-integration-options.8'
+  ], []);
 
-  const budgetRanges = [
-    'До 100,000 ₽',
-    '100,000 - 300,000 ₽', 
-    '300,000 - 500,000 ₽',
-    '500,000 - 1,000,000 ₽',
-    'Свыше 1,000,000 ₽',
-    'Обсуждается'
-  ];
+  const designRequirementsOptions = useMemo(() => [
+    t('blog-design-requirements-options.0'),
+    t('blog-design-requirements-options.1'),
+    t('blog-design-requirements-options.2'),
+    t('blog-design-requirements-options.3'),
+    t('blog-design-requirements-options.4'),
+    t('blog-design-requirements-options.5')
+  ], [t]);
 
-  const timelineOptions = [
-    'До 1 месяца',
-    '1-3 месяца',
-    '3-6 месяцев', 
-    '6-12 месяцев',
-    'Свыше года',
-    'Обсуждается'
-  ];
+  const budgetRanges = useMemo(() => [
+    t('blog-budgets.0'),
+    t('blog-budgets.1'), 
+    t('blog-budgets.2'),
+    t('blog-budgets.3'),
+    t('blog-budgets.4'),
+    t('blog-budgets.5')
+  ], [t]);
 
-  const priorityFeaturesOptions = [
-    'Быстрая загрузка',
-    'Мобильная адаптация',
-    'SEO оптимизация',
-    'Безопасность',
-    'Масштабируемость',
-    'Интеграции',
-    'Админ панель',
-    'Другое'
-  ];
+  const timelineOptions = useMemo(() => [
+    t('blog-timelines.0'),
+    t('blog-timelines.1'),
+    t('blog-timelines.2'), 
+    t('blog-timelines.3'),
+    t('blog-timelines.4'),
+    t('blog-timelines.5')
+  ], [t]);
 
-  const handleInputChange = (field, value) => {
+  const priorityFeaturesOptions = useMemo(() => [
+    t('blog-priority-features-options.0'),
+    t('blog-priority-features-options.1'),
+    t('blog-priority-features-options.2'),
+    t('blog-priority-features-options.3'),
+    t('blog-priority-features-options.4'),
+    t('blog-priority-features-options.5'),
+    t('blog-priority-features-options.6'),
+    t('blog-priority-features-options.7')
+  ], [t]);
+
+  const priorityFeaturesKeys = useMemo(() => [
+    'blog-priority-features-options.0',
+    'blog-priority-features-options.1',
+    'blog-priority-features-options.2',
+    'blog-priority-features-options.3',
+    'blog-priority-features-options.4',
+    'blog-priority-features-options.5',
+    'blog-priority-features-options.6',
+    'blog-priority-features-options.7'
+  ], []);
+
+  const handleInputChange = useCallback((field, value) => {
     setFormData(prev => ({
       ...prev,
       [field]: value
@@ -140,76 +163,73 @@ export default function ClientForm({ onClose }) {
         [field]: ''
       }));
     }
-  };
+  }, [errors]);
 
-  const handleArrayChange = (field, value, checked) => {
+  const handleArrayChange = useCallback((field, value, checked) => {
     setFormData(prev => ({
       ...prev,
       [field]: checked 
         ? [...prev[field], value]
         : prev[field].filter(item => item !== value)
     }));
-  };
+  }, []);
 
   const validateStep = (step) => {
     const newErrors = {};
 
     if (step === 1) {
-      if (!formData.projectType) newErrors.projectType = 'Выберите тип проекта';
-      if (formData.projectType === 'Другое' && !formData.projectTypeOther.trim()) {
-        newErrors.projectTypeOther = 'Укажите тип проекта';
+      if (!formData.projectType) newErrors.projectType = t('validation.select-project-type');
+      if (formData.projectType === t('blog-project-types.9') && !formData.projectTypeOther.trim()) {
+        newErrors.projectTypeOther = t('validation.specify-project-type');
       }
       if (!formData.projectDescription.trim()) {
-        newErrors.projectDescription = 'Опишите ваш проект';
+        newErrors.projectDescription = t('validation.describe-project');
       }
       if (formData.projectDescription.trim().length < 10) {
-        newErrors.projectDescription = 'Минимум 10 символов';
+        newErrors.projectDescription = t('validation.min-10-chars');
       }
       if (!formData.targetAudience.trim()) {
-        newErrors.targetAudience = 'Опишите целевую аудиторию';
+        newErrors.targetAudience = t('validation.describe-target-audience');
       }
     } else if (step === 2) {
-      if (!formData.platform) newErrors.platform = 'Выберите платформу';
+      if (!formData.platform) newErrors.platform = t('validation.select-platform');
       if (formData.integrations.length === 0) {
-        newErrors.integrations = 'Выберите хотя бы одну интеграцию';
+        newErrors.integrations = t('validation.select-integration');
       }
-      if (formData.integrations.includes('Другое') && !formData.integrationsOther.trim()) {
-        newErrors.integrationsOther = 'Укажите интеграции';
+      if (formData.integrations.includes('blog-integration-options.8') && !formData.integrationsOther.trim()) {
+        newErrors.integrationsOther = t('validation.specify-integrations');
       }
-      if (!formData.designRequirements) newErrors.designRequirements = 'Выберите требования к дизайну';
-      if (formData.designRequirements === 'Другое' && !formData.designRequirementsOther.trim()) {
-        newErrors.designRequirementsOther = 'Укажите требования к дизайну';
+      if (!formData.designRequirements) newErrors.designRequirements = t('validation.select-design-requirements');
+      if (formData.designRequirements === t('blog-design-requirements-options.5') && !formData.designRequirementsOther.trim()) {
+        newErrors.designRequirementsOther = t('validation.specify-design-requirements');
       }
     } else if (step === 3) {
-      if (!formData.budget) newErrors.budget = 'Выберите бюджет';
-      if (!formData.timeline) newErrors.timeline = 'Выберите сроки';
-      if (formData.priorityFeatures.length === 0) {
-        newErrors.priorityFeatures = 'Выберите приоритетные функции';
+      if (!formData.budget) newErrors.budget = t('validation.select-budget');
+      if (!formData.timeline) newErrors.timeline = t('validation.select-timeline');
+      if (formData.priorityFeatures.includes('blog-priority-features-options.7') && !formData.priorityFeaturesOther.trim()) {
+        newErrors.priorityFeaturesOther = t('validation.specify-priority-features');
       }
-      if (formData.priorityFeatures.includes('Другое') && !formData.priorityFeaturesOther.trim()) {
-        newErrors.priorityFeaturesOther = 'Укажите приоритетные функции';
-      }
-      if (!formData.name.trim()) newErrors.name = 'Введите ваше имя';
-      if (!formData.email.trim()) newErrors.email = 'Введите email';
-      if (!formData.phone.trim()) newErrors.phone = 'Введите телефон';
+      if (!formData.name.trim()) newErrors.name = t('validation.enter-name');
+      if (!formData.email.trim()) newErrors.email = t('validation.enter-email');
+      if (!formData.phone.trim()) newErrors.phone = t('validation.enter-phone');
       
       // Валидация email
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (formData.email && !emailRegex.test(formData.email)) {
-        newErrors.email = 'Неправильный формат email';
+        newErrors.email = t('validation.invalid-email');
       }
       
       // Валидация телефона
       const phoneRegex = /^[+]?[0-9\s\-()]{7,}$/;
       if (formData.phone && !phoneRegex.test(formData.phone)) {
-        newErrors.phone = 'Неправильный формат телефона';
+        newErrors.phone = t('validation.invalid-phone');
       }
       
       // Валидация Telegram username
       if (formData.telegram && formData.telegram.trim()) {
         const telegramRegex = /^@?[a-zA-Z0-9_]{5,32}$/;
         if (!telegramRegex.test(formData.telegram.trim())) {
-          newErrors.telegram = 'Неправильный формат Telegram username (например: @username или username)';
+          newErrors.telegram = t('validation.invalid-telegram');
         }
       }
     }
@@ -275,7 +295,7 @@ ${formData.priorityFeatures.join(', ')}${formData.priorityFeaturesOther ? ` (${f
         technical_task: technicalTask
       });
 
-      setSuccessMessage('Заявка успешно отправлена! Мы свяжемся с вами в течение 24 часов.');
+      setSuccessMessage(t('blog-success-message'));
       
       // Очищаем форму
       setFormData({
@@ -326,13 +346,13 @@ ${formData.priorityFeatures.join(', ')}${formData.priorityFeaturesOther ? ` (${f
         {errors.projectType && <span className="error-message">{errors.projectType}</span>}
       </div>
 
-      {formData.projectType === 'Другое' && (
+      {formData.projectType === t('blog-project-types.9') && (
         <div className="form-group">
           <input
             type="text"
             value={formData.projectTypeOther}
             onChange={(e) => handleInputChange('projectTypeOther', e.target.value)}
-            placeholder="Укажите тип проекта"
+            placeholder={t('blog-project-type-other')}
             className={`form-input ${errors.projectTypeOther ? 'error' : ''}`}
           />
           {errors.projectTypeOther && <span className="error-message">{errors.projectTypeOther}</span>}
@@ -356,7 +376,7 @@ ${formData.priorityFeatures.join(', ')}${formData.priorityFeaturesOther ? ` (${f
         <textarea
           value={formData.targetAudience}
           onChange={(e) => handleInputChange('targetAudience', e.target.value)}
-          placeholder="Опишите вашу целевую аудиторию"
+          placeholder={t('blog-target-audience-placeholder')}
           rows="3"
           className={`form-textarea ${errors.targetAudience ? 'error' : ''}`}
         />
@@ -388,12 +408,12 @@ ${formData.priorityFeatures.join(', ')}${formData.priorityFeaturesOther ? ` (${f
       <div className="form-group">
         <label className="form-label">{t('blog-integrations')} *</label>
         <div className="checkbox-group">
-          {integrationOptions.map(option => (
-            <label key={option} className="checkbox-label">
+          {integrationOptions.map((option, index) => (
+            <label key={integrationKeys[index]} className="checkbox-label">
               <input
                 type="checkbox"
-                checked={formData.integrations.includes(option)}
-                onChange={(e) => handleArrayChange('integrations', option, e.target.checked)}
+                checked={formData.integrations.includes(integrationKeys[index])}
+                onChange={(e) => handleArrayChange('integrations', integrationKeys[index], e.target.checked)}
               />
               <span className="checkbox-text">{option}</span>
             </label>
@@ -402,13 +422,13 @@ ${formData.priorityFeatures.join(', ')}${formData.priorityFeaturesOther ? ` (${f
         {errors.integrations && <span className="error-message">{errors.integrations}</span>}
       </div>
 
-      {formData.integrations.includes('Другое') && (
+      {formData.integrations.includes('blog-integration-options.8') && (
         <div className="form-group">
           <input
             type="text"
             value={formData.integrationsOther}
             onChange={(e) => handleInputChange('integrationsOther', e.target.value)}
-            placeholder="Укажите другие интеграции"
+            placeholder={t('blog-integrations-other')}
             className={`form-input ${errors.integrationsOther ? 'error' : ''}`}
           />
           {errors.integrationsOther && <span className="error-message">{errors.integrationsOther}</span>}
@@ -430,13 +450,13 @@ ${formData.priorityFeatures.join(', ')}${formData.priorityFeaturesOther ? ` (${f
         {errors.designRequirements && <span className="error-message">{errors.designRequirements}</span>}
       </div>
 
-      {formData.designRequirements === 'Другое' && (
+      {formData.designRequirements === t('blog-design-requirements-options.5') && (
         <div className="form-group">
           <input
             type="text"
             value={formData.designRequirementsOther}
             onChange={(e) => handleInputChange('designRequirementsOther', e.target.value)}
-            placeholder="Укажите требования к дизайну"
+            placeholder={t('blog-design-requirements-placeholder')}
             className={`form-input ${errors.designRequirementsOther ? 'error' : ''}`}
           />
           {errors.designRequirementsOther && <span className="error-message">{errors.designRequirementsOther}</span>}
@@ -483,27 +503,26 @@ ${formData.priorityFeatures.join(', ')}${formData.priorityFeaturesOther ? ` (${f
       <div className="form-group">
         <label className="form-label">{t('blog-priority-features')} *</label>
         <div className="checkbox-group">
-          {priorityFeaturesOptions.map(option => (
-            <label key={option} className="checkbox-label">
+          {priorityFeaturesOptions.map((option, index) => (
+            <label key={priorityFeaturesKeys[index]} className="checkbox-label">
               <input
                 type="checkbox"
-                checked={formData.priorityFeatures.includes(option)}
-                onChange={(e) => handleArrayChange('priorityFeatures', option, e.target.checked)}
+                checked={formData.priorityFeatures.includes(priorityFeaturesKeys[index])}
+                onChange={(e) => handleArrayChange('priorityFeatures', priorityFeaturesKeys[index], e.target.checked)}
               />
               <span className="checkbox-text">{option}</span>
             </label>
           ))}
         </div>
-        {errors.priorityFeatures && <span className="error-message">{errors.priorityFeatures}</span>}
       </div>
 
-      {formData.priorityFeatures.includes('Другое') && (
+      {formData.priorityFeatures.includes('blog-priority-features-options.7') && (
         <div className="form-group">
           <input
             type="text"
             value={formData.priorityFeaturesOther}
             onChange={(e) => handleInputChange('priorityFeaturesOther', e.target.value)}
-            placeholder="Укажите другие приоритетные функции"
+            placeholder={t('blog-priority-features-other')}
             className={`form-input ${errors.priorityFeaturesOther ? 'error' : ''}`}
           />
           {errors.priorityFeaturesOther && <span className="error-message">{errors.priorityFeaturesOther}</span>}
@@ -519,7 +538,7 @@ ${formData.priorityFeatures.join(', ')}${formData.priorityFeaturesOther ? ` (${f
           type="text"
           value={formData.name}
           onChange={(e) => handleInputChange('name', e.target.value)}
-          placeholder="Ваше имя"
+          placeholder={t('blog-name')}
           className={`form-input ${errors.name ? 'error' : ''}`}
         />
         {errors.name && <span className="error-message">{errors.name}</span>}
@@ -555,18 +574,18 @@ ${formData.priorityFeatures.join(', ')}${formData.priorityFeaturesOther ? ` (${f
           type="text"
           value={formData.company}
           onChange={(e) => handleInputChange('company', e.target.value)}
-          placeholder="Название компании (необязательно)"
+          placeholder={t('blog-company-placeholder')}
           className="form-input"
         />
       </div>
 
       <div className="form-group">
-        <label className="form-label">Telegram username</label>
+        <label className="form-label">{t('blog-telegram-username')}</label>
         <input
           type="text"
           value={formData.telegram}
           onChange={(e) => handleInputChange('telegram', e.target.value)}
-          placeholder="@username или username (необязательно)"
+          placeholder={t('blog-telegram-placeholder')}
           className={`form-input ${errors.telegram ? 'error' : ''}`}
         />
         {errors.telegram && <span className="error-message">{errors.telegram}</span>}
@@ -602,7 +621,7 @@ ${formData.priorityFeatures.join(', ')}${formData.priorityFeaturesOther ? ` (${f
             />
           </div>
           <div className="step-indicator">
-            Шаг {currentStep} из 3
+{t('blog-step')} {currentStep} {t('blog-of')} 3
           </div>
         </div>
 
@@ -645,10 +664,12 @@ ${formData.priorityFeatures.join(', ')}${formData.priorityFeaturesOther ? ` (${f
         {successMessage && <p className="message success">{successMessage}</p>}
         {errorMessage && <p className="message error">{errorMessage}</p>}
         
-        <button className="modal-close" onClick={onClose} aria-label="Закрыть">
+        <button className="modal-close" onClick={onClose} aria-label={t('close')}>
           &times;
         </button>
       </div>
     </div>
   );
-}
+});
+
+export default ClientForm;

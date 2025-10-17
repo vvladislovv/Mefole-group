@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { useTranslation } from 'react-i18next';
 import './css/serviceModal.css';
 import Modal from './ModalForm';
 
-export default function ServiceModal({ service, onClose }) {
+const ServiceModal = React.memo(function ServiceModal({ service, onClose }) {
   const { t } = useTranslation();
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
@@ -25,20 +25,19 @@ export default function ServiceModal({ service, onClose }) {
     };
   }, []);
 
-  const handleOrder = () => {
+  const handleOrder = useCallback(() => {
     setIsOrderModalOpen(true);
-  };
+  }, []);
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setIsVisible(false);
     setTimeout(() => onClose(), 300);
-  };
+  }, [onClose]);
 
   const tabs = [
     { id: 'overview', label: 'service-overview', icon: '📄' },
     { id: 'features', label: 'service-features', icon: '⭐' },
-    { id: 'process', label: 'service-process', icon: '⚙️' },
-    { id: 'benefits', label: 'service-benefits', icon: '💡' }
+    { id: 'process', label: 'service-process', icon: '⚙️' }
   ];
 
   return (
@@ -93,27 +92,6 @@ export default function ServiceModal({ service, onClose }) {
                   </div>
                 )}
               </div>
-              
-              <div className="service-modal-why-choose">
-                <h3>{t('service-why-choose')}</h3>
-                <div className="why-choose-grid">
-                  <div className="why-choose-item">
-                    <div className="why-choose-icon">⚡</div>
-                    <h4>{t('service-fast-delivery')}</h4>
-                    <p>{t('service-fast-delivery-desc')}</p>
-                  </div>
-                  <div className="why-choose-item">
-                    <div className="why-choose-icon">💎</div>
-                    <h4>{t('service-high-quality')}</h4>
-                    <p>{t('service-high-quality-desc')}</p>
-                  </div>
-                  <div className="why-choose-item">
-                    <div className="why-choose-icon">🛡️</div>
-                    <h4>{t('service-support')}</h4>
-                    <p>{t('service-support-desc')}</p>
-                  </div>
-                </div>
-              </div>
             </div>
           )}
 
@@ -153,35 +131,6 @@ export default function ServiceModal({ service, onClose }) {
             </div>
           )}
 
-          {activeTab === 'benefits' && (
-            <div className="service-modal-tab-content">
-              <div className="service-modal-benefits">
-                <h3>{t('service-benefits-title')}</h3>
-                <div className="benefits-grid">
-                  <div className="benefit-item">
-                    <div className="benefit-icon">📊</div>
-                    <h4>{t('service-benefit-1-title')}</h4>
-                    <p>{t('service-benefit-1-desc')}</p>
-                  </div>
-                  <div className="benefit-item">
-                    <div className="benefit-icon">💵</div>
-                    <h4>{t('service-benefit-2-title')}</h4>
-                    <p>{t('service-benefit-2-desc')}</p>
-                  </div>
-                  <div className="benefit-item">
-                    <div className="benefit-icon">⚡</div>
-                    <h4>{t('service-benefit-3-title')}</h4>
-                    <p>{t('service-benefit-3-desc')}</p>
-                  </div>
-                  <div className="benefit-item">
-                    <div className="benefit-icon">🎨</div>
-                    <h4>{t('service-benefit-4-title')}</h4>
-                    <p>{t('service-benefit-4-desc')}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
         </div>
 
         <div className="service-modal-footer">
@@ -207,4 +156,6 @@ export default function ServiceModal({ service, onClose }) {
       </div>
     </div>
   );
-}
+});
+
+export default ServiceModal;
