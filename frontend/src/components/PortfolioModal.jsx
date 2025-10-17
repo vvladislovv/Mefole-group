@@ -67,6 +67,7 @@ const PortfolioModal = React.memo(function PortfolioModal({ work, onClose }) {
   // Уникальная статистика для каждого проекта
   const getProjectStats = (workId) => {
     const statsMap = {
+      // Web Development Projects
       1: { users: "15,000+", rating: 4.9, completion: "100%", team: "4 разработчика" },
       2: { users: "8,500+", rating: 4.7, completion: "100%", team: "3 разработчика" },
       3: { users: "22,000+", rating: 4.8, completion: "100%", team: "5 разработчиков" },
@@ -75,7 +76,18 @@ const PortfolioModal = React.memo(function PortfolioModal({ work, onClose }) {
       6: { users: "12,000+", rating: 4.7, completion: "100%", team: "3 разработчика" },
       7: { users: "28,000+", rating: 4.8, completion: "100%", team: "4 разработчика" },
       8: { users: "5,500+", rating: 4.5, completion: "100%", team: "2 разработчика" },
-      9: { users: "18,000+", rating: 4.6, completion: "100%", team: "3 разработчика" }
+      9: { users: "18,000+", rating: 4.6, completion: "100%", team: "3 разработчика" },
+      // Mobile Apps
+      24: { downloads: "85k", rating: 4.8, users: "12,500+", team: "3 разработчика" },
+      25: { downloads: "42k", rating: 4.6, users: "8,200+", team: "2 разработчика" },
+      26: { downloads: "156k", rating: 4.7, users: "28,000+", team: "4 разработчика" },
+      27: { downloads: "73k", rating: 4.5, users: "15,600+", team: "3 разработчика" },
+      28: { downloads: "234k", rating: 4.9, users: "45,000+", team: "5 разработчиков" },
+      29: { downloads: "67k", rating: 4.4, users: "9,800+", team: "3 разработчика" },
+      30: { downloads: "189k", rating: 4.6, users: "32,000+", team: "4 разработчика" },
+      31: { downloads: "312k", rating: 4.8, users: "58,000+", team: "6 разработчиков" },
+      33: { downloads: "28k", rating: 4.3, users: "5,200+", team: "2 разработчика" },
+      34: { downloads: "15k", rating: 4.2, users: "3,100+", team: "2 разработчика" }
     };
     return statsMap[workId] || { users: "5,000+", rating: 4.8, completion: "100%", team: "3 разработчика" };
   };
@@ -140,7 +152,7 @@ const PortfolioModal = React.memo(function PortfolioModal({ work, onClose }) {
             <div className="project-rating">
               <div className="stars">
                 {[...Array(5)].map((_, i) => (
-                  <span key={i} className={`star ${i < Math.floor(projectStats.rating) ? 'filled' : ''}`}>★</span>
+                  <span key={i} className={`star ${i < Math.floor(projectStats.rating) ? 'filled' : ''}`}>⭐</span>
                 ))}
               </div>
               <span className="rating-text">{projectStats.rating}/5</span>
@@ -154,8 +166,12 @@ const PortfolioModal = React.memo(function PortfolioModal({ work, onClose }) {
           <div className="stat-item">
             <div className="stat-icon">👤</div>
             <div className="stat-content">
-              <span className="stat-number">{projectStats.users}</span>
-              <span className="stat-label">{t('portfolio-users')}</span>
+              <span className="stat-number">
+                {work.categoryKey === 'category.mobile-apps' ? projectStats.downloads : projectStats.users}
+              </span>
+              <span className="stat-label">
+                {work.categoryKey === 'category.mobile-apps' ? t('portfolio-downloads') : t('portfolio-users')}
+              </span>
             </div>
           </div>
           <div className="stat-item">
