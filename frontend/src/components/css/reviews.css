@@ -238,27 +238,7 @@
     position: relative;
 }
 
-.reviews-text::before {
-    content: '"';
-    position: absolute;
-    top: -10px;
-    left: -5px;
-    font-size: 48px;
-    color: var(--color-green);
-    opacity: 0.3;
-    font-family: serif;
-}
-
-.reviews-text::after {
-    content: '"';
-    position: absolute;
-    bottom: -20px;
-    right: -5px;
-    font-size: 48px;
-    color: var(--color-green);
-    opacity: 0.3;
-    font-family: serif;
-}
+/* Убрали зеленые кавычки */
 
 /* Информация о пользователе */
 .user-card {

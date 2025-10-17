@@ -173,54 +173,79 @@
   "reviews-title": "REVIEWS",
   "review-cards": {
     "1": {
-      "name": "Alexey Ivanov",
-      "position": "Marketer, DigitalPro",
-      "text": "Excellent work! The team quickly understood the task, offered a modern solution and met all deadlines. The result exceeded expectations."
+      "name": "Alex K.",
+      "position": "E-commerce Director",
+      "text": "Great job! They made an excellent website quickly and professionally, exactly as agreed. I especially liked that they considered all my design preferences. Highly recommend!"
     },
     "2": {
-      "name": "Svetlana Petrova",
-      "position": "Founder, BeautyLine",
-      "text": "The website turned out modern and user-friendly. I especially appreciated the attention to detail and prompt feedback at all stages."
+      "name": "Maria S.",
+      "position": "Marketing Lead",
+      "text": "Good work! In the end, everything was done right, the site works stably. Communication was at a good level, responsive team."
     },
     "3": {
-      "name": "Igor Smirnov",
-      "position": "CTO, LogiTech",
-      "text": "Professional team with deep technical knowledge. The collaboration went smoothly, and the quality of work is top-notch."
+      "name": "Dmitry V.",
+      "position": "Entrepreneur",
+      "text": "Professional approach! Made a landing page, everything exactly according to specs. The design turned out modern, conversion increased 3 times. Thanks!"
     },
     "4": {
-      "name": "Anna Kim",
-      "position": "Project Manager, EventCity",
-      "text": "Complex project executed with quality. Excellent UX design, responsive layout and well-thought architecture."
+      "name": "Elena P.",
+      "position": "Development Director",
+      "text": "Overall not bad, but there's room for improvement. Design is good, but some functions don't work as expected. Support responds quickly."
     },
     "5": {
-      "name": "Michael Volkov",
-      "position": "CEO, TechStart",
-      "text": "The mobile app turned out exactly as we planned. Good communication and adherence to deadlines throughout the project."
+      "name": "Andrey M.",
+      "position": "IT Director",
+      "text": "Made a corporate website from scratch. All stages went smoothly, the team is professional. I especially liked the technical support after launch."
     },
     "6": {
-      "name": "Elena Morozova",
-      "position": "Marketing Director, FashionHub",
-      "text": "Quality work within budget and timeline. The team considered all our requirements and made useful suggestions."
+      "name": "Olga K.",
+      "position": "Beauty Salon Owner",
+      "text": "Super! The website turned out exactly as I wanted. Beautiful, convenient design, clients praise it. Fair price, met deadlines. Will contact again!"
     },
     "7": {
-      "name": "David Chen",
-      "position": "Founder, EcoSolutions",
-      "text": "Attentive approach to details and innovative solutions. The team delivered exactly what we wanted to achieve."
+      "name": "Sergey N.",
+      "position": "Project Manager",
+      "text": "Quality work! Process is well organized, professional team. In the end, excellent result, site works stably."
     },
     "8": {
-      "name": "Robert Taylor",
-      "position": "CTO, DataFlow",
-      "text": "Professional team with excellent technical skills. API integration and infrastructure setup went smoothly."
+      "name": "Anna L.",
+      "position": "Startup Co-founder",
+      "text": "Excellent team! Made an MVP, all functions work as needed. 24/7 support, always help solve any issues. Very satisfied!"
     },
     "9": {
-      "name": "Maria Garcia",
-      "position": "Owner, LocalBiz",
-      "text": "Great result! The website significantly improved our online presence. Recommend for serious projects."
+      "name": "Igor R.",
+      "position": "Restaurant Owner",
+      "text": "Worked with them on a restaurant website. Design turned out good, team considered all our wishes. Site works stably, clients are satisfied."
     },
     "10": {
-      "name": "Lisa Anderson",
-      "position": "Director, CreativeStudio",
-      "text": "Creative approach and quality technical execution. The design perfectly conveyed our brand concept."
+      "name": "Natalia T.",
+      "position": "Head of Marketing",
+      "text": "Made an online store from scratch. All stages went clearly, responsible team. Especially liked that they considered our business specifics."
+    },
+    "11": {
+      "name": "Vladimir S.",
+      "position": "IT Company CEO",
+      "text": "Best web studio I've worked with! Made a complex platform, fulfilled all technical requirements. Very professional team, recommend to everyone!"
+    },
+    "12": {
+      "name": "Tatiana M.",
+      "position": "Clinic Owner",
+      "text": "Good work, but there were moments that could be improved. Design turned out beautiful, but some functions were refined after launch."
+    },
+    "13": {
+      "name": "Maxim K.",
+      "position": "Entrepreneur",
+      "text": "Good work! The site turned out functional and convenient. Professional team, they considered all our wishes. Modern design, clients are satisfied with the result."
+    },
+    "14": {
+      "name": "Ekaterina V.",
+      "position": "Marketing Department Head",
+      "text": "Excellent! Made a landing page that brings leads every day. Modern design, thoughtful UX. Team is very attentive to details. 10/10!"
+    },
+    "15": {
+      "name": "Roman P.",
+      "position": "Auto Service Owner",
+      "text": "Made a website for auto service. Quality work, professional team. In the end, everything suited us, clients are happy with the new site."
     }
   },
   "portfolio-title": "PORTFOLIO",
