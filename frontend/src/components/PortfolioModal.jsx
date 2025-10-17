@@ -18,7 +18,11 @@ const PortfolioModal = React.memo(function PortfolioModal({ work, onClose }) {
   }, [onClose]);
 
   useEffect(() => {
-    // Блокируем скролл для всех устройств
+    // Сохраняем текущую позицию скролла
+    const scrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = '100%';
     document.body.style.overflow = 'hidden';
     document.body.classList.add('modal-open');
     
@@ -37,9 +41,13 @@ const PortfolioModal = React.memo(function PortfolioModal({ work, onClose }) {
     return () => {
       // Очищаем таймер
       clearTimeout(timeoutId);
-      // Восстанавливаем скролл
+      // Восстанавливаем скролл и позицию
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
       document.body.style.overflow = '';
       document.body.classList.remove('modal-open');
+      window.scrollTo(0, scrollY);
       document.removeEventListener('keydown', handleEscape);
     };
   }, [handleClose]); // Добавляем handleClose в зависимости

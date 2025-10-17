@@ -14,29 +14,29 @@ export const ClientFormSection = forwardRef((props, ref) => {
   const codeRef = useRef(null);
 
   // Полный код для анимации печатания
-  const fullCode = `# Создание проекта с нашей командой
+  const fullCode = `# Project creation with our team
 project_config = {
     "name": "your_project",
     "type": "e-commerce",
     "budget": 500000,
-    "timeline": "3 месяца",
+    "timeline": "3 months",
     "features": ["responsive", "seo", "analytics"]
 }
 
-# Функция создания проекта
+# Project creation function
 def create_project(config):
-    print("🚀 Начинаем создание проекта...")
+    print("🚀 Starting project creation...")
     
-    # Валидация конфигурации
+    # Configuration validation
     if not config.get("name") or not config.get("budget"):
         raise ValueError("Incomplete project configuration")
     
-    # Расчет стоимости
+    # Cost calculation
     base_price = config["budget"]
     features_count = len(config["features"])
     total_cost = base_price + (features_count * 50000)
     
-    # Создание проекта
+    # Project creation
     project = {
         "id": generate_id(),
         "name": config["name"],
@@ -46,24 +46,25 @@ def create_project(config):
         "created_at": datetime.now()
     }
     
-    # Отправка уведомления команде
+    # Sending notification to team
     notify_team(project)
     
     return project
 
-# Вспомогательные функции
+# Helper functions
 def generate_id():
     import uuid
     return str(uuid.uuid4())[:9]
 
 def notify_team(project):
-    print("📧 Уведомление отправлено команде")
-    # Отправка в Telegram бота
+    print("📧 Notification sent to team")
+    # Sending to Telegram bot
     send_to_telegram(project)
 
-# Запуск создания проекта
+# Starting project creation
 result = create_project(project_config)
-print("✅ Проект создан:", result)`;
+print("✅ Project created:", result)`;
+
 
   // Функция для разбивки кода на токены для подсветки
   const tokenizeCode = (code) => {
@@ -206,6 +207,7 @@ print("✅ Проект создан:", result)`;
       );
     });
   };
+
 
   // Intersection Observer для отслеживания появления секции
   useEffect(() => {

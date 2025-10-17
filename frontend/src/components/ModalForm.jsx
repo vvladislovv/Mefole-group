@@ -21,14 +21,22 @@ export default function Modal({ onClose, selectedServiceId }) {
   const [isTouched, setIsTouched] = useState({});
 
   useEffect(() => {
-    // Блокируем скролл для всех устройств
+    // Сохраняем текущую позицию скролла
+    const scrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = '100%';
     document.body.style.overflow = 'hidden';
     document.body.classList.add('modal-open');
     
     return () => {
-      // Восстанавливаем скролл
+      // Восстанавливаем скролл и позицию
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
       document.body.style.overflow = '';
       document.body.classList.remove('modal-open');
+      window.scrollTo(0, scrollY);
     };
   }, []);
 
