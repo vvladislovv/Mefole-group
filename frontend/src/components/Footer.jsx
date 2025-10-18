@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import "./css/footer.css";
 export const Footer = ({ sectionRefs }) => {
   const { t } = useTranslation();
@@ -43,6 +44,15 @@ export const Footer = ({ sectionRefs }) => {
             <img src="/icons/telegram.png" alt="telegram" />
           </a>
         </div>
+      </div>
+      <div className="legal-links">
+        <Link to="/privacy-policy" className="legal-link">
+          Политика конфиденциальности
+        </Link>
+        <span className="legal-separator">•</span>
+        <Link to="/terms-of-service" className="legal-link">
+          Условия использования
+        </Link>
       </div>
       <p className="copyright">©{t('brand-name')} 2025. {t('all-rights-reserved')}</p>
     </div>

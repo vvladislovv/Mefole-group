@@ -14,6 +14,8 @@ import { SEOHelmet } from "./components/SEOHelmet";
 import { Services } from "./components/Services";
 import "./i18n";
 import ArticlePage from "./pages/ArticlePage";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
 function App() {
   const projectsRef = useRef(null);
   const servicesRef = useRef(null);
@@ -73,6 +75,8 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/article/:id" element={<ArticlePage />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-of-service" element={<TermsOfService />} />
       </Routes>
     </Router>
   );
