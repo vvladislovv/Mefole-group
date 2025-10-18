@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { SEOHelmet } from '../components/SEOHelmet';
@@ -7,184 +7,168 @@ import './css/legal-pages.css';
 const PrivacyPolicy = () => {
   const { t } = useTranslation();
 
+  // Прокрутка к началу страницы при загрузке
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }, []);
+
   return (
     <div className="legal-page-container">
       <SEOHelmet 
-        title="Политика конфиденциальности - ХакТайка"
-        description="Политика конфиденциальности и обработки персональных данных компании ХакТайка"
+        title={`${t('privacy-policy-title')} - ${t('brand-name')}`}
+        description={`${t('privacy-policy-title')} и ${t('privacy-policy-subtitle')} компании ${t('brand-name')}`}
       />
       
       <Link to="/" className="back-button">
-        ← Назад на главную
+        {t('back-to-main')}
       </Link>
       
       <div className="legal-page-content">
         <div className="legal-page-header">
-          <h1 className="legal-page-title">Политика конфиденциальности</h1>
-          <p className="legal-page-subtitle">Обработка персональных данных</p>
-          <p className="legal-page-date">Дата последнего обновления: 18 октября 2025 г.</p>
+          <h1 className="legal-page-title">{t('privacy-policy-title')}</h1>
+          <p className="legal-page-subtitle">{t('privacy-policy-subtitle')}</p>
+          <p className="legal-page-date">{t('last-updated')}</p>
         </div>
 
         <div className="legal-page-body">
           <section className="legal-section">
-            <h2>1. Общие положения</h2>
+            <h2>1. {t('privacy-general-provisions')}</h2>
             <p>
-              Настоящая Политика конфиденциальности (далее — «Политика») определяет порядок обработки 
-              персональных данных пользователей сайта <strong>hacktaika.ru</strong> (далее — «Сайт») и 
-              является неотъемлемой частью Пользовательского соглашения.
+              {t('privacy-general-provisions-text')}
             </p>
             <p>
-              Используя Сайт, вы соглашаетесь с условиями настоящей Политики. Если вы не согласны 
-              с какими-либо условиями, пожалуйста, не используйте Сайт.
+              {t('privacy-general-provisions-text2')}
             </p>
           </section>
 
           <section className="legal-section">
-            <h2>2. Определения</h2>
+            <h2>2. {t('privacy-definitions')}</h2>
             <ul>
-              <li><strong>Персональные данные</strong> — любая информация, относящаяся к прямо или косвенно определенному или определяемому физическому лицу;</li>
-              <li><strong>Обработка персональных данных</strong> — любое действие с персональными данными, включая сбор, запись, систематизацию, накопление, хранение, уточнение, извлечение, использование, передачу, обезличивание, блокирование, удаление, уничтожение;</li>
-              <li><strong>Автоматизированная обработка</strong> — обработка персональных данных с помощью средств вычислительной техники;</li>
-              <li><strong>Конфиденциальность персональных данных</strong> — обязательное для соблюдения оператором требование не допускать их распространения без согласия субъекта персональных данных или наличия иного законного основания.</li>
+              <li><strong>{t('privacy-definitions-text')}</strong></li>
+              <li><strong>{t('privacy-definitions-text2')}</strong></li>
+              <li><strong>{t('privacy-definitions-text3')}</strong></li>
+              <li><strong>{t('privacy-definitions-text4')}</strong></li>
             </ul>
           </section>
 
           <section className="legal-section">
-            <h2>3. Субъект обработки персональных данных</h2>
+            <h2>3. {t('privacy-subject')}</h2>
             <p>
-              <strong>Оператор персональных данных:</strong><br/>
-              ООО «ХакТайка»<br/>
-              ИНН: 1234567890<br/>
-              ОГРН: 1234567890123<br/>
-              Email: info@hacktaika.ru
+              <strong>{t('privacy-subject-text')}</strong><br/>
+              {t('privacy-subject-text2')}<br/>
+              {t('email')} info@hacktaika.ru
             </p>
           </section>
 
           <section className="legal-section">
-            <h2>4. Категории обрабатываемых персональных данных</h2>
-            <p>Мы обрабатываем следующие категории персональных данных:</p>
+            <h2>4. {t('privacy-categories')}</h2>
+            <p>{t('privacy-categories-text')}</p>
             <ul>
-              <li>Имя и фамилия</li>
-              <li>Адрес электронной почты</li>
-              <li>Номер телефона</li>
-              <li>Telegram username</li>
-              <li>Название компании (при указании)</li>
-              <li>IP-адрес</li>
-              <li>Информация о браузере и устройстве</li>
-              <li>Данные о посещениях сайта (cookies)</li>
+              <li>{t('privacy-categories-list1')}</li>
+              <li>{t('privacy-categories-list2')}</li>
+              <li>{t('privacy-categories-list3')}</li>
+              <li>{t('privacy-categories-list4')}</li>
+              <li>{t('privacy-categories-list5')}</li>
+              <li>{t('privacy-categories-list6')}</li>
+              <li>{t('privacy-categories-list7')}</li>
+              <li>{t('privacy-categories-list8')}</li>
             </ul>
           </section>
 
           <section className="legal-section">
-            <h2>5. Цели обработки персональных данных</h2>
-            <p>Персональные данные обрабатываются в следующих целях:</p>
+            <h2>5. {t('privacy-purposes')}</h2>
+            <p>{t('privacy-purposes-text')}</p>
             <ul>
-              <li>Предоставление услуг по разработке веб-сайтов и мобильных приложений</li>
-              <li>Обработка заявок и запросов пользователей</li>
-              <li>Связь с клиентами для обсуждения проектов</li>
-              <li>Улучшение качества предоставляемых услуг</li>
-              <li>Информирование о новых услугах и акциях</li>
-              <li>Соблюдение требований законодательства РФ</li>
+              <li>{t('privacy-purposes-list1')}</li>
+              <li>{t('privacy-purposes-list2')}</li>
+              <li>{t('privacy-purposes-list3')}</li>
+              <li>{t('privacy-purposes-list4')}</li>
+              <li>{t('privacy-purposes-list5')}</li>
+              <li>{t('privacy-purposes-list6')}</li>
             </ul>
           </section>
 
           <section className="legal-section">
-            <h2>6. Правовые основания обработки</h2>
-            <p>Обработка персональных данных осуществляется на основании:</p>
+            <h2>6. {t('privacy-legal-basis')}</h2>
+            <p>{t('privacy-legal-basis-text')}</p>
             <ul>
-              <li>Согласия субъекта персональных данных (ст. 9 ФЗ «О персональных данных»)</li>
-              <li>Необходимости исполнения договора (ст. 6 GDPR)</li>
-              <li>Законных интересов оператора (ст. 6 GDPR)</li>
+              <li>{t('privacy-legal-basis-list1')}</li>
+              <li>{t('privacy-legal-basis-list2')}</li>
+              <li>{t('privacy-legal-basis-list3')}</li>
             </ul>
           </section>
 
           <section className="legal-section">
-            <h2>7. Способы обработки персональных данных</h2>
-            <p>
-              Обработка персональных данных осуществляется с использованием автоматизированных 
-              средств, а также без использования таких средств. Обработка включает сбор, запись, 
-              систематизацию, накопление, хранение, уточнение, извлечение, использование, передачу, 
-              обезличивание, блокирование, удаление и уничтожение персональных данных.
-            </p>
+            <h2>7. {t('privacy-methods')}</h2>
+            <p>{t('privacy-methods-text')}</p>
           </section>
 
           <section className="legal-section">
-            <h2>8. Сроки обработки персональных данных</h2>
-            <p>
-              Персональные данные обрабатываются в течение срока, необходимого для достижения 
-              целей обработки, но не более 5 лет с момента получения согласия субъекта персональных данных.
-            </p>
+            <h2>8. {t('privacy-terms')}</h2>
+            <p>{t('privacy-terms-text')}</p>
           </section>
 
           <section className="legal-section">
-            <h2>9. Передача персональных данных третьим лицам</h2>
-            <p>
-              Персональные данные не передаются третьим лицам, за исключением случаев:
-            </p>
+            <h2>9. {t('privacy-transfer')}</h2>
+            <p>{t('privacy-transfer-text')}</p>
             <ul>
-              <li>Получения согласия субъекта персональных данных</li>
-              <li>Требований законодательства РФ</li>
-              <li>Необходимости защиты прав и законных интересов оператора</li>
+              <li>{t('privacy-transfer-list1')}</li>
+              <li>{t('privacy-transfer-list2')}</li>
+              <li>{t('privacy-transfer-list3')}</li>
             </ul>
           </section>
 
           <section className="legal-section">
-            <h2>10. Меры защиты персональных данных</h2>
-            <p>Для защиты персональных данных применяются следующие меры:</p>
+            <h2>10. {t('privacy-protection')}</h2>
+            <p>{t('privacy-protection-text')}</p>
             <ul>
-              <li>Шифрование данных при передаче (SSL/TLS)</li>
-              <li>Ограничение доступа к персональным данным</li>
-              <li>Регулярное обновление программного обеспечения</li>
-              <li>Мониторинг безопасности</li>
-              <li>Обучение сотрудников вопросам защиты персональных данных</li>
+              <li>{t('privacy-protection-list1')}</li>
+              <li>{t('privacy-protection-list2')}</li>
+              <li>{t('privacy-protection-list3')}</li>
+              <li>{t('privacy-protection-list4')}</li>
+              <li>{t('privacy-protection-list5')}</li>
             </ul>
           </section>
 
           <section className="legal-section">
-            <h2>11. Права субъекта персональных данных</h2>
-            <p>Субъект персональных данных имеет право:</p>
+            <h2>11. {t('privacy-rights')}</h2>
+            <p>{t('privacy-rights-text')}</p>
             <ul>
-              <li>Получать информацию об обработке своих персональных данных</li>
-              <li>Требовать уточнения, блокирования или уничтожения персональных данных</li>
-              <li>Отзывать согласие на обработку персональных данных</li>
-              <li>Обращаться в уполномоченный орган по защите прав субъектов персональных данных</li>
-              <li>Защищать свои права в судебном порядке</li>
+              <li>{t('privacy-rights-list1')}</li>
+              <li>{t('privacy-rights-list2')}</li>
+              <li>{t('privacy-rights-list3')}</li>
+              <li>{t('privacy-rights-list4')}</li>
+              <li>{t('privacy-rights-list5')}</li>
             </ul>
           </section>
 
           <section className="legal-section">
-            <h2>12. Cookies и аналогичные технологии</h2>
+            <h2>12. {t('privacy-cookies')}</h2>
+            <p>{t('privacy-cookies-text')}</p>
+          </section>
+
+          <section className="legal-section">
+            <h2>13. {t('privacy-changes')}</h2>
+            <p>{t('privacy-changes-text')}</p>
+          </section>
+
+          <section className="legal-section">
+            <h2>14. {t('privacy-contact')}</h2>
             <p>
-              Сайт использует файлы cookies для улучшения пользовательского опыта, анализа 
-              посещаемости и персонализации контента. Пользователь может отключить cookies 
-              в настройках своего браузера.
+              {t('contact-info')}<br/>
+              {t('email')} info@hacktaika.ru<br/>
+              {t('phone')} +7 (993) 911-47-06
             </p>
           </section>
 
           <section className="legal-section">
-            <h2>13. Изменения в Политике конфиденциальности</h2>
+            <h2>15. {t('privacy-final')}</h2>
             <p>
-              Оператор вправе вносить изменения в настоящую Политику. При внесении изменений 
-              в актуальной редакции указывается дата последнего обновления. Новая редакция 
-              Политики вступает в силу с момента ее размещения на Сайте.
-            </p>
-          </section>
-
-          <section className="legal-section">
-            <h2>14. Контактная информация</h2>
-            <p>
-              По вопросам обработки персональных данных обращайтесь:<br/>
-              Email: info@hacktaika.ru<br/>
-              Телефон: +7 (993) 911-47-06
-            </p>
-          </section>
-
-          <section className="legal-section">
-            <h2>15. Заключительные положения</h2>
-            <p>
-              Настоящая Политика конфиденциальности составлена в соответствии с требованиями 
-              Федерального закона от 27.07.2006 № 152-ФЗ «О персональных данных» и иных 
-              нормативных правовых актов Российской Федерации в области защиты персональных данных.
+              {t('privacy-final-text')}
             </p>
           </section>
         </div>

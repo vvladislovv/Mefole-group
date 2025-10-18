@@ -47,11 +47,11 @@ export const Footer = ({ sectionRefs }) => {
       </div>
       <div className="legal-links">
         <Link to="/privacy-policy" className="legal-link">
-          Политика конфиденциальности
+          {t('privacy-policy')}
         </Link>
         <span className="legal-separator">•</span>
         <Link to="/terms-of-service" className="legal-link">
-          Условия использования
+          {t('terms-of-service')}
         </Link>
       </div>
       <p className="copyright">©{t('brand-name')} 2025. {t('all-rights-reserved')}</p>

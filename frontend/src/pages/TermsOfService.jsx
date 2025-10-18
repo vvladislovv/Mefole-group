@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { SEOHelmet } from '../components/SEOHelmet';
@@ -7,256 +7,239 @@ import './css/legal-pages.css';
 const TermsOfService = () => {
   const { t } = useTranslation();
 
+  // Прокрутка к началу страницы при загрузке
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }, []);
+
   return (
     <div className="legal-page-container">
       <SEOHelmet 
-        title="Условия использования - ХакТайка"
-        description="Условия использования сайта и услуг компании ХакТайка"
+        title={`${t('terms-of-service-title')} - ${t('brand-name')}`}
+        description={`${t('terms-of-service-title')} сайта и услуг компании ${t('brand-name')}`}
       />
       
       <Link to="/" className="back-button">
-        ← Назад на главную
+        {t('back-to-main')}
       </Link>
       
       <div className="legal-page-content">
         <div className="legal-page-header">
-          <h1 className="legal-page-title">Условия использования</h1>
-          <p className="legal-page-subtitle">Пользовательское соглашение</p>
-          <p className="legal-page-date">Дата последнего обновления: 18 октября 2025 г.</p>
+          <h1 className="legal-page-title">{t('terms-of-service-title')}</h1>
+          <p className="legal-page-subtitle">{t('terms-of-service-subtitle')}</p>
+          <p className="legal-page-date">{t('last-updated')}</p>
         </div>
 
         <div className="legal-page-body">
           <section className="legal-section">
-            <h2>1. Общие положения</h2>
+            <h2>1. {t('terms-general-provisions')}</h2>
             <p>
-              Настоящие Условия использования (далее — «Условия») регулируют отношения между 
-              пользователями сайта <strong>hacktaika.ru</strong> (далее — «Сайт») и ООО «ХакТайка» 
-              (далее — «Компания», «мы», «нас», «наш»).
+              {t('terms-general-provisions-text')}
             </p>
             <p>
-              Используя Сайт, вы соглашаетесь с настоящими Условиями. Если вы не согласны 
-              с какими-либо условиями, пожалуйста, не используйте Сайт.
+              {t('terms-general-provisions-text2')}
             </p>
           </section>
 
           <section className="legal-section">
-            <h2>2. Определения</h2>
+            <h2>2. {t('terms-definitions')}</h2>
             <ul>
-              <li><strong>Сайт</strong> — веб-сайт, расположенный по адресу hacktaika.ru;</li>
-              <li><strong>Пользователь</strong> — физическое лицо, использующее Сайт;</li>
-              <li><strong>Услуги</strong> — услуги по разработке веб-сайтов, мобильных приложений, Telegram-ботов и другие IT-услуги;</li>
-              <li><strong>Контент</strong> — любая информация, размещенная на Сайте;</li>
-              <li><strong>Материалы</strong> — тексты, изображения, видео, аудио и иные материалы, размещенные на Сайте.</li>
+              <li><strong>{t('terms-definitions-text')}</strong></li>
+              <li><strong>{t('terms-definitions-text2')}</strong></li>
+              <li><strong>{t('terms-definitions-text3')}</strong></li>
+              <li><strong>{t('terms-definitions-text4')}</strong></li>
+              <li><strong>{t('terms-definitions-text5')}</strong></li>
             </ul>
           </section>
 
           <section className="legal-section">
-            <h2>3. Предмет соглашения</h2>
+            <h2>3. {t('terms-subject')}</h2>
             <p>
-              Настоящие Условия определяют порядок использования Сайта, права и обязанности 
-              Пользователей и Компании, а также условия предоставления Услуг.
+              {t('terms-subject-text')}
             </p>
           </section>
 
           <section className="legal-section">
-            <h2>4. Принятие условий</h2>
+            <h2>4. {t('terms-acceptance')}</h2>
+            <p>{t('terms-acceptance-text')}</p>
+            <ul>
+              <li>{t('terms-acceptance-list1')}</li>
+              <li>{t('terms-acceptance-list2')}</li>
+              <li>{t('terms-acceptance-list3')}</li>
+              <li>{t('terms-acceptance-list4')}</li>
+            </ul>
+          </section>
+
+          <section className="legal-section">
+            <h2>5. {t('terms-services')}</h2>
+            <p>{t('terms-services-text')}</p>
+            <ul>
+              <li>{t('terms-services-list1')}</li>
+              <li>{t('terms-services-list2')}</li>
+              <li>{t('terms-services-list3')}</li>
+              <li>{t('terms-services-list4')}</li>
+              <li>{t('terms-services-list5')}</li>
+              <li>{t('terms-services-list6')}</li>
+              <li>{t('terms-services-list7')}</li>
+            </ul>
+          </section>
+
+          <section className="legal-section">
+            <h2>6. {t('terms-user-rights')}</h2>
+            <h3>{t('terms-user-rights-title')}</h3>
+            <ul>
+              <li>{t('terms-user-rights-list1')}</li>
+              <li>{t('terms-user-rights-list2')}</li>
+              <li>{t('terms-user-rights-list3')}</li>
+              <li>{t('terms-user-rights-list4')}</li>
+            </ul>
+
+            <h3>{t('terms-user-obligations-title')}</h3>
+            <ul>
+              <li>{t('terms-user-obligations-list1')}</li>
+              <li>{t('terms-user-obligations-list2')}</li>
+              <li>{t('terms-user-obligations-list3')}</li>
+              <li>{t('terms-user-obligations-list4')}</li>
+              <li>{t('terms-user-obligations-list5')}</li>
+            </ul>
+          </section>
+
+          <section className="legal-section">
+            <h2>7. {t('terms-company-rights')}</h2>
+            <h3>{t('terms-company-rights-title')}</h3>
+            <ul>
+              <li>{t('terms-company-rights-list1')}</li>
+              <li>{t('terms-company-rights-list2')}</li>
+              <li>{t('terms-company-rights-list3')}</li>
+              <li>{t('terms-company-rights-list4')}</li>
+            </ul>
+
+            <h3>{t('terms-company-obligations-title')}</h3>
+            <ul>
+              <li>{t('terms-company-obligations-list1')}</li>
+              <li>{t('terms-company-obligations-list2')}</li>
+              <li>{t('terms-company-obligations-list3')}</li>
+              <li>{t('terms-company-obligations-list4')}</li>
+            </ul>
+          </section>
+
+          <section className="legal-section">
+            <h2>8. {t('terms-intellectual')}</h2>
             <p>
-              Начиная использовать Сайт, вы подтверждаете, что:
-            </p>
-            <ul>
-              <li>Достигли возраста 18 лет или имеете согласие родителей/опекунов</li>
-              <li>Имеете право заключать настоящие Условия</li>
-              <li>Ознакомились с настоящими Условиями и согласны с ними</li>
-              <li>Предоставляете достоверную информацию</li>
-            </ul>
-          </section>
-
-          <section className="legal-section">
-            <h2>5. Описание услуг</h2>
-            <p>Компания предоставляет следующие услуги:</p>
-            <ul>
-              <li>Разработка веб-сайтов и веб-приложений</li>
-              <li>Создание мобильных приложений для iOS и Android</li>
-              <li>Разработка Telegram-ботов и Mini Apps</li>
-              <li>UI/UX дизайн и графический дизайн</li>
-              <li>Хостинг и техническая поддержка</li>
-              <li>Маркетинг и реклама</li>
-              <li>Консультационные услуги в области IT</li>
-            </ul>
-          </section>
-
-          <section className="legal-section">
-            <h2>6. Права и обязанности пользователя</h2>
-            <h3>6.1. Права пользователя:</h3>
-            <ul>
-              <li>Использовать Сайт в соответствии с его назначением</li>
-              <li>Получать информацию об услугах Компании</li>
-              <li>Обращаться за консультацией</li>
-              <li>Подавать заявки на разработку проектов</li>
-            </ul>
-
-            <h3>6.2. Обязанности пользователя:</h3>
-            <ul>
-              <li>Предоставлять достоверную информацию</li>
-              <li>Не нарушать права третьих лиц</li>
-              <li>Не использовать Сайт в противоправных целях</li>
-              <li>Соблюдать настоящие Условия</li>
-              <li>Не распространять вредоносное программное обеспечение</li>
-            </ul>
-          </section>
-
-          <section className="legal-section">
-            <h2>7. Права и обязанности компании</h2>
-            <h3>7.1. Права компании:</h3>
-            <ul>
-              <li>Изменять содержание Сайта без предварительного уведомления</li>
-              <li>Ограничивать доступ к Сайту</li>
-              <li>Требовать соблюдения настоящих Условий</li>
-              <li>Защищать свои права в судебном порядке</li>
-            </ul>
-
-            <h3>7.2. Обязанности компании:</h3>
-            <ul>
-              <li>Предоставлять информацию об услугах</li>
-              <li>Обеспечивать конфиденциальность персональных данных</li>
-              <li>Оказывать услуги в соответствии с договором</li>
-              <li>Соблюдать требования законодательства РФ</li>
-            </ul>
-          </section>
-
-          <section className="legal-section">
-            <h2>8. Интеллектуальная собственность</h2>
-            <p>
-              Все материалы, размещенные на Сайте, включая тексты, изображения, логотипы, 
-              дизайн, являются объектами интеллектуальной собственности Компании или 
-              третьих лиц и защищены законодательством РФ об интеллектуальной собственности.
+              {t('terms-intellectual-text')}
             </p>
             <p>
-              Пользователь не вправе копировать, распространять, изменять или использовать 
-              материалы Сайта без письменного согласия Компании.
+              {t('terms-intellectual-text2')}
             </p>
           </section>
 
           <section className="legal-section">
-            <h2>9. Порядок оказания услуг</h2>
+            <h2>9. {t('terms-procedure')}</h2>
             <ol>
-              <li>Пользователь подает заявку через форму на Сайте</li>
-              <li>Компания рассматривает заявку и связывается с пользователем</li>
-              <li>Стороны обсуждают детали проекта и заключают договор</li>
-              <li>Компания выполняет работы в соответствии с договором</li>
-              <li>Пользователь принимает выполненные работы</li>
+              <li>{t('terms-procedure-list1')}</li>
+              <li>{t('terms-procedure-list2')}</li>
+              <li>{t('terms-procedure-list3')}</li>
+              <li>{t('terms-procedure-list4')}</li>
+              <li>{t('terms-procedure-list5')}</li>
             </ol>
           </section>
 
           <section className="legal-section">
-            <h2>10. Оплата услуг</h2>
+            <h2>10. {t('terms-payment')}</h2>
             <p>
-              Стоимость услуг определяется в индивидуальном порядке в зависимости от 
-              сложности и объема работ. Оплата производится в соответствии с условиями 
-              договора на оказание услуг.
+              {t('terms-payment-text')}
             </p>
             <p>
-              Компания вправе требовать предоплату в размере, определенном договором.
+              {t('terms-payment-text2')}
             </p>
           </section>
 
           <section className="legal-section">
-            <h2>11. Ответственность</h2>
-            <h3>11.1. Ответственность компании:</h3>
-            <p>
-              Компания несет ответственность за качество предоставляемых услуг в пределах 
-              стоимости договора. Компания не несет ответственности за:
-            </p>
+            <h2>11. {t('terms-responsibility')}</h2>
+            <h3>{t('terms-responsibility-company-title')}</h3>
+            <p>{t('terms-responsibility-company-text')}</p>
             <ul>
-              <li>Временную недоступность Сайта</li>
-              <li>Потерю данных пользователя</li>
-              <li>Ущерб, причиненный действиями пользователя</li>
-              <li>Нарушения третьих лиц</li>
+              <li>{t('terms-responsibility-company-list1')}</li>
+              <li>{t('terms-responsibility-company-list2')}</li>
+              <li>{t('terms-responsibility-company-list3')}</li>
+              <li>{t('terms-responsibility-company-list4')}</li>
             </ul>
 
-            <h3>11.2. Ответственность пользователя:</h3>
-            <p>
-              Пользователь несет полную ответственность за:
-            </p>
+            <h3>{t('terms-responsibility-user-title')}</h3>
+            <p>{t('terms-responsibility-user-text')}</p>
             <ul>
-              <li>Достоверность предоставленной информации</li>
-              <li>Соблюдение настоящих Условий</li>
-              <li>Нарушения прав третьих лиц</li>
-              <li>Ущерб, причиненный Компании</li>
+              <li>{t('terms-responsibility-user-list1')}</li>
+              <li>{t('terms-responsibility-user-list2')}</li>
+              <li>{t('terms-responsibility-user-list3')}</li>
+              <li>{t('terms-responsibility-user-list4')}</li>
             </ul>
           </section>
 
           <section className="legal-section">
-            <h2>12. Конфиденциальность</h2>
+            <h2>12. {t('terms-confidentiality')}</h2>
             <p>
-              Обработка персональных данных пользователей осуществляется в соответствии 
-              с Политикой конфиденциальности, которая является неотъемлемой частью 
-              настоящих Условий.
+              {t('terms-confidentiality-text')}
             </p>
           </section>
 
           <section className="legal-section">
-            <h2>13. Запрещенные действия</h2>
-            <p>Пользователю запрещается:</p>
+            <h2>13. {t('terms-prohibited')}</h2>
+            <p>{t('terms-prohibited-text')}</p>
             <ul>
-              <li>Использовать Сайт в противоправных целях</li>
-              <li>Нарушать права интеллектуальной собственности</li>
-              <li>Распространять вредоносное программное обеспечение</li>
-              <li>Попытки взлома или несанкционированного доступа</li>
-              <li>Создание фальшивых аккаунтов</li>
-              <li>Спам и рассылка нежелательных сообщений</li>
+              <li>{t('terms-prohibited-list1')}</li>
+              <li>{t('terms-prohibited-list2')}</li>
+              <li>{t('terms-prohibited-list3')}</li>
+              <li>{t('terms-prohibited-list4')}</li>
+              <li>{t('terms-prohibited-list5')}</li>
+              <li>{t('terms-prohibited-list6')}</li>
             </ul>
           </section>
 
           <section className="legal-section">
-            <h2>14. Приостановка и прекращение услуг</h2>
-            <p>
-              Компания вправе приостановить или прекратить предоставление услуг в случае:
-            </p>
+            <h2>14. {t('terms-suspension')}</h2>
+            <p>{t('terms-suspension-text')}</p>
             <ul>
-              <li>Нарушения пользователем настоящих Условий</li>
-              <li>Невозможности продолжения оказания услуг</li>
-              <li>Технических проблем</li>
-              <li>Требований законодательства</li>
+              <li>{t('terms-suspension-list1')}</li>
+              <li>{t('terms-suspension-list2')}</li>
+              <li>{t('terms-suspension-list3')}</li>
+              <li>{t('terms-suspension-list4')}</li>
             </ul>
           </section>
 
           <section className="legal-section">
-            <h2>15. Изменение условий</h2>
+            <h2>15. {t('terms-changes')}</h2>
             <p>
-              Компания вправе изменять настоящие Условия в любое время. Изменения 
-              вступают в силу с момента их размещения на Сайте. Продолжение использования 
-              Сайта означает согласие с новыми Условиями.
+              {t('terms-changes-text')}
             </p>
           </section>
 
           <section className="legal-section">
-            <h2>16. Разрешение споров</h2>
+            <h2>16. {t('terms-disputes')}</h2>
             <p>
-              Все споры разрешаются путем переговоров. В случае невозможности достижения 
-              соглашения споры подлежат рассмотрению в суде по месту нахождения Компании 
-              в соответствии с законодательством РФ.
+              {t('terms-disputes-text')}
             </p>
           </section>
 
           <section className="legal-section">
-            <h2>17. Контактная информация</h2>
+            <h2>17. {t('privacy-contact')}</h2>
             <p>
-              По всем вопросам, связанным с настоящими Условиями, обращайтесь:<br/>
-              Email: info@hacktaika.ru<br/>
-              Телефон: +7 (993) 911-47-06
+              {t('contact-info-terms')}<br/>
+              {t('email')} info@hacktaika.ru<br/>
+              {t('phone')} +7 (993) 911-47-06
             </p>
           </section>
 
           <section className="legal-section">
-            <h2>18. Заключительные положения</h2>
+            <h2>18. {t('terms-final')}</h2>
             <p>
-              Настоящие Условия составлены в соответствии с законодательством РФ. 
-              Если какое-либо положение настоящих Условий будет признано недействительным, 
-              остальные положения сохраняют свою силу.
+              {t('terms-final-text')}
             </p>
             <p>
-              Настоящие Условия действуют до их изменения или отзыва Компанией.
+              {t('terms-final-text2')}
             </p>
           </section>
         </div>
