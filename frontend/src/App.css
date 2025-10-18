@@ -180,7 +180,8 @@ body.modal-open {
   }
   
   .app-container {
-    padding: 0;
+    padding: 0 16px;
+    box-sizing: border-box;
   }
   
   /* Скрываем векторы на мобильных для лучшей производительности */

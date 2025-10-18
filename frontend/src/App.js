@@ -3,6 +3,7 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
 import { ClientFormSection } from "./components/ClientFormSection";
 import { Contacts } from "./components/Contacts";
+import CookieNotification from "./components/CookieNotification";
 import { DevBlog } from "./components/DevBlog";
 import FadeInSection from "./components/FadeInSections";
 import { Footer } from "./components/Footer";
@@ -14,8 +15,10 @@ import { SEOHelmet } from "./components/SEOHelmet";
 import { Services } from "./components/Services";
 import "./i18n";
 import ArticlePage from "./pages/ArticlePage";
+import PortfolioProject from "./pages/PortfolioProject";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
+import "./utils/cookieUtils";
 function App() {
   const projectsRef = useRef(null);
   const servicesRef = useRef(null);
@@ -75,9 +78,11 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/article/:id" element={<ArticlePage />} />
+        <Route path="/portfolio/:id" element={<PortfolioProject />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
       </Routes>
+      <CookieNotification />
     </Router>
   );
 }

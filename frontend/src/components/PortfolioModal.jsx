@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import { useTranslation } from 'react-i18next'
-import './css/portfolioModal.css'
+import React, { useCallback, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import './css/portfolioModal.css';
 
 const PortfolioModal = React.memo(function PortfolioModal({ work, onClose }) {
   const { t } = useTranslation();
@@ -68,31 +68,31 @@ const PortfolioModal = React.memo(function PortfolioModal({ work, onClose }) {
   const getProjectStats = (workId) => {
     const statsMap = {
       // Web Development Projects
-      1: { users: "15,000+", rating: 4.9, completion: "100%", team: "4 разработчика" },
-      2: { users: "8,500+", rating: 4.7, completion: "100%", team: "3 разработчика" },
-      3: { users: "22,000+", rating: 4.8, completion: "100%", team: "5 разработчиков" },
-      4: { users: "3,200+", rating: 4.6, completion: "100%", team: "2 разработчика" },
-      5: { users: "45,000+", rating: 4.9, completion: "100%", team: "6 разработчиков" },
-      6: { users: "12,000+", rating: 4.7, completion: "100%", team: "3 разработчика" },
-      7: { users: "28,000+", rating: 4.8, completion: "100%", team: "4 разработчика" },
-      8: { users: "5,500+", rating: 4.5, completion: "100%", team: "2 разработчика" },
-      9: { users: "18,000+", rating: 4.6, completion: "100%", team: "3 разработчика" },
+      1: { users: "15,000+", rating: 4.9, teamSize: 4 },
+      2: { users: "8,500+", rating: 4.7, teamSize: 3 },
+      3: { users: "22,000+", rating: 4.8, teamSize: 5 },
+      4: { users: "3,200+", rating: 4.6, teamSize: 2 },
+      5: { users: "45,000+", rating: 4.9, teamSize: 6 },
+      6: { users: "12,000+", rating: 4.7, teamSize: 3 },
+      7: { users: "28,000+", rating: 4.8, teamSize: 4 },
+      8: { users: "5,500+", rating: 4.5, teamSize: 2 },
+      9: { users: "18,000+", rating: 4.6, teamSize: 3 },
       // Mobile Apps
-      24: { downloads: "85k", rating: 4.8, users: "12,500+", team: "3 разработчика" },
-      25: { downloads: "42k", rating: 4.6, users: "8,200+", team: "2 разработчика" },
-      26: { downloads: "156k", rating: 4.7, users: "28,000+", team: "4 разработчика" },
-      27: { downloads: "73k", rating: 4.5, users: "15,600+", team: "3 разработчика" },
-      28: { downloads: "234k", rating: 4.9, users: "45,000+", team: "5 разработчиков" },
-      29: { downloads: "67k", rating: 4.4, users: "9,800+", team: "3 разработчика" },
-      30: { downloads: "189k", rating: 4.6, users: "32,000+", team: "4 разработчика" },
-      31: { downloads: "312k", rating: 4.8, users: "58,000+", team: "6 разработчиков" },
-      33: { downloads: "28k", rating: 4.3, users: "5,200+", team: "2 разработчика" },
-      34: { downloads: "15k", rating: 4.2, users: "3,100+", team: "2 разработчика" }
+      24: { downloads: "85k", rating: 4.8, users: "12,500+", teamSize: 3 },
+      25: { downloads: "42k", rating: 4.6, users: "8,200+", teamSize: 2 },
+      26: { downloads: "156k", rating: 4.7, users: "28,000+", teamSize: 4 },
+      27: { downloads: "73k", rating: 4.5, users: "15,600+", teamSize: 3 },
+      28: { downloads: "234k", rating: 4.9, users: "45,000+", teamSize: 5 },
+      29: { downloads: "67k", rating: 4.4, users: "9,800+", teamSize: 3 },
+      30: { downloads: "189k", rating: 4.6, users: "32,000+", teamSize: 4 },
+      31: { downloads: "312k", rating: 4.8, users: "58,000+", teamSize: 6 },
+      33: { downloads: "28k", rating: 4.3, users: "5,200+", teamSize: 2 },
+      34: { downloads: "15k", rating: 4.2, users: "3,100+", teamSize: 2 }
     };
-    return statsMap[workId] || { users: "5,000+", rating: 4.8, completion: "100%", team: "3 разработчика" };
+    return statsMap[workId] || { users: "5,000+", rating: 4.8, teamSize: 3 };
   };
 
-  const projectStats = work.stats || getProjectStats(work.id) || { users: "5,000+", rating: 4.8, completion: "100%", team: "3 разработчика" };
+  const projectStats = work.stats || getProjectStats(work.id) || { users: "5,000+", rating: 4.8, teamSize: 3 };
 
   // Функции для кнопок
   const handleVisitProject = useCallback(() => {
@@ -102,10 +102,12 @@ const PortfolioModal = React.memo(function PortfolioModal({ work, onClose }) {
   }, [work.websiteUrl]);
 
   const handleShare = useCallback(async () => {
+    // Создаем ссылку на проект с доменом hacktaika.ru
+    const projectUrl = `https://hacktaika.ru/portfolio/${work.id}`;
     const shareData = {
       title: t(`works.${work.id}.title`),
       text: t(`works.${work.id}.description`),
-      url: work.websiteUrl || window.location.href
+      url: projectUrl
     };
 
     try {
@@ -113,20 +115,41 @@ const PortfolioModal = React.memo(function PortfolioModal({ work, onClose }) {
         await navigator.share(shareData);
       } else {
         // Fallback для браузеров без поддержки Web Share API
-        await navigator.clipboard.writeText(shareData.url);
-        alert(t('portfolio-share-copied'));
+        await copyToClipboard(projectUrl);
       }
     } catch (error) {
+      // Игнорируем ошибку отмены пользователем
+      if (error.name === 'AbortError') {
+        return; // Пользователь отменил, ничего не делаем
+      }
       console.error('Share failed:', error);
       // Fallback - копируем URL в буфер обмена
-      try {
-        await navigator.clipboard.writeText(shareData.url);
-        alert(t('portfolio-share-copied'));
-      } catch (clipboardError) {
-        console.error('Clipboard copy failed:', clipboardError);
-      }
+      await copyToClipboard(projectUrl);
     }
-  }, [work.id, work.websiteUrl, t]);
+  }, [work.id, t]);
+
+  // Функция для копирования в буфер обмена с fallback
+  const copyToClipboard = async (text) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      alert(t('portfolio-share-copied'));
+    } catch (clipboardError) {
+      console.error('Clipboard copy failed:', clipboardError);
+      // Fallback - используем старый метод
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        alert(t('portfolio-share-copied'));
+      } catch (execError) {
+        console.error('ExecCommand copy failed:', execError);
+        alert('Не удалось скопировать ссылку. Скопируйте вручную: ' + text);
+      }
+      document.body.removeChild(textArea);
+    }
+  };
 
   return (
     <div className={`portfolio-modal-overlay ${isVisible ? 'visible' : ''}`} onClick={handleClose}>
@@ -164,7 +187,7 @@ const PortfolioModal = React.memo(function PortfolioModal({ work, onClose }) {
         {/* Project stats */}
         <div className="project-stats">
           <div className="stat-item">
-            <div className="stat-icon">👤</div>
+            <div className="stat-icon">🚀</div>
             <div className="stat-content">
               <span className="stat-number">
                 {work.categoryKey === 'category.mobile-apps' ? projectStats.downloads : projectStats.users}
@@ -175,17 +198,17 @@ const PortfolioModal = React.memo(function PortfolioModal({ work, onClose }) {
             </div>
           </div>
           <div className="stat-item">
-            <div className="stat-icon">⭐</div>
+            <div className="stat-icon">💎</div>
             <div className="stat-content">
               <span className="stat-number">{projectStats.rating}</span>
               <span className="stat-label">{t('portfolio-rating')}</span>
             </div>
           </div>
           <div className="stat-item">
-            <div className="stat-icon">✓</div>
+            <div className="stat-icon">👥</div>
             <div className="stat-content">
-              <span className="stat-number">{projectStats.completion}</span>
-              <span className="stat-label">{t('portfolio-completion')}</span>
+              <span className="stat-number">{t(`portfolio-team-${projectStats.teamSize}`)}</span>
+              <span className="stat-label">{t('portfolio-team')}</span>
             </div>
           </div>
         </div>
@@ -243,6 +266,7 @@ const PortfolioModal = React.memo(function PortfolioModal({ work, onClose }) {
                 <button 
                   className="action-btn secondary"
                   onClick={handleShare}
+                  title={t('portfolio-share-text')}
                 >
                   <span>{t('portfolio-share')}</span>
                   <span className="btn-icon">📤</span>
