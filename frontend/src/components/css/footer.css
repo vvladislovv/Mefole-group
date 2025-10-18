@@ -122,6 +122,7 @@
     }
     .footer-container .footer-title {
         font-size: clamp(20px, 6vw, 28px);
+        text-align: center;
     }
     .footbar-wrapper {
         margin-top: 24px;
@@ -134,17 +135,68 @@
     }
     .footbar-item {
         white-space: nowrap;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 12px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        -webkit-tap-highlight-color: transparent;
+    }
+    .footbar-item:hover {
+        background: rgba(166, 240, 12, 0.1);
+        color: var(--color-green);
+        transform: scale(1.02);
+    }
+    .footbar-item:active {
+        transform: scale(0.98);
     }
     .socials {
         margin-top: 24px;
     }
+    .socials .socials-flex a {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        min-height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        -webkit-tap-highlight-color: transparent;
+    }
+    .socials .socials-flex a:hover {
+        background: rgba(166, 240, 12, 0.1);
+        transform: scale(1.1);
+    }
+    .socials .socials-flex a:active {
+        transform: scale(0.95);
+    }
     .legal-links {
         margin-top: 20px;
         gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
     }
     
     .legal-link {
-        font-size: 13px;
+        font-size: clamp(12px, 3vw, 13px);
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 12px;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    .legal-link:hover {
+        background: rgba(166, 240, 12, 0.1);
+        color: var(--color-green);
+        transform: translateY(-1px);
     }
     
     .legal-separator {
@@ -156,6 +208,7 @@
         margin-bottom: 40px;
         font-size: clamp(13px, 3.5vw, 15px);
         padding-bottom: 20px;
+        text-align: center;
     }
 }
 
@@ -164,6 +217,9 @@
         margin: 40px 0 0 0;
         padding: 0 12px;
     }
+    .footer-container .footer-title {
+        font-size: clamp(18px, 5vw, 24px);
+    }
     .footbar-wrapper {
         margin-top: 20px;
     }
@@ -171,16 +227,28 @@
         font-size: clamp(14px, 3.5vw, 18px);
         gap: clamp(8px, 2.5vw, 16px);
     }
+    .footbar-item {
+        padding: 6px 10px;
+        min-height: 40px;
+    }
     .socials {
         margin-top: 20px;
     }
+    .socials .socials-flex a {
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        min-height: 36px;
+    }
     .legal-links {
         margin-top: 16px;
-        gap: 10px;
+        gap: 8px;
     }
     
     .legal-link {
-        font-size: 12px;
+        font-size: clamp(11px, 2.8vw, 12px);
+        padding: 6px 10px;
+        min-height: 40px;
     }
     
     .legal-separator {
@@ -191,10 +259,63 @@
         margin-top: 16px;
         margin-bottom: 30px;
         padding-bottom: 20px;
+        font-size: clamp(12px, 3vw, 13px);
     }
     
     /* Скрываем пункт "график" на мобильных */
     .footbar-item:first-child {
         display: none;
+    }
+}
+
+/* Очень маленькие экраны */
+@media screen and (max-width: 360px) {
+    .footer-container {
+        margin: 30px 0 0 0;
+        padding: 0 8px;
+    }
+    .footer-container .footer-title {
+        font-size: clamp(16px, 4.5vw, 20px);
+    }
+    .footbar-wrapper {
+        margin-top: 16px;
+    }
+    .footbar {
+        font-size: clamp(13px, 3.2vw, 16px);
+        gap: clamp(6px, 2vw, 12px);
+    }
+    .footbar-item {
+        padding: 5px 8px;
+        min-height: 36px;
+    }
+    .socials {
+        margin-top: 16px;
+    }
+    .socials .socials-flex a {
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+        min-height: 32px;
+    }
+    .legal-links {
+        margin-top: 14px;
+        gap: 6px;
+    }
+    
+    .legal-link {
+        font-size: clamp(10px, 2.6vw, 11px);
+        padding: 5px 8px;
+        min-height: 36px;
+    }
+    
+    .legal-separator {
+        font-size: 12px;
+    }
+    
+    .copyright {
+        margin-top: 14px;
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        font-size: clamp(11px, 2.8vw, 12px);
     }
 }

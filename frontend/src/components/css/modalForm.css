@@ -273,7 +273,7 @@
     align-items: flex-start; /* Изменено с center на flex-start */
     justify-content: center;
     z-index: 999999;
-    padding: 10px;
+    padding: 16px;
     box-sizing: border-box;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
@@ -286,8 +286,8 @@
     border-radius: 16px;
     width: 100%;
     max-width: 400px;
-    max-height: calc(100vh - 20px); /* Учитываем padding */
-    max-height: calc(100dvh - 20px); /* Для мобильных браузеров */
+    max-height: calc(100vh - 32px); /* Учитываем padding */
+    max-height: calc(100dvh - 32px); /* Для мобильных браузеров */
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     position: relative;
@@ -302,8 +302,8 @@
     position: absolute;
     top: 15px;
     right: 15px;
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     font-size: 20px;
     background: rgba(0, 0, 0, 0.8);
     border: 1px solid var(--color-green);
@@ -315,6 +315,9 @@
     cursor: pointer;
     z-index: 10;
     transition: all 0.3s ease;
+    min-width: 36px;
+    min-height: 36px;
+    -webkit-tap-highlight-color: transparent;
   }
 
   .modal-close:hover {
@@ -324,8 +327,9 @@
   }
   
   .modal-title {
-    font-size: 22px;
+    font-size: clamp(20px, 4.5vw, 24px);
     margin-bottom: 16px;
+    text-align: center;
   }
   
   .modal-form {
@@ -336,27 +340,121 @@
   .modal-form input,
   .modal-form textarea {
     padding: 12px 14px;
-    font-size: 14px;
+    font-size: clamp(14px, 3.5vw, 16px);
+    min-height: 44px;
+    border-radius: 8px;
+    -webkit-tap-highlight-color: transparent;
   }
   
   .modal-form button {
     padding: 14px;
-    font-size: 14px;
+    font-size: clamp(14px, 3.5vw, 16px);
+    min-height: 44px;
+    border-radius: 8px;
+    -webkit-tap-highlight-color: transparent;
   }
   
   .modal-select {
     padding: 12px 14px;
-    font-size: 14px;
+    font-size: clamp(14px, 3.5vw, 16px);
+    min-height: 44px;
+    border-radius: 8px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .message {
+    font-size: clamp(14px, 3.5vw, 16px);
+    margin-top: 12px;
+    padding: 12px;
+    border-radius: 8px;
   }
 }
 
 @media (max-width: 480px) {
+  .modal-overlay {
+    padding: 12px;
+  }
+  
   .modal-content {
-    padding: 20px;
+    padding: 16px;
+    max-width: 100%;
+    border-radius: 12px;
+  }
+  
+  .modal-close {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    min-height: 32px;
+    top: 12px;
+    right: 12px;
+    font-size: 18px;
   }
   
   .modal-title {
-    font-size: 20px;
+    font-size: clamp(18px, 4vw, 20px);
+    margin-bottom: 14px;
+  }
+  
+  .modal-form {
+    gap: 10px;
+    margin-top: 14px;
+  }
+  
+  .modal-form input,
+  .modal-form textarea {
+    padding: 10px 12px;
+    font-size: clamp(13px, 3vw, 14px);
+    min-height: 40px;
+    border-radius: 6px;
+  }
+  
+  .modal-form button {
+    padding: 12px;
+    font-size: clamp(13px, 3vw, 14px);
+    min-height: 40px;
+    border-radius: 6px;
+  }
+  
+  .modal-select {
+    padding: 10px 12px;
+    font-size: clamp(13px, 3vw, 14px);
+    min-height: 40px;
+    border-radius: 6px;
+  }
+  
+  .message {
+    font-size: clamp(13px, 3vw, 14px);
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 6px;
+  }
+}
+
+/* Очень маленькие экраны */
+@media (max-width: 360px) {
+  .modal-overlay {
+    padding: 8px;
+  }
+  
+  .modal-content {
+    padding: 14px;
+    border-radius: 10px;
+  }
+  
+  .modal-close {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    min-height: 28px;
+    top: 10px;
+    right: 10px;
+    font-size: 16px;
+  }
+  
+  .modal-title {
+    font-size: clamp(16px, 3.5vw, 18px);
+    margin-bottom: 12px;
   }
   
   .modal-form {
@@ -366,23 +464,30 @@
   
   .modal-form input,
   .modal-form textarea {
-    padding: 8px 12px;
-    font-size: 13px;
+    padding: 8px 10px;
+    font-size: clamp(12px, 2.8vw, 13px);
+    min-height: 36px;
+    border-radius: 4px;
   }
   
   .modal-form button {
     padding: 10px;
-    font-size: 13px;
+    font-size: clamp(12px, 2.8vw, 13px);
+    min-height: 36px;
+    border-radius: 4px;
   }
   
   .modal-select {
-    padding: 8px 12px;
-    font-size: 13px;
+    padding: 8px 10px;
+    font-size: clamp(12px, 2.8vw, 13px);
+    min-height: 36px;
+    border-radius: 4px;
   }
   
   .message {
-    font-size: 14px;
-    margin-top: 10px;
+    font-size: clamp(12px, 2.8vw, 13px);
+    margin-top: 8px;
     padding: 8px;
+    border-radius: 4px;
   }
 }

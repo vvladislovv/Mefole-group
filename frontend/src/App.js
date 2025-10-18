@@ -4,7 +4,7 @@ import "./App.css";
 import { ClientFormSection } from "./components/ClientFormSection";
 import { Contacts } from "./components/Contacts";
 import CookieNotification from "./components/CookieNotification";
-import { DevBlog } from "./components/DevBlog";
+// import { DevBlog } from "./components/DevBlog";
 import FadeInSection from "./components/FadeInSections";
 import { Footer } from "./components/Footer";
 import { Hero } from "./components/Hero";
@@ -25,7 +25,6 @@ function App() {
   const reviewsRef = useRef(null);
   const portfolioRef = useRef(null);
   const contactsRef = useRef(null);
-  const devblogRef = useRef(null);
   const formRef = useRef(null);
 
   const sectionRefs = {
@@ -35,7 +34,6 @@ function App() {
     portfolio: portfolioRef,
     contacts: contactsRef,
     form: formRef,
-    devblog: devblogRef,
   };
 
   const MainPage = () => (
@@ -56,9 +54,7 @@ function App() {
         <Reviews ref={reviewsRef} />
       </FadeInSection>
       
-      <FadeInSection animation="fade-scale" delay="delay-200">
-        <DevBlog ref={devblogRef} />
-      </FadeInSection>
+      {/* DevBlog отключен */}
       
       <FadeInSection animation="fade-scale" delay="delay-300">
         <Portfolio ref={portfolioRef} />

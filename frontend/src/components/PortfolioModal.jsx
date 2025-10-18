@@ -169,9 +169,8 @@ const PortfolioModal = React.memo(function PortfolioModal({ work, onClose }) {
         </button>
         
         <div className="portfolio-modal-header">
-          <div className="header-content">
+          <div className="header-top">
             <h2 className="portfolio-modal-title">{t(`works.${work.id}.title`, { defaultValue: work.title || '' })}</h2>
-            <span className="portfolio-modal-category">{t(work.categoryKey)}</span>
             <div className="project-rating">
               <div className="stars">
                 {[...Array(5)].map((_, i) => (
@@ -181,6 +180,7 @@ const PortfolioModal = React.memo(function PortfolioModal({ work, onClose }) {
               <span className="rating-text">{projectStats.rating}/5</span>
             </div>
           </div>
+          <span className="portfolio-modal-category">{t(work.categoryKey)}</span>
         </div>
 
 
@@ -207,7 +207,7 @@ const PortfolioModal = React.memo(function PortfolioModal({ work, onClose }) {
           <div className="stat-item">
             <div className="stat-icon">👥</div>
             <div className="stat-content">
-              <span className="stat-number">{t(`portfolio-team-${projectStats.teamSize}`)}</span>
+              <span className="stat-number">{projectStats.teamSize}</span>
               <span className="stat-label">{t('portfolio-team')}</span>
             </div>
           </div>

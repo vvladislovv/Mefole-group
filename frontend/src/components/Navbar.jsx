@@ -23,9 +23,6 @@ export const Navbar = ({ sectionRefs }) => {
                 <div className="nav-container">
                     <div className="nav">
                         <div className="nav-items">
-                            <div className="nav-item" onClick={() => handleScroll("devblog")}>
-                                {t('devblog-menu', 'ДЕВБЛОГ')}
-                            </div>
                             <div className="nav-item" onClick={() => handleScroll("services")}>
                                 {t('services')}
                             </div>
@@ -102,9 +99,6 @@ export const Navbar = ({ sectionRefs }) => {
             
             {/* Мобильное меню */}
             <div className={`mobile-nav-overlay ${mobileMenuOpen ? 'open' : ''}`}>
-                <div className="mobile-nav-item" onClick={() => handleScroll("devblog")}>
-                    {t('devblog-menu', 'ДЕВБЛОГ')}
-                </div>
                 <div className="mobile-nav-item" onClick={() => handleScroll("services")}>
                     {t('services')}
                 </div>

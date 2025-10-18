@@ -11,6 +11,11 @@
   --gradient-bg: linear-gradient(135deg, rgba(166, 240, 12, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
 }
 
+/* Предотвращение горизонтального скролла в модальном окне */
+.portfolio-modal-content * {
+  box-sizing: border-box;
+}
+
 /* Основные стили оверлея */
 .portfolio-modal-overlay {
   position: fixed;
@@ -43,12 +48,14 @@
   max-width: 1200px;
   max-height: 90vh;
   overflow-y: auto;
+  overflow-x: hidden;
   position: relative;
   transform: scale(0.8) translateY(50px);
   opacity: 0;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 20px 60px rgba(139, 92, 246, 0.2);
   z-index: 2147483646;
+  box-sizing: border-box;
 }
 
 .portfolio-modal-content.visible {
@@ -138,29 +145,27 @@
 }
 
 /* Заголовок модального окна */
-  .portfolio-modal-header {
+.portfolio-modal-header {
   padding: 40px 40px 30px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
-  }
+}
 
-.header-content {
+.header-top {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
 }
 
 .portfolio-modal-title {
-  color: white;
+  color: var(--color-green);
   font-family: var(--font-heading);
   font-size: 36px;
   font-weight: 800;
   margin: 0;
   line-height: 1.2;
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  text-shadow: 0 0 10px rgba(166, 240, 12, 0.3);
   animation: titleGlow 3s ease-in-out infinite;
 }
 
@@ -174,46 +179,50 @@
 }
 
 .portfolio-modal-category {
-  color: var(--color-purple);
+  color: white;
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   padding: 8px 16px;
-  background: var(--gradient-bg);
-  border-radius: 20px;
+  background: rgba(139, 92, 246, 0.2);
+  border-radius: 8px;
   width: fit-content;
-  border: 1px solid rgba(139, 92, 246, 0.3);
-  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.2);
+  border: 2px solid var(--color-purple);
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
 }
 
 .project-rating {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
+  background: rgba(139, 92, 246, 0.1);
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(139, 92, 246, 0.3);
 }
 
 .stars {
   display: flex;
-  gap: 4px;
+  gap: 2px;
 }
 
 .star {
-  font-size: 20px;
+  font-size: 16px;
   color: rgba(255, 255, 255, 0.3);
   transition: all 0.3s ease;
 }
 
 .star.filled {
   color: #ffd700;
-  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
 }
 
 .rating-text {
   color: white;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 /* Статистика проекта */
@@ -224,17 +233,29 @@
   padding: 30px 40px;
   background: rgba(0, 0, 0, 0.2);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .stat-item {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 16px;
-  padding: 20px;
+  justify-content: center;
+  gap: 8px;
+  padding: 20px 12px;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
+  aspect-ratio: 1;
+  text-align: center;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  min-height: 120px;
 }
 
 .stat-item:hover {
@@ -244,14 +265,14 @@
 }
 
 .stat-icon {
-  font-size: 32px;
-  width: 60px;
-  height: 60px;
+  font-size: 28px;
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--gradient-primary);
-  border-radius: 16px;
+  border-radius: 12px;
   filter: drop-shadow(0 4px 8px rgba(139, 92, 246, 0.3)) grayscale(0.1) brightness(1.2);
   animation: iconPulse 2s ease-in-out infinite;
   transition: all 0.3s ease;
@@ -271,21 +292,35 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
 }
 
 .stat-number {
   color: white;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 800;
   line-height: 1;
+  text-align: center;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  max-width: 100%;
 }
 
 .stat-label {
   color: rgba(255, 255, 255, 0.7);
-  font-size: 14px;
+  font-size: 10px;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
+  text-align: center;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  max-width: 100%;
+  line-height: 1.2;
 }
 
 /* Табы навигации */
@@ -317,7 +352,7 @@
 
 .tab-button.active {
   color: var(--color-purple);
-  border-bottom-color: var(--color-purple);
+  border-bottom-color: var(--color-green);
   background: var(--gradient-bg);
   box-shadow: 0 4px 15px rgba(139, 92, 246, 0.2);
 }
@@ -706,27 +741,37 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
     padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
   }
 
   .stat-item {
-    padding: 16px;
+    padding: 12px 8px;
     flex-direction: column;
     text-align: center;
-    gap: 8px;
+    gap: 6px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    min-height: 100px;
   }
 
   .stat-icon {
-    font-size: 24px;
-    width: 48px;
-    height: 48px;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
   }
 
   .stat-number {
-    font-size: 20px;
+    font-size: 16px;
+    line-height: 1.1;
   }
 
   .stat-label {
-    font-size: 12px;
+    font-size: 9px;
+    line-height: 1.1;
+    letter-spacing: 0.3px;
   }
 
   .modal-tabs {

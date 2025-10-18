@@ -57,8 +57,8 @@ export const Portfolio = forwardRef((props, ref) => {
     return showAll || currentCategory === work.categoryKey;
   });
 
-  // Пагинация: на мобильных – 1 карточка, на остальных – 6 карточек на страницу
-  const worksPerPage = isMobile ? 1 : 6;
+  // Пагинация: на мобильных – 3 карточки, на остальных – 6 карточек на страницу
+  const worksPerPage = isMobile ? 3 : 6;
   const totalPages = Math.ceil(filteredWorks.length / worksPerPage);
   
   const getCurrentWorks = () => {
@@ -195,18 +195,16 @@ export const Portfolio = forwardRef((props, ref) => {
                     </button>
                   )}
                   
-                  {isMobile && (
-                    <button 
-                      className="works-details-btn"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setSelectedWork(work);
-                      }}
-                    >
-                      <span>{t('portfolio-view-project')}</span>
-                      <div className="btn-arrow">→</div>
-                    </button>
-                  )}
+                  <button 
+                    className="works-details-btn"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedWork(work);
+                    }}
+                  >
+                    <span>{t('portfolio-view-project')}</span>
+                    <div className="btn-arrow">→</div>
+                  </button>
                 </div>
                 
                 
