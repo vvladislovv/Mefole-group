@@ -1,0 +1,38 @@
+# Multi-stage build for frontend
+FROM node:20-alpine AS base
+
+WORKDIR /app
+
+# Install dependencies for building
+RUN apk add --no-cache python3 make g++
+
+# Copy package files
+COPY frontend/package*.json ./
+COPY frontend/yarn.lock ./
+
+# Install dependencies
+RUN yarn install --frozen-lockfile
+
+# Copy source code
+COPY frontend/ ./
+
+# Development stage
+FROM base AS development
+ENV NODE_OPTIONS="--no-deprecation"
+ENV GENERATE_SOURCEMAP=false
+EXPOSE 3000
+CMD ["yarn", "start"]
+
+# Production build stage
+FROM base AS production
+ENV NODE_OPTIONS="--no-deprecation"
+ENV NODE_ENV=production
+ENV GENERATE_SOURCEMAP=false
+ENV INLINE_RUNTIME_CHUNK=false
+
+# Build the app
+RUN yarn build
+
+# Create output directory
+RUN mkdir -p /app/build
+RUN cp -r build/* /app/build/

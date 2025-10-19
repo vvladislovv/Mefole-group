@@ -110,6 +110,29 @@ const PortfolioModal = React.memo(function PortfolioModal({ work, onClose }) {
       url: projectUrl
     };
 
+    // Функция для копирования в буфер обмена с fallback
+    const copyToClipboard = async (text) => {
+      try {
+        await navigator.clipboard.writeText(text);
+        alert(t('portfolio-share-copied'));
+      } catch (clipboardError) {
+        console.error('Clipboard copy failed:', clipboardError);
+        // Fallback - используем старый метод
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+          document.execCommand('copy');
+          alert(t('portfolio-share-copied'));
+        } catch (execError) {
+          console.error('ExecCommand copy failed:', execError);
+          alert('Не удалось скопировать ссылку. Скопируйте вручную: ' + text);
+        }
+        document.body.removeChild(textArea);
+      }
+    };
+
     try {
       if (navigator.share) {
         await navigator.share(shareData);
@@ -128,28 +151,6 @@ const PortfolioModal = React.memo(function PortfolioModal({ work, onClose }) {
     }
   }, [work.id, t]);
 
-  // Функция для копирования в буфер обмена с fallback
-  const copyToClipboard = async (text) => {
-    try {
-      await navigator.clipboard.writeText(text);
-      alert(t('portfolio-share-copied'));
-    } catch (clipboardError) {
-      console.error('Clipboard copy failed:', clipboardError);
-      // Fallback - используем старый метод
-      const textArea = document.createElement('textarea');
-      textArea.value = text;
-      document.body.appendChild(textArea);
-      textArea.select();
-      try {
-        document.execCommand('copy');
-        alert(t('portfolio-share-copied'));
-      } catch (execError) {
-        console.error('ExecCommand copy failed:', execError);
-        alert('Не удалось скопировать ссылку. Скопируйте вручную: ' + text);
-      }
-      document.body.removeChild(textArea);
-    }
-  };
 
   return (
     <div className={`portfolio-modal-overlay ${isVisible ? 'visible' : ''}`} onClick={handleClose}>

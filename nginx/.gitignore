@@ -1,0 +1,12 @@
+# SSL certificates (don't commit real certificates)
+ssl/*.pem
+ssl/*.crt
+ssl/*.key
+ssl/*.csr
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp

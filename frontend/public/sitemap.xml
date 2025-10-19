@@ -1,19 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://mefole.com/</loc>
-    <lastmod>2025-08-03</lastmod>
+    <loc>https://hacktaika.com/</loc>
+    <lastmod>2024-12-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://mefole.com/?lang=ru"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://mefole.com/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hacktaika.com/?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hacktaika.com/?lang=en"/>
+    <image:image>
+      <image:loc>https://hacktaika.com/icons/mefoleLogo.jpeg</image:loc>
+      <image:title>ХакТайка - Разработка сайтов и мобильных приложений</image:title>
+      <image:caption>Профессиональная разработка сайтов, мобильных приложений и веб-сервисов</image:caption>
+    </image:image>
   </url>
   <url>
-    <loc>https://mefole.com/?lang=en</loc>
-    <lastmod>2025-08-03</lastmod>
+    <loc>https://hacktaika.com/?lang=en</loc>
+    <lastmod>2024-12-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://mefole.com/?lang=ru"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://mefole.com/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hacktaika.com/?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hacktaika.com/?lang=en"/>
+  </url>
+  <url>
+    <loc>https://hacktaika.com/portfolio</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hacktaika.com/privacy-policy</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://hacktaika.com/terms-of-service</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>

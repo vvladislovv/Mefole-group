@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { lazy, Suspense, useRef } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
 import { ClientFormSection } from "./components/ClientFormSection";
@@ -14,11 +14,13 @@ import { Reviews } from "./components/Reviews";
 import { SEOHelmet } from "./components/SEOHelmet";
 import { Services } from "./components/Services";
 import "./i18n";
-import ArticlePage from "./pages/ArticlePage";
-import PortfolioProject from "./pages/PortfolioProject";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import TermsOfService from "./pages/TermsOfService";
 import "./utils/cookieUtils";
+
+// Lazy load non-critical pages
+const ArticlePage = lazy(() => import("./pages/ArticlePage"));
+const PortfolioProject = lazy(() => import("./pages/PortfolioProject"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const TermsOfService = lazy(() => import("./pages/TermsOfService"));
 function App() {
   const projectsRef = useRef(null);
   const servicesRef = useRef(null);
@@ -73,10 +75,38 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/article/:id" element={<ArticlePage />} />
-        <Route path="/portfolio/:id" element={<PortfolioProject />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        <Route path="/terms-of-service" element={<TermsOfService />} />
+        <Route 
+          path="/article/:id" 
+          element={
+            <Suspense fallback={<div className="loading-spinner">Загрузка...</div>}>
+              <ArticlePage />
+            </Suspense>
+          } 
+        />
+        <Route 
+          path="/portfolio/:id" 
+          element={
+            <Suspense fallback={<div className="loading-spinner">Загрузка...</div>}>
+              <PortfolioProject />
+            </Suspense>
+          } 
+        />
+        <Route 
+          path="/privacy-policy" 
+          element={
+            <Suspense fallback={<div className="loading-spinner">Загрузка...</div>}>
+              <PrivacyPolicy />
+            </Suspense>
+          } 
+        />
+        <Route 
+          path="/terms-of-service" 
+          element={
+            <Suspense fallback={<div className="loading-spinner">Загрузка...</div>}>
+              <TermsOfService />
+            </Suspense>
+          } 
+        />
       </Routes>
       <CookieNotification />
     </Router>

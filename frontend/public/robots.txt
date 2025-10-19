@@ -3,9 +3,20 @@ User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /admin/
+Disallow: /_next/
+Disallow: /static/
+Disallow: /node_modules/
+Disallow: /build/
+Disallow: /src/
+
+# Allow important pages
+Allow: /portfolio/
+Allow: /article/
+Allow: /privacy-policy
+Allow: /terms-of-service
 
 # Sitemap
-Sitemap: https://mefole.com/sitemap.xml
+Sitemap: https://hacktaika.com/sitemap.xml
 
 # Crawl-delay for better server performance
 Crawl-delay: 1

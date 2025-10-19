@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 import { SEOHelmet } from '../components/SEOHelmet';
@@ -12,7 +12,7 @@ const PortfolioProject = () => {
   const [loading, setLoading] = useState(true);
 
   // Данные проектов (в реальном приложении это будет API запрос)
-  const projectsData = {
+  const projectsData = useMemo(() => ({
     1: {
       id: 1,
       title: "E-commerce Platform",
@@ -32,7 +32,7 @@ const PortfolioProject = () => {
       websiteUrl: "https://example-banking.com"
     },
     // Добавьте больше проектов по необходимости
-  };
+  }), []);
 
   useEffect(() => {
     // Прокрутка к началу страницы
@@ -52,7 +52,7 @@ const PortfolioProject = () => {
     }, 500);
 
     return () => clearTimeout(timer);
-  }, [id]);
+  }, [id, projectsData]);
 
   const handleBack = () => {
     navigate('/');

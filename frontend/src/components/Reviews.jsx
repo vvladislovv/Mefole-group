@@ -1,13 +1,13 @@
-import React, { forwardRef, useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { useTranslation } from 'react-i18next'
-import { reviews } from '../data/reviews'
-import './css/reviews.css'
+import React, { forwardRef, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { reviews } from '../data/reviews';
+import './css/reviews.css';
 
 export const Reviews = React.memo(forwardRef((props, ref) => {
     const {t} = useTranslation();
     const scrollRef = useRef(null);
     const [isMobile, setIsMobile] = useState(false);
-    const [selected_review_id, select_review_id] = useState(reviews[0]?.id ?? null);
+    // const [selectedReviewId, setSelectedReviewId] = useState(reviews[0]?.id ?? null); // Removed unused variables
     const [currentPage, setCurrentPage] = useState(0);
     const cardsPerPage = 1;
     const reviewsPerPage = 4; // Максимум 4 отзыва на страницу
