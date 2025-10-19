@@ -33,3 +33,4 @@ if (typeof window !== 'undefined') {
   window.setCookieConsent = setCookieConsent;
   window.getCookieConsent = getCookieConsent;
 }
+

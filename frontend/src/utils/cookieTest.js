@@ -38,3 +38,4 @@ export const forceDeclineCookies = () => {
   console.log('Cookie consent forced to declined');
   window.location.reload();
 };
+
