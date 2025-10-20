@@ -45,3 +45,4 @@ const LazyComponent = ({
 };
 
 export default LazyComponent;
+

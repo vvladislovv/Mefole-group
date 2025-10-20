@@ -96,3 +96,4 @@ const OptimizedModal = ({
 };
 
 export default OptimizedModal;
+

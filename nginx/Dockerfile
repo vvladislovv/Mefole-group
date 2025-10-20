@@ -7,8 +7,7 @@ RUN apk add --no-cache curl
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
 COPY nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
 
-# Copy error pages
-COPY nginx/html/ /usr/share/nginx/html/
+# Do not copy placeholder error/test pages; real site is mounted via volume
 
 # Create SSL directory
 RUN mkdir -p /etc/nginx/ssl

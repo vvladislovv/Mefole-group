@@ -22,7 +22,7 @@
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh; /* уважает динамические панели iOS */
   background: rgba(0, 0, 0, 0.95);
   backdrop-filter: blur(10px);
   display: flex;
@@ -30,9 +30,11 @@
   justify-content: center;
   z-index: 2147483645;
   overflow-y: auto;
-  padding: 20px;
+  /* Добавляем безопасные отступы для вырезов и системных панелей */
+  padding: max(10px, env(safe-area-inset-top)) 20px max(10px, env(safe-area-inset-bottom));
   opacity: 0;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overscroll-behavior: contain;
 }
 
 .portfolio-modal-overlay.visible {
@@ -46,7 +48,8 @@
   border-radius: 24px;
   width: 100%;
   max-width: 1200px;
-  max-height: 90vh;
+  /* Вычитаем безопасные зоны и внешние отступы оверлея */
+  max-height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 40px);
   overflow-y: auto;
   overflow-x: hidden;
   position: relative;
@@ -56,6 +59,7 @@
   box-shadow: 0 20px 60px rgba(139, 92, 246, 0.2);
   z-index: 2147483646;
   box-sizing: border-box;
+  scroll-padding-bottom: env(safe-area-inset-bottom);
 }
 
 .portfolio-modal-content.visible {
@@ -66,8 +70,8 @@
 /* Кнопка закрытия */
 .portfolio-modal-close {
   position: fixed;
-  top: 20px;
-  right: 20px;
+  top: calc(20px + env(safe-area-inset-top));
+  right: calc(20px + env(safe-area-inset-right));
   width: 50px;
   height: 50px;
   background: rgba(0, 0, 0, 0.8);
@@ -716,7 +720,9 @@
 /* Мобильная адаптация */
 @media (max-width: 768px) {
   .portfolio-modal-overlay {
-    padding: 10px;
+    /* Учитываем safe-area на мобильных */
+    padding: max(10px, env(safe-area-inset-top)) 10px max(10px, env(safe-area-inset-bottom));
+    height: 100dvh;
   }
 
   .portfolio-modal-content {
@@ -882,8 +888,8 @@
   .portfolio-modal-close {
     width: 44px;
     height: 44px;
-    top: 15px;
-    right: 15px;
+    top: calc(15px + env(safe-area-inset-top));
+    right: calc(15px + env(safe-area-inset-right));
     z-index: 2147483647;
   }
 
