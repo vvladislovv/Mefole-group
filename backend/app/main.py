@@ -50,6 +50,7 @@ def create_app() -> FastAPI:
         logger.info("🚀 Запуск приложения...")
         print("🚀 Запуск приложения...")
         
+        
         # Initialize database
         await init_db()
         logger.info("✅ База данных инициализирована")
